@@ -1,7 +1,8 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { PageShell, PageIntro } from "@/components/PageShell";
 import { Reveal } from "@/components/Reveal";
+import { CtaLink } from "@/components/CtaButton";
 
 export const Route = createFileRoute("/work")({
   head: () => ({
@@ -100,12 +101,9 @@ function WorkPage() {
               Our first collection of stories is currently in production.
               When the archive opens, it will live here.
             </p>
-            <Link
-              to="/contact"
-              className="inline-block px-8 py-3 border border-foreground text-[11px] uppercase tracking-[0.3em] font-medium hover:bg-foreground hover:text-background transition-colors"
-            >
+            <CtaLink to="/contact" variant="outline">
               Enquire about upcoming work
-            </Link>
+            </CtaLink>
           </Reveal>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">

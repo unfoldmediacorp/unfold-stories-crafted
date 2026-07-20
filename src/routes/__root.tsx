@@ -1,7 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
-  Link,
   createRootRouteWithContext,
   useRouter,
   HeadContent,
@@ -11,6 +10,10 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { CtaAnchor, CtaButton, CtaLink } from "../components/CtaButton";
+import { CustomCursor } from "../components/CustomCursor";
+import { LoadingScreen } from "../components/LoadingScreen";
+import { PageTransition } from "../components/PageTransition";
 
 function NotFoundComponent() {
   return (
@@ -19,18 +22,13 @@ function NotFoundComponent() {
         <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent block mb-8">
           404 / Off script
         </span>
-        <h1 className="font-display text-6xl italic tracking-tighter mb-6">
-          This page hasn't been filmed.
+        <h1 className="font-display font-semibold text-6xl tracking-tighter mb-8">
+          This page hasn't <em className="font-normal">been filmed</em>.
         </h1>
-        <p className="text-sm text-muted-foreground mb-10">
+        <p className="text-sm text-muted-foreground mb-12">
           The URL you followed doesn't exist in our archive.
         </p>
-        <Link
-          to="/"
-          className="inline-block px-8 py-3 bg-foreground text-background text-[11px] uppercase tracking-[0.3em] font-medium hover:bg-accent transition-colors"
-        >
-          Return home
-        </Link>
+        <CtaLink to="/">Return home</CtaLink>
       </div>
     </div>
   );
@@ -49,28 +47,22 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
         <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent block mb-8">
           Error
         </span>
-        <h1 className="font-display text-5xl italic tracking-tighter mb-6">
-          Something interrupted the reel.
+        <h1 className="font-display font-semibold text-5xl tracking-tighter mb-8">
+          Something interrupted <em className="font-normal">the reel</em>.
         </h1>
-        <p className="text-sm text-muted-foreground mb-10">
+        <p className="text-sm text-muted-foreground mb-12">
           Please try again or return home.
         </p>
         <div className="flex flex-wrap justify-center gap-3">
-          <button
+          <CtaButton
             onClick={() => {
               router.invalidate();
               reset();
             }}
-            className="px-8 py-3 bg-foreground text-background text-[11px] uppercase tracking-[0.3em] font-medium hover:bg-accent transition-colors"
           >
             Try again
-          </button>
-          <a
-            href="/"
-            className="px-8 py-3 border border-border text-[11px] uppercase tracking-[0.3em] font-medium hover:border-foreground transition-colors"
-          >
-            Go home
-          </a>
+          </CtaButton>
+          <CtaAnchor href="/" variant="outline">Go home</CtaAnchor>
         </div>
       </div>
     </div>
@@ -138,7 +130,11 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <LoadingScreen />
+      <CustomCursor />
+      <PageTransition>
+        <Outlet />
+      </PageTransition>
     </QueryClientProvider>
   );
 }

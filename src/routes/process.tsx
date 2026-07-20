@@ -1,6 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, PageIntro } from "@/components/PageShell";
 import { Reveal } from "@/components/Reveal";
+import { CtaLink } from "@/components/CtaButton";
 
 export const Route = createFileRoute("/process")({
   head: () => ({
@@ -87,7 +88,7 @@ function ProcessPage() {
                   Step {s.n}.
                 </div>
                 <div className="col-span-12 md:col-span-5">
-                  <h2 className="font-display text-4xl md:text-6xl italic tracking-tighter leading-[0.95] mb-4">
+                  <h2 className="font-display font-semibold text-4xl md:text-6xl tracking-tighter leading-[0.95] mb-6">
                     {s.title}
                   </h2>
                   <p className="font-display text-xl text-muted-foreground">
@@ -110,15 +111,10 @@ function ProcessPage() {
           <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent block mb-6">
             Ready when you are
           </span>
-          <h2 className="font-display text-5xl md:text-7xl italic mb-10 tracking-tighter">
-            Start with a conversation.
+          <h2 className="font-display font-semibold text-5xl md:text-7xl mb-12 tracking-tighter">
+            Start with a <em className="font-normal">conversation</em>.
           </h2>
-          <Link
-            to="/contact"
-            className="inline-block px-10 py-4 bg-foreground text-background text-[11px] uppercase tracking-[0.3em] font-medium hover:bg-accent transition-colors"
-          >
-            Get in touch
-          </Link>
+          <CtaLink to="/contact" size="lg">Get in touch</CtaLink>
         </Reveal>
       </section>
     </PageShell>

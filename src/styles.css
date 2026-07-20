@@ -88,4 +88,17 @@
     background-color: var(--color-accent);
     color: var(--color-accent-foreground);
   }
+
+  /* Custom cursor: hide native cursor only on precise-pointer devices. */
+  @media (pointer: fine) {
+    html.has-custom-cursor,
+    html.has-custom-cursor body,
+    html.has-custom-cursor * {
+      cursor: none !important;
+    }
+  }
+
+  .cursor-ring.cursor-press {
+    transform-origin: center;
+  }
 }

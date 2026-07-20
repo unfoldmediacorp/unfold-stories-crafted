@@ -1,6 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, PageIntro } from "@/components/PageShell";
 import { Reveal } from "@/components/Reveal";
+import { CtaLink } from "@/components/CtaButton";
 import aboutImg from "@/assets/about.jpg";
 
 export const Route = createFileRoute("/about")({
@@ -41,7 +42,7 @@ function AboutPage() {
       />
 
       <section className="max-w-[1400px] mx-auto px-6 py-16 md:py-24 grid grid-cols-12 gap-6">
-        <Reveal className="col-span-12 lg:col-span-5">
+        <Reveal className="col-span-12 lg:col-span-7">
           <figure className="w-full aspect-[4/5] overflow-hidden bg-muted outline outline-1 -outline-offset-1 outline-black/5">
             <img
               src={aboutImg}
@@ -49,12 +50,12 @@ function AboutPage() {
               width={1400}
               height={1800}
               loading="lazy"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-[68%_38%] transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.02]"
             />
           </figure>
         </Reveal>
 
-        <div className="col-span-12 lg:col-span-6 lg:col-start-7 space-y-16">
+        <div className="col-span-12 lg:col-span-4 lg:col-start-9 space-y-16">
           <Reveal>
             <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent block mb-6">
               Mission
@@ -115,7 +116,7 @@ function AboutPage() {
             <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent block mb-6">
               Studio Culture
             </span>
-            <h2 className="font-display text-4xl md:text-5xl italic tracking-tighter leading-[0.95]">
+            <h2 className="font-display font-semibold text-4xl md:text-5xl tracking-tighter leading-[0.95]">
               Small crews.
               <br />
               Long attention.
@@ -166,15 +167,10 @@ function AboutPage() {
 
       <section className="py-24 md:py-32 px-6 text-center">
         <Reveal>
-          <h2 className="font-display text-5xl md:text-7xl italic mb-10 tracking-tighter">
-            Work with the studio.
+          <h2 className="font-display font-semibold text-5xl md:text-7xl mb-12 tracking-tighter">
+            Work with <em className="font-normal">the studio</em>.
           </h2>
-          <Link
-            to="/contact"
-            className="inline-block px-10 py-4 bg-foreground text-background text-[11px] uppercase tracking-[0.3em] font-medium hover:bg-accent transition-colors"
-          >
-            Start a Project
-          </Link>
+          <CtaLink to="/contact" size="lg">Start a Project</CtaLink>
         </Reveal>
       </section>
     </PageShell>

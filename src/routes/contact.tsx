@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { PageShell, PageIntro } from "@/components/PageShell";
 import { Reveal } from "@/components/Reveal";
+import { CtaButton } from "@/components/CtaButton";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -54,7 +55,7 @@ function ContactPage() {
             <h3 className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-4">
               Studio
             </h3>
-            <p className="font-display text-2xl italic leading-snug">
+            <p className="font-display font-semibold text-2xl leading-snug">
               Unfold Media Corp
               <br />
               Coimbatore, Tamil Nadu
@@ -120,12 +121,9 @@ function ContactPage() {
                 <Field label="Company" name="company" />
                 <Field label="Phone (optional)" name="phone" type="tel" />
                 <TextArea label="Tell us about the project" name="brief" required />
-                <button
-                  type="submit"
-                  className="mt-4 px-10 py-4 bg-foreground text-background text-[11px] uppercase tracking-[0.3em] font-medium hover:bg-accent transition-colors"
-                >
+                <CtaButton type="submit" size="lg" className="mt-4">
                   Send enquiry
-                </button>
+                </CtaButton>
               </form>
             </Reveal>
           )}
@@ -189,7 +187,7 @@ function Field({
         name={name}
         type={type}
         required={required}
-        className="w-full bg-transparent border-b border-border py-3 text-lg font-display italic focus:outline-none focus:border-foreground transition-colors placeholder:text-muted-foreground/40"
+        className="w-full bg-transparent border-b border-border py-3 text-lg font-display focus:outline-none focus:border-foreground transition-colors placeholder:text-muted-foreground/40"
       />
     </label>
   );

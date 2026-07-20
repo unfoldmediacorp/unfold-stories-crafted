@@ -1,6 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, PageIntro } from "@/components/PageShell";
 import { Reveal } from "@/components/Reveal";
+import { CtaLink } from "@/components/CtaButton";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -107,7 +108,7 @@ function ServicesPage() {
                   {s.n}
                 </div>
                 <div className="col-span-12 md:col-span-5">
-                  <h2 className="font-display text-4xl md:text-5xl italic tracking-tighter leading-[0.95] transition-colors group-hover:text-accent">
+                  <h2 className="font-display font-semibold text-4xl md:text-5xl tracking-tighter leading-[0.95] transition-colors duration-500 group-hover:text-accent">
                     {s.title}
                   </h2>
                 </div>
@@ -127,15 +128,10 @@ function ServicesPage() {
 
       <section className="py-24 md:py-32 px-6 text-center border-t border-border">
         <Reveal>
-          <h2 className="font-display text-5xl md:text-7xl italic mb-10 tracking-tighter">
-            Have a project in mind?
+          <h2 className="font-display font-semibold text-5xl md:text-7xl mb-12 tracking-tighter">
+            Have a project <em className="font-normal">in mind?</em>
           </h2>
-          <Link
-            to="/contact"
-            className="inline-block px-10 py-4 bg-foreground text-background text-[11px] uppercase tracking-[0.3em] font-medium hover:bg-accent transition-colors"
-          >
-            Start a Project
-          </Link>
+          <CtaLink to="/contact" size="lg">Start a Project</CtaLink>
         </Reveal>
       </section>
     </PageShell>

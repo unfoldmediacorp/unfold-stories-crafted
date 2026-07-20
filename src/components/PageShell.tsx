@@ -23,18 +23,18 @@ export function PageIntro({
 }) {
   return (
     <section className="border-b border-border">
-      <div className="max-w-[1400px] mx-auto px-6 pt-16 md:pt-24 pb-16 md:pb-28 grid grid-cols-12 gap-6 items-end">
+      <div className="max-w-[1400px] mx-auto px-6 pt-20 md:pt-28 pb-20 md:pb-32 grid grid-cols-12 gap-6 items-end">
         <div className="col-span-12 lg:col-span-8">
-          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent block mb-8">
+          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent block mb-10">
             {eyebrow}
           </span>
-          <h1 className="font-display text-[clamp(3rem,9vw,8rem)] leading-[0.9] tracking-tighter italic">
+          <h1 className="font-display font-semibold text-[clamp(3rem,9vw,8rem)] leading-[0.9] tracking-tighter">
             {title}
           </h1>
         </div>
         {lead && (
           <div className="col-span-12 lg:col-span-4">
-            <p className="text-lg leading-relaxed text-pretty text-muted-foreground max-w-md">
+            <p className="text-lg leading-[1.65] text-pretty text-muted-foreground max-w-md">
               {lead}
             </p>
           </div>
