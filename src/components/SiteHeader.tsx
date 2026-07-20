@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const nav = [
   { to: "/services", label: "Services" },
@@ -12,11 +12,35 @@ const nav = [
 export function SiteHeader() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <nav className="sticky top-0 z-50 bg-background/85 backdrop-blur-md border-b border-border">
-      <div className="flex items-baseline justify-between px-6 py-6 md:py-8 max-w-[1400px] mx-auto">
-        <Link to="/" className="font-display text-2xl font-bold tracking-tighter">
+    <nav
+      className={
+        "sticky top-0 z-50 transition-[background-color,backdrop-filter,border-color,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] " +
+        (scrolled
+          ? "bg-background/90 backdrop-blur-xl border-b border-border/80 shadow-[0_1px_0_rgba(0,0,0,0.02)]"
+          : "bg-background/60 backdrop-blur-md border-b border-transparent")
+      }
+    >
+      <div
+        className={
+          "flex items-baseline justify-between px-6 max-w-[1400px] mx-auto transition-[padding] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] " +
+          (scrolled ? "py-3 md:py-4" : "py-6 md:py-8")
+        }
+      >
+        <Link
+          to="/"
+          data-cursor="button"
+          className="font-display text-2xl font-bold tracking-tighter"
+        >
           UNFOLD
         </Link>
         <div className="hidden md:flex gap-8 text-[11px] uppercase tracking-[0.2em] font-medium">
@@ -26,10 +50,12 @@ export function SiteHeader() {
               <Link
                 key={item.to}
                 to={item.to}
+                data-cursor="button"
                 className={
-                  active
-                    ? "text-foreground font-bold"
-                    : "text-muted-foreground hover:text-accent transition-colors"
+                  "relative py-1 transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:right-0 after:-bottom-0.5 after:h-px after:bg-foreground after:origin-left after:scale-x-0 after:transition-transform after:duration-500 after:ease-[cubic-bezier(0.22,1,0.36,1)] hover:after:scale-x-100 " +
+                  (active
+                    ? "text-foreground after:scale-x-100"
+                    : "text-muted-foreground hover:text-foreground")
                 }
               >
                 {item.label}
@@ -41,6 +67,7 @@ export function SiteHeader() {
           CBE / IND
         </div>
         <button
+          data-cursor="button"
           className="md:hidden text-[11px] font-mono uppercase tracking-[0.2em]"
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"

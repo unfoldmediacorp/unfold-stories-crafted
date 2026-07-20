@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
 import { Reveal } from "@/components/Reveal";
+import { CtaLink } from "@/components/CtaButton";
 import heroImg from "@/assets/hero.jpg";
 import heroVideo from "@/assets/hero.mp4.asset.json";
 
@@ -57,29 +58,21 @@ function HomePage() {
       {/* Hero */}
       <header className="relative px-6 pt-12 pb-16 md:pb-24 overflow-hidden">
         <div className="max-w-[1400px] mx-auto grid grid-cols-12 gap-4 md:gap-6 items-end">
-          <h1 className="col-span-12 lg:col-span-9 font-display text-[clamp(3.5rem,12vw,10rem)] leading-[0.85] tracking-tighter italic animate-reveal">
-            Cinematic
+          <h1 className="col-span-12 lg:col-span-9 font-display font-semibold text-[clamp(3.5rem,12vw,10rem)] leading-[0.85] tracking-tighter animate-reveal">
+            <em className="font-normal">Cinematic</em>
             <br />
-            <span className="not-italic">Perspectives.</span>
+            <span>Perspectives.</span>
           </h1>
-          <div className="col-span-12 lg:col-span-4 lg:col-start-9 mt-8 lg:mt-0 animate-reveal [animation-delay:200ms]">
-            <p className="text-lg md:text-xl leading-relaxed text-pretty mb-8 max-w-md">
+          <div className="col-span-12 lg:col-span-4 lg:col-start-9 mt-10 lg:mt-0 animate-reveal [animation-delay:200ms]">
+            <p className="text-lg md:text-xl leading-[1.65] text-pretty mb-10 max-w-md text-muted-foreground">
               A cinematic storytelling studio in Coimbatore, building films for
               businesses who prefer craft to noise.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link
-                to="/contact"
-                className="px-8 py-3 bg-foreground text-background text-[11px] uppercase tracking-[0.3em] font-medium hover:bg-accent transition-colors"
-              >
-                Start a Project
-              </Link>
-              <Link
-                to="/process"
-                className="px-8 py-3 border border-border text-[11px] uppercase tracking-[0.3em] font-medium hover:border-foreground transition-colors"
-              >
+              <CtaLink to="/contact">Start a Project</CtaLink>
+              <CtaLink to="/process" variant="outline">
                 Explore Our Process
-              </Link>
+              </CtaLink>
             </div>
           </div>
         </div>
@@ -182,7 +175,7 @@ function HomePage() {
       <section className="py-32 md:py-48 px-6">
         <div className="max-w-[1400px] mx-auto">
           <div className="flex justify-between items-end mb-12">
-            <h2 className="font-display text-4xl md:text-5xl italic tracking-tighter">
+            <h2 className="font-display font-semibold text-4xl md:text-5xl tracking-tighter">
               Selected Work
             </h2>
             <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
@@ -208,8 +201,8 @@ function HomePage() {
             <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent block mb-6">
               Why Unfold
             </span>
-            <h2 className="font-display text-4xl md:text-5xl italic tracking-tighter leading-[1.05]">
-              We make fewer films, on purpose.
+            <h2 className="font-display font-semibold text-4xl md:text-5xl tracking-tighter leading-[1.05]">
+              We make <em className="font-normal">fewer films</em>, on purpose.
             </h2>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
@@ -233,15 +226,12 @@ function HomePage() {
       {/* Final CTA */}
       <section className="py-32 md:py-48 px-6 text-center">
         <Reveal className="max-w-4xl mx-auto">
-          <h2 className="font-display text-6xl md:text-8xl italic mb-12 tracking-tighter leading-[0.95]">
-            Let's tell your story.
+          <h2 className="font-display font-semibold text-6xl md:text-8xl mb-14 tracking-tighter leading-[0.95]">
+            Let's tell <em className="font-normal">your story</em>.
           </h2>
-          <Link
-            to="/contact"
-            className="inline-block px-12 py-5 bg-foreground text-background text-[11px] uppercase tracking-[0.3em] font-bold hover:bg-accent transition-colors"
-          >
+          <CtaLink to="/contact" size="lg">
             Start Your Project
-          </Link>
+          </CtaLink>
         </Reveal>
       </section>
     </PageShell>
