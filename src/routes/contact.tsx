@@ -55,7 +55,7 @@ function ContactPage() {
             <h3 className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-4">
               Studio
             </h3>
-            <p className="font-display text-2xl italic leading-snug">
+            <p className="font-display font-semibold text-2xl leading-snug">
               Unfold Media Corp
               <br />
               Coimbatore, Tamil Nadu
@@ -187,7 +187,7 @@ function Field({
         name={name}
         type={type}
         required={required}
-        className="w-full bg-transparent border-b border-border py-3 text-lg font-display italic focus:outline-none focus:border-foreground transition-colors placeholder:text-muted-foreground/40"
+        className="w-full bg-transparent border-b border-border py-3 text-lg font-display focus:outline-none focus:border-foreground transition-colors placeholder:text-muted-foreground/40"
       />
     </label>
   );
