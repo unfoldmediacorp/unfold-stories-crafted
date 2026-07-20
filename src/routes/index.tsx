@@ -12,11 +12,11 @@ export const Route = createFileRoute("/")({
         content:
           "A cinematic storytelling studio in Coimbatore, India. Brand films, founder stories, documentaries and campaigns for ambitious businesses.",
       },
-      { property: "og:title", content: "Unfold Media Corp — Cinematic Storytelling Studio" },
+      { property: "og:title", content: "Unfold Media Corp — Cinematic Storytelling Studio, Coimbatore" },
       {
         property: "og:description",
         content:
-          "Films for founders and businesses who prefer craft to noise. Brand films, documentaries, commercial campaigns.",
+          "A cinematic storytelling studio in Coimbatore, India. Brand films, founder stories, documentaries and campaigns for ambitious businesses.",
       },
       { property: "og:url", content: "/" },
     ],

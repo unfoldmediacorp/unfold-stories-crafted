@@ -86,18 +86,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Unfold Media Corp is a cinematic storytelling studio in Coimbatore, India, crafting brand films, founder stories, documentaries and campaigns for ambitious businesses.",
+          "A cinematic storytelling studio in Coimbatore, India. Brand films, founder stories, documentaries and campaigns for ambitious businesses.",
       },
       { name: "author", content: "Unfold Media Corp" },
       { property: "og:site_name", content: "Unfold Media Corp" },
-      { property: "og:title", content: "Unfold Media Corp — Cinematic Storytelling Studio" },
+      { property: "og:title", content: "Unfold Media Corp — Cinematic Storytelling Studio, Coimbatore" },
       {
         property: "og:description",
         content:
-          "A cinematic storytelling studio in Coimbatore. Brand films, founder stories, documentaries and campaigns.",
+          "A cinematic storytelling studio in Coimbatore, India. Brand films, founder stories, documentaries and campaigns for ambitious businesses.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Unfold Media Corp — Cinematic Storytelling Studio, Coimbatore" },
+      { name: "twitter:description", content: "A cinematic storytelling studio in Coimbatore, India. Brand films, founder stories, documentaries and campaigns for ambitious businesses." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/RziJEjVnxuOXklGmBiSJe7pfzPA3/social-images/social-1784537282788-WALL.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/RziJEjVnxuOXklGmBiSJe7pfzPA3/social-images/social-1784537282788-WALL.webp" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
