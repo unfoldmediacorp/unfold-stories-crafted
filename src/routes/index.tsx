@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
 import { Reveal } from "@/components/Reveal";
 import heroImg from "@/assets/hero.jpg";
+import heroVideo from "@/assets/hero.mp4.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -84,14 +85,20 @@ function HomePage() {
         </div>
 
         <Reveal delay={300} className="mt-16 md:mt-24">
-          <figure className="w-full aspect-[21/9] overflow-hidden bg-muted outline outline-1 -outline-offset-1 outline-black/5">
-            <img
-              src={heroImg}
-              alt="Mist rolling over the Western Ghats at dawn, near Coimbatore"
-              width={1920}
-              height={1080}
+          <figure className="relative w-full aspect-[21/9] overflow-hidden bg-muted outline outline-1 -outline-offset-1 outline-black/5">
+            <video
+              src={heroVideo.url}
+              poster={heroImg}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="none"
+              aria-label="Mist rolling over the Western Ghats at dawn, near Coimbatore"
               className="w-full h-full object-cover"
             />
+            <div className="pointer-events-none absolute inset-0 bg-black/10" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-b from-transparent to-background" />
           </figure>
         </Reveal>
       </header>
