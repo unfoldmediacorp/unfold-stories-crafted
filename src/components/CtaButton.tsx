@@ -21,9 +21,9 @@ const sizes: Record<Size, string> = {
 
 const variants: Record<Variant, string> = {
   solid:
-    "bg-foreground text-background hover:bg-accent shadow-[0_1px_0_rgba(0,0,0,0.04)] hover:shadow-[0_18px_40px_-24px_rgba(26,26,26,0.55)]",
+    "bg-foreground text-background hover:bg-foreground/90 shadow-[0_1px_0_color-mix(in_oklab,var(--foreground)_4%,transparent)] hover:shadow-[0_18px_40px_-24px_color-mix(in_oklab,var(--foreground)_45%,transparent)]",
   outline:
-    "border border-border text-foreground hover:border-foreground hover:shadow-[0_18px_40px_-28px_rgba(26,26,26,0.35)]",
+    "border border-accent/60 bg-transparent text-foreground hover:border-foreground hover:shadow-[0_18px_40px_-28px_color-mix(in_oklab,var(--foreground)_35%,transparent)]",
   ghost:
     "text-foreground hover:text-accent",
 };
