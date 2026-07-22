@@ -40,9 +40,25 @@ export function SiteHeader() {
         <Link
           to="/"
           data-cursor="button"
-          className="font-display text-2xl font-bold tracking-tighter"
+          aria-label="Unfold Media Corp — Home"
+          className="flex items-center gap-3 group"
         >
-          UNFOLD
+          <img
+            src={logoU}
+            alt=""
+            className={
+              "w-auto transition-[height] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] " +
+              (scrolled ? "h-8" : "h-10 md:h-11")
+            }
+          />
+          <span className="flex flex-col leading-none">
+            <span className="font-display text-base md:text-lg font-semibold tracking-tight text-foreground">
+              Unfold
+            </span>
+            <span className="font-mono text-[9px] md:text-[10px] uppercase tracking-[0.28em] text-muted-foreground mt-1">
+              Media Corp
+            </span>
+          </span>
         </Link>
         <div className="hidden md:flex gap-8 text-[11px] uppercase tracking-[0.2em] font-medium">
           {nav.map((item) => {
