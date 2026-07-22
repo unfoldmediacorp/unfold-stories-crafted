@@ -33,7 +33,7 @@ export function SiteHeader() {
     >
       <div
         className={
-          "flex items-baseline justify-between px-6 max-w-[1400px] mx-auto transition-[padding] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] " +
+          "flex items-center justify-between px-6 max-w-[1400px] mx-auto transition-[padding] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] " +
           (scrolled ? "py-3 md:py-4" : "py-6 md:py-8")
         }
       >
