@@ -21,11 +21,11 @@ const sizes: Record<Size, string> = {
 
 const variants: Record<Variant, string> = {
   solid:
-    "bg-foreground text-background hover:bg-foreground/90 shadow-[0_1px_0_color-mix(in_oklab,var(--foreground)_4%,transparent)] hover:shadow-[0_18px_40px_-24px_color-mix(in_oklab,var(--foreground)_45%,transparent)]",
+    "bg-foreground text-background hover:bg-foreground/90",
   outline:
-    "border border-accent/60 bg-transparent text-foreground hover:border-foreground hover:shadow-[0_18px_40px_-28px_color-mix(in_oklab,var(--foreground)_35%,transparent)]",
+    "border border-foreground/50 bg-transparent text-foreground hover:border-foreground hover:bg-foreground/5",
   ghost:
-    "text-foreground hover:text-accent",
+    "text-foreground hover:opacity-70",
 };
 
 function Inner({

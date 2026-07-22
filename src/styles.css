@@ -40,32 +40,32 @@
 :root {
   --radius: 0.25rem;
 
-  /* Editorial palette — Warm Ivory / Rich Black / Warm Taupe / Sandstone borders */
-  --background: #e8ded6;
-  --foreground: #110f0b;
-  --muted: #ddd1c6;
-  --muted-foreground: #110f0bb3;
-  --paper: #ddd1c6;
+  /* Editorial palette — Rich Black canvas, Warm Ivory type, Sandstone accents */
+  --background: #110f0b;
+  --foreground: #e8ded6;
+  --muted: #1a1713;
+  --muted-foreground: #d2c5b9cc;
+  --paper: #1a1713;
 
-  --card: #e8ded6;
-  --card-foreground: #110f0b;
-  --popover: #e8ded6;
-  --popover-foreground: #110f0b;
+  --card: #16130f;
+  --card-foreground: #e8ded6;
+  --popover: #16130f;
+  --popover-foreground: #e8ded6;
 
-  --primary: #110f0b;
-  --primary-foreground: #e8ded6;
-  --secondary: #ddd1c6;
-  --secondary-foreground: #110f0b;
+  --primary: #e8ded6;
+  --primary-foreground: #110f0b;
+  --secondary: #1a1713;
+  --secondary-foreground: #e8ded6;
 
-  --accent: #ae9e8e;
+  --accent: #c7b7a9;
   --accent-foreground: #110f0b;
 
-  --destructive: #110f0b;
-  --destructive-foreground: #e8ded6;
+  --destructive: #e8ded6;
+  --destructive-foreground: #110f0b;
 
-  --border: #c7b7a959;
-  --input: #c7b7a959;
-  --ring: #ae9e8e;
+  --border: #ae9e8e33;
+  --input: #ae9e8e40;
+  --ring: #c7b7a9;
 }
 
 @layer base {
