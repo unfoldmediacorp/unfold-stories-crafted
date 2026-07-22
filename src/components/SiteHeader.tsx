@@ -1,5 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import logoU from "@/assets/logo-u.png";
 
 const nav = [
   { to: "/services", label: "Services" },
