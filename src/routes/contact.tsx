@@ -223,11 +223,13 @@ function Field({
   name,
   type = "text",
   required,
+  disabled,
 }: {
   label: string;
   name: string;
   type?: string;
   required?: boolean;
+  disabled?: boolean;
 }) {
   return (
     <label className="block group">
@@ -239,13 +241,24 @@ function Field({
         name={name}
         type={type}
         required={required}
-        className="w-full bg-transparent border-b border-border py-3 text-lg font-display focus:outline-none focus:border-foreground transition-colors placeholder:text-muted-foreground/40"
+        disabled={disabled}
+        className="w-full bg-transparent border-b border-border py-3 text-lg font-display focus:outline-none focus:border-foreground transition-colors placeholder:text-muted-foreground/40 disabled:opacity-50 disabled:cursor-not-allowed"
       />
     </label>
   );
 }
 
-function TextArea({ label, name, required }: { label: string; name: string; required?: boolean }) {
+function TextArea({
+  label,
+  name,
+  required,
+  disabled,
+}: {
+  label: string;
+  name: string;
+  required?: boolean;
+  disabled?: boolean;
+}) {
   return (
     <label className="block">
       <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground block mb-3">
@@ -255,8 +268,9 @@ function TextArea({ label, name, required }: { label: string; name: string; requ
       <textarea
         name={name}
         required={required}
+        disabled={disabled}
         rows={5}
-        className="w-full bg-transparent border-b border-border py-3 text-lg focus:outline-none focus:border-foreground transition-colors resize-none"
+        className="w-full bg-transparent border-b border-border py-3 text-lg focus:outline-none focus:border-foreground transition-colors resize-none disabled:opacity-50 disabled:cursor-not-allowed"
       />
     </label>
   );
