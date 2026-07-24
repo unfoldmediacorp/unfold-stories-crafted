@@ -69,15 +69,15 @@ function ContactPage() {
             <ul className="space-y-2 text-lg">
               <li>
                 <a
-                  href="mailto:Unfoldmediacorp@gmail.com"
+                  href="mailto:hello@unfoldmediacorp.com"
                   className="hover:text-accent transition-colors border-b border-border pb-1"
                 >
-                  Unfoldmediacorp@gmail.com
+                  hello@unfoldmediacorp.com
                 </a>
               </li>
               <li>
-                <a href="tel:+917418898911" className="hover:text-accent transition-colors">
-                  +91 74188 98911
+                <a href="tel:+919999999999" className="hover:text-accent transition-colors">
+                  +91 99999 99999
                 </a>
               </li>
             </ul>
@@ -88,12 +88,7 @@ function ContactPage() {
             </h3>
             <ul className="flex flex-col gap-2 text-sm uppercase tracking-[0.2em]">
               <li>
-                <a
-                  href="https://www.instagram.com/unfoldmediacorp"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-accent transition-colors"
-                >
+                <a href="#" className="hover:text-accent transition-colors">
                   Instagram
                 </a>
               </li>
@@ -103,12 +98,7 @@ function ContactPage() {
                 </a>
               </li>
               <li>
-                <a
-                  href="https://www.linkedin.com/company/unfold-media-corp/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-accent transition-colors"
-                >
+                <a href="#" className="hover:text-accent transition-colors">
                   LinkedIn
                 </a>
               </li>

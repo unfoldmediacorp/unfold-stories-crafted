@@ -59,13 +59,7 @@ export function SiteFooter() {
           </h5>
           <ul className="space-y-3 text-sm text-muted-foreground">
             <li>
-              <a
-                href="https://www.instagram.com/unfoldmediacorp"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-cursor="button"
-                className={linkCls}
-              >
+              <a href="#" data-cursor="button" className={linkCls}>
                 Instagram
               </a>
             </li>
@@ -75,13 +69,7 @@ export function SiteFooter() {
               </a>
             </li>
             <li>
-              <a
-                href="https://www.linkedin.com/company/unfold-media-corp/"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-cursor="button"
-                className={linkCls}
-              >
+              <a href="#" data-cursor="button" className={linkCls}>
                 LinkedIn
               </a>
             </li>
