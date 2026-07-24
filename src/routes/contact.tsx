@@ -204,24 +204,14 @@ function ContactPage() {
               11.0168° N / 76.9558° E
             </span>
           </div>
-          <div
-            aria-label="Map of Coimbatore studio location"
-            className="w-full aspect-[21/9] bg-muted grid place-items-center outline outline-1 -outline-offset-1 outline-black/5 relative overflow-hidden"
-          >
-            <div
-              className="absolute inset-0 opacity-40"
-              style={{
-                backgroundImage:
-                  "linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px)",
-                backgroundSize: "40px 40px",
-              }}
+          <div className="w-full aspect-[21/9] outline outline-1 -outline-offset-1 outline-black/5 overflow-hidden">
+            <iframe
+              title="Map of Unfold Media Corp studio, Coimbatore"
+              src="https://www.google.com/maps?q=Nagappa%20Complex%2C%201076%2C%20Mettupalayam%20Rd%2C%20Vadakovai%2C%20R.S.%20Puram%2C%20Coimbatore%2C%20Tamil%20Nadu%20641002&output=embed"
+              className="w-full h-full border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
             />
-            <div className="relative flex flex-col items-center gap-3">
-              <div className="w-3 h-3 rounded-full bg-accent" />
-              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-                Map coming soon
-              </span>
-            </div>
           </div>
         </div>
       </section>
