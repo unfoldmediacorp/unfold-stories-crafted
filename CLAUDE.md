@@ -18,6 +18,26 @@ The project is primarily edited in Loveable, while Claude Code is used for archi
 - Never refactor working code unless requested.
 - Preserve the existing visual design unless the task explicitly involves design changes.
 
+## Claude Code vs Loveable — division of work
+
+Handle **directly in code** (do not ask Loveable to regenerate the page):
+
+- Colours
+- Spacing
+- Typography
+- Responsiveness
+- Animations
+- Accessibility
+- SEO
+- Performance
+- Minor UI refinements
+
+Use **Loveable** only for:
+
+- Major layout changes
+- New sections
+- Significant visual redesigns
+
 ## Notes
 
 - Package manager is **bun** (`bun.lock`). Do not use npm or yarn — a
