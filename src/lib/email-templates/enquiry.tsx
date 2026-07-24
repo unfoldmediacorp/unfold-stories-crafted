@@ -1,8 +1,9 @@
+import { type ComponentType } from "react";
 import { EnquiryEmail } from "./EnquiryEmail";
 import type { TemplateEntry } from "./types";
 
 export const template = {
-  component: EnquiryEmail,
+  component: EnquiryEmail as unknown as ComponentType<Record<string, unknown>>,
   subject: "New enquiry from unfoldmediacorp.com",
   displayName: "Enquiry notification",
   previewData: {
