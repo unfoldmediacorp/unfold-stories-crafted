@@ -40,30 +40,30 @@
 :root {
   --radius: 0.25rem;
 
-  /* Editorial palette — Warm Ivory canvas, Rich Black type, Sandstone accents */
-  --background: #e8ded6;
+  /* Editorial palette — White canvas, Rich Black type, Sandstone accents */
+  --background: #ffffff;
   --foreground: #110f0b;
-  /* Alternate section surface: ivory darkened ~3% */
-  --muted: #ded4cb;
+  /* Alternate section surface: barely-warm off-white to separate bands */
+  --muted: #f6f4f1;
   --muted-foreground: #110f0bb3;
-  /* Card surface: slightly lighter than surrounding ivory */
-  --paper: #ede4dc;
+  /* Card surface: flush with the canvas, delineated by hairline borders */
+  --paper: #ffffff;
 
-  --card: #ede4dc;
+  --card: #ffffff;
   --card-foreground: #110f0b;
-  --popover: #ede4dc;
+  --popover: #ffffff;
   --popover-foreground: #110f0b;
 
   --primary: #110f0b;
-  --primary-foreground: #e8ded6;
-  --secondary: #ded4cb;
+  --primary-foreground: #ffffff;
+  --secondary: #f6f4f1;
   --secondary-foreground: #110f0b;
 
   --accent: #ae9e8e;
   --accent-foreground: #110f0b;
 
   --destructive: #110f0b;
-  --destructive-foreground: #e8ded6;
+  --destructive-foreground: #ffffff;
 
   /* Sandstone at low opacity for hairline borders */
   --border: #c7b7a940;
