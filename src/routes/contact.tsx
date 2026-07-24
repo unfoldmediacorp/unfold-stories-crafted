@@ -1,26 +1,27 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { PageShell, PageIntro } from "@/components/PageShell";
 import { Reveal } from "@/components/Reveal";
 import { CtaButton } from "@/components/CtaButton";
+import { absoluteUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — Unfold Media Corp" },
+      { title: "Contact | Unfold Media Corp" },
       {
         name: "description",
         content:
           "Get in touch with Unfold Media Corp, a cinematic storytelling studio in Coimbatore, India.",
       },
-      { property: "og:title", content: "Contact — Unfold Media Corp" },
+      { property: "og:title", content: "Contact | Unfold Media Corp" },
       {
         property: "og:description",
         content: "Studio enquiries, project briefs and collaborations. Coimbatore, India.",
       },
-      { property: "og:url", content: "/contact" },
+      { property: "og:url", content: absoluteUrl("/contact") },
     ],
-    links: [{ rel: "canonical", href: "/contact" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/contact") }],
   }),
   component: ContactPage,
 });
@@ -29,6 +30,12 @@ function ContactPage() {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const confirmationRef = useRef<HTMLDivElement | null>(null);
+
+  // The form is replaced by the confirmation, so move focus with it.
+  useEffect(() => {
+    if (sent) confirmationRef.current?.focus();
+  }, [sent]);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -79,7 +86,7 @@ function ContactPage() {
             <span className="not-italic">conversation.</span>
           </>
         }
-        lead="Tell us a little about the project — timeline, scope, and what the film needs to do. We reply personally within two working days."
+        lead="Tell us a little about the project: timeline, scope, and what the film needs to do. We reply personally within two working days."
       />
 
       <section className="max-w-[1400px] mx-auto px-6 py-16 md:py-24 grid grid-cols-12 gap-8">
@@ -150,29 +157,55 @@ function ContactPage() {
         <div className="col-span-12 lg:col-span-7 lg:col-start-6">
           {sent ? (
             <Reveal className="border-t border-border pt-16">
-              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent block mb-6">
-                Received
-              </span>
-              <h2 className="font-display text-4xl md:text-5xl tracking-tighter mb-6">
-                Thank you.
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-md">
-                Your note is with us. We'll write back personally within two working days.
-              </p>
+              <div
+                ref={confirmationRef}
+                tabIndex={-1}
+                role="status"
+                aria-live="polite"
+                className="focus:outline-none"
+              >
+                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent block mb-6">
+                  Received
+                </span>
+                <h2 className="font-display text-4xl md:text-5xl tracking-tighter mb-6">
+                  Thank you.
+                </h2>
+                <p className="text-lg text-muted-foreground max-w-md">
+                  Your note is with us. We'll write back personally within two working days.
+                </p>
+              </div>
             </Reveal>
           ) : (
             <Reveal>
               <form onSubmit={onSubmit} className="space-y-10" aria-busy={loading}>
-                <Field label="Your name" name="name" required disabled={loading} />
+                <Field
+                  label="Your name"
+                  name="name"
+                  autoComplete="name"
+                  required
+                  disabled={loading}
+                />
                 <Field
                   label="Business email"
                   name="email"
                   type="email"
+                  autoComplete="email"
                   required
                   disabled={loading}
                 />
-                <Field label="Company" name="company" disabled={loading} />
-                <Field label="Phone (optional)" name="phone" type="tel" disabled={loading} />
+                <Field
+                  label="Company"
+                  name="company"
+                  autoComplete="organization"
+                  disabled={loading}
+                />
+                <Field
+                  label="Phone (optional)"
+                  name="phone"
+                  type="tel"
+                  autoComplete="tel"
+                  disabled={loading}
+                />
                 <TextArea
                   label="Tell us about the project"
                   name="brief"
@@ -219,16 +252,23 @@ function ContactPage() {
   );
 }
 
+const fieldCls =
+  "w-full bg-transparent border-b border-border py-3 text-lg transition-colors " +
+  "hover:border-foreground/40 focus:border-foreground " +
+  "disabled:opacity-50 disabled:cursor-not-allowed";
+
 function Field({
   label,
   name,
   type = "text",
+  autoComplete,
   required,
   disabled,
 }: {
   label: string;
   name: string;
   type?: string;
+  autoComplete?: string;
   required?: boolean;
   disabled?: boolean;
 }) {
@@ -236,14 +276,19 @@ function Field({
     <label className="block group">
       <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground block mb-3">
         {label}
-        {required && <span className="text-accent"> *</span>}
+        {required && (
+          <span className="text-accent" aria-hidden="true">
+            {" *"}
+          </span>
+        )}
       </span>
       <input
         name={name}
         type={type}
+        autoComplete={autoComplete}
         required={required}
         disabled={disabled}
-        className="w-full bg-transparent border-b border-border py-3 text-lg font-display focus:outline-none focus:border-foreground transition-colors placeholder:text-muted-foreground/40 disabled:opacity-50 disabled:cursor-not-allowed"
+        className={`${fieldCls} font-display`}
       />
     </label>
   );
@@ -264,14 +309,18 @@ function TextArea({
     <label className="block">
       <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground block mb-3">
         {label}
-        {required && <span className="text-accent"> *</span>}
+        {required && (
+          <span className="text-accent" aria-hidden="true">
+            {" *"}
+          </span>
+        )}
       </span>
       <textarea
         name={name}
         required={required}
         disabled={disabled}
         rows={5}
-        className="w-full bg-transparent border-b border-border py-3 text-lg focus:outline-none focus:border-foreground transition-colors resize-none disabled:opacity-50 disabled:cursor-not-allowed"
+        className={`${fieldCls} resize-none`}
       />
     </label>
   );

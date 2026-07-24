@@ -2,25 +2,26 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, PageIntro } from "@/components/PageShell";
 import { Reveal } from "@/components/Reveal";
 import { CtaLink } from "@/components/CtaButton";
+import { absoluteUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/process")({
   head: () => ({
     meta: [
-      { title: "Process — Unfold Media Corp" },
+      { title: "Process | Unfold Media Corp" },
       {
         name: "description",
         content:
           "How we work: discovery, research, creative development, production, editing and delivery.",
       },
-      { property: "og:title", content: "Process — Unfold Media Corp" },
+      { property: "og:title", content: "Process | Unfold Media Corp" },
       {
         property: "og:description",
         content:
           "A patient, six-step process from discovery to delivery. Built for considered work.",
       },
-      { property: "og:url", content: "/process" },
+      { property: "og:url", content: absoluteUrl("/process") },
     ],
-    links: [{ rel: "canonical", href: "/process" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/process") }],
   }),
   component: ProcessPage,
 });
@@ -30,13 +31,13 @@ const steps = [
     n: "i",
     title: "Discovery",
     lead: "Understanding what actually needs to be said.",
-    body: "We begin every project with a series of conversations — with founders, with teams, with the people you serve. No cameras, no decks. Just the work of understanding what a film needs to do and, more importantly, what it doesn't.",
+    body: "We begin every project with a series of conversations: with founders, with teams, with the people you serve. No cameras, no decks. Just the work of understanding what a film needs to do and, more importantly, what it doesn't.",
   },
   {
     n: "ii",
     title: "Research",
     lead: "Context before creative.",
-    body: "We study the category, the audience and the history of the subject. Good films are almost always the result of good research — the ideas that appear on set were resolved long before it.",
+    body: "We study the category, the audience and the history of the subject. Good films are almost always the result of good research. The ideas that appear on set were resolved long before it.",
   },
   {
     n: "iii",
@@ -54,13 +55,13 @@ const steps = [
     n: "v",
     title: "Editing",
     lead: "Where a film becomes itself.",
-    body: "Edit, colour, sound design and score. The stage where most films are won or lost — and where we spend the time to get it right.",
+    body: "Edit, colour, sound design and score. The stage where most films are won or lost, and where we spend the time to get it right.",
   },
   {
     n: "vi",
     title: "Delivery",
     lead: "Handing over the finished piece.",
-    body: "Master files, versions, subtitles, cut-downs, stills — delivered clearly, catalogued properly, and ready for wherever the work needs to live.",
+    body: "Master files, versions, subtitles, cut-downs and stills, delivered clearly, catalogued properly, and ready for wherever the work needs to live.",
   },
 ] as const;
 
@@ -108,7 +109,7 @@ function ProcessPage() {
             Ready when you are
           </span>
           <h2 className="font-display font-semibold text-5xl md:text-7xl mb-12 tracking-tighter">
-            Start with a <em className="font-normal">conversation</em>.
+            Start with a conversation.
           </h2>
           <CtaLink to="/contact" size="lg">
             Get in touch

@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { STUDIO } from "@/lib/site";
 
 const linkCls =
   "relative inline-block py-0.5 transition-colors duration-300 hover:text-foreground " +
@@ -10,16 +11,30 @@ export function SiteFooter() {
     <footer className="border-t border-border mt-24">
       <div className="max-w-[1400px] mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-4 gap-14">
         <div className="md:col-span-2">
-          <div
-            data-cursor="button"
-            className="font-display text-3xl font-bold tracking-tighter mb-6"
-          >
+          <div className="font-display text-3xl font-bold tracking-tighter mb-6">
             Unfold Media Corp
           </div>
-          <p className="text-sm text-muted-foreground max-w-sm leading-relaxed">
+          <p className="text-sm text-muted-foreground max-w-sm leading-relaxed mb-8">
             A cinematic storytelling studio in Coimbatore. Films for founders and businesses who
             prefer craft to noise.
           </p>
+          <address className="not-italic text-sm text-muted-foreground leading-relaxed">
+            {STUDIO.streetAddress}
+            <br />
+            {STUDIO.addressLocality} {STUDIO.postalCode}, {STUDIO.addressRegion}
+            <div className="mt-4 flex flex-col items-start gap-1">
+              <a href={`mailto:${STUDIO.email}`} data-cursor="button" className={linkCls}>
+                {STUDIO.email}
+              </a>
+              <a
+                href={`tel:${STUDIO.telephone.replace(/\s/g, "")}`}
+                data-cursor="button"
+                className={linkCls}
+              >
+                {STUDIO.telephone}
+              </a>
+            </div>
+          </address>
         </div>
         <div>
           <h5 className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-6">

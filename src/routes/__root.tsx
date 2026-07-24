@@ -10,6 +10,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL, studioJsonLd } from "../lib/site";
 import { CtaAnchor, CtaButton, CtaLink } from "../components/CtaButton";
 import { CustomCursor } from "../components/CustomCursor";
 import { LoadingScreen } from "../components/LoadingScreen";
@@ -23,7 +24,7 @@ function NotFoundComponent() {
           404 / Off script
         </span>
         <h1 className="font-display font-semibold text-6xl tracking-tighter mb-8">
-          This page hasn't <em className="font-normal">been filmed</em>.
+          This page hasn't been filmed.
         </h1>
         <p className="text-sm text-muted-foreground mb-12">
           The URL you followed doesn't exist in our archive.
@@ -48,7 +49,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
           Error
         </span>
         <h1 className="font-display font-semibold text-5xl tracking-tighter mb-8">
-          Something interrupted <em className="font-normal">the reel</em>.
+          Something interrupted the reel.
         </h1>
         <p className="text-sm text-muted-foreground mb-12">Please try again or return home.</p>
         <div className="flex flex-wrap justify-center gap-3">
@@ -74,34 +75,24 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Unfold Media Corp — Cinematic Storytelling Studio, Coimbatore" },
-      {
-        name: "description",
-        content:
-          "A cinematic storytelling studio in Coimbatore, India. Brand films, founder stories, documentaries and campaigns for ambitious businesses.",
-      },
-      { name: "author", content: "Unfold Media Corp" },
-      { property: "og:site_name", content: "Unfold Media Corp" },
+      { title: `${SITE_NAME} | Cinematic Storytelling Studio, Coimbatore` },
+      { name: "description", content: SITE_DESCRIPTION },
+      { name: "author", content: SITE_NAME },
+      { name: "theme-color", content: "#ffffff" },
+      { property: "og:site_name", content: SITE_NAME },
+      { property: "og:locale", content: "en_IN" },
       {
         property: "og:title",
-        content: "Unfold Media Corp — Cinematic Storytelling Studio, Coimbatore",
+        content: `${SITE_NAME} | Cinematic Storytelling Studio, Coimbatore`,
       },
-      {
-        property: "og:description",
-        content:
-          "A cinematic storytelling studio in Coimbatore, India. Brand films, founder stories, documentaries and campaigns for ambitious businesses.",
-      },
+      { property: "og:description", content: SITE_DESCRIPTION },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       {
         name: "twitter:title",
-        content: "Unfold Media Corp — Cinematic Storytelling Studio, Coimbatore",
+        content: `${SITE_NAME} | Cinematic Storytelling Studio, Coimbatore`,
       },
-      {
-        name: "twitter:description",
-        content:
-          "A cinematic storytelling studio in Coimbatore, India. Brand films, founder stories, documentaries and campaigns for ambitious businesses.",
-      },
+      { name: "twitter:description", content: SITE_DESCRIPTION },
       {
         property: "og:image",
         content:
@@ -118,10 +109,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap",
       },
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(studioJsonLd()),
+      },
     ],
   }),
   shellComponent: RootShell,

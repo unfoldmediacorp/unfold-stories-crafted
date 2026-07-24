@@ -3,24 +3,25 @@ import { useState } from "react";
 import { PageShell, PageIntro } from "@/components/PageShell";
 import { Reveal } from "@/components/Reveal";
 import { CtaLink } from "@/components/CtaButton";
+import { absoluteUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/work")({
   head: () => ({
     meta: [
-      { title: "Work — Unfold Media Corp" },
+      { title: "Work | Unfold Media Corp" },
       {
         name: "description",
         content:
           "Selected work from Unfold Media Corp. Our first collection of stories is currently in production.",
       },
-      { property: "og:title", content: "Work — Unfold Media Corp" },
+      { property: "og:title", content: "Work | Unfold Media Corp" },
       {
         property: "og:description",
-        content: "Selected cinematic work — currently in production. The archive opens soon.",
+        content: "Selected cinematic work, currently in production. The archive opens soon.",
       },
-      { property: "og:url", content: "/work" },
+      { property: "og:url", content: absoluteUrl("/work") },
     ],
-    links: [{ rel: "canonical", href: "/work" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/work") }],
   }),
   component: WorkPage,
 });
@@ -34,7 +35,7 @@ const filters = [
   "Photography",
 ] as const;
 
-// Empty portfolio framework — designed to be populated later.
+// Empty portfolio framework, designed to be populated later.
 type Project = {
   id: string;
   title: string;
@@ -63,38 +64,44 @@ function WorkPage() {
         lead="A curated body of cinematic work from the studio. Our first collection is currently in post-production."
       />
 
-      <section className="max-w-[1400px] mx-auto px-6 py-12 md:py-16">
-        <div className="flex flex-wrap items-center gap-x-6 gap-y-3 border-b border-border pb-6">
-          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mr-2">
-            Filter
-          </span>
-          {filters.map((f) => {
-            const isActive = active === f;
-            return (
-              <button
-                key={f}
-                onClick={() => setActive(f)}
-                className={`text-[11px] uppercase tracking-[0.2em] transition-colors ${
-                  isActive ? "text-foreground font-bold" : "text-muted-foreground hover:text-accent"
-                }`}
-              >
-                {f}
-              </button>
-            );
-          })}
-        </div>
-      </section>
+      {/* Filters only earn their place once there is something to filter. */}
+      {projects.length > 0 && (
+        <section className="max-w-[1400px] mx-auto px-6 py-12 md:py-16">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 border-b border-border pb-6">
+            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mr-2">
+              Filter
+            </span>
+            {filters.map((f) => {
+              const isActive = active === f;
+              return (
+                <button
+                  key={f}
+                  onClick={() => setActive(f)}
+                  aria-pressed={isActive}
+                  className={`text-[11px] uppercase tracking-[0.2em] transition-colors ${
+                    isActive
+                      ? "text-foreground font-bold"
+                      : "text-muted-foreground hover:text-accent"
+                  }`}
+                >
+                  {f}
+                </button>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
-      <section className="max-w-[1400px] mx-auto px-6 pb-24 md:pb-32">
+      <section className="max-w-[1400px] mx-auto px-6 py-12 md:py-16 pb-24 md:pb-32">
         {visible.length === 0 ? (
           <Reveal className="border border-border py-24 md:py-40 flex flex-col items-center justify-center text-center bg-muted/40">
             <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent mb-8">
               In Production
             </span>
-            <p className="font-display text-4xl md:text-6xl italic tracking-tighter text-muted-foreground/80 mb-6">
+            <p className="font-display text-4xl md:text-6xl italic tracking-tighter text-subtle mb-6">
               Silence before the symphony.
             </p>
-            <p className="text-sm max-w-md text-muted-foreground/80 leading-relaxed mb-10">
+            <p className="text-sm max-w-md text-muted-foreground leading-relaxed mb-10">
               Our first collection of stories is currently in production. When the archive opens, it
               will live here.
             </p>
@@ -126,7 +133,7 @@ function WorkCard({ project }: { project: Project }) {
             className="w-full h-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.03]"
           />
         ) : (
-          <div className="w-full h-full grid place-items-center text-muted-foreground/40 font-mono text-[10px] uppercase tracking-[0.2em]">
+          <div className="w-full h-full grid place-items-center text-subtle font-mono text-[10px] uppercase tracking-[0.2em]">
             Frame pending
           </div>
         )}
@@ -140,7 +147,7 @@ function WorkCard({ project }: { project: Project }) {
         </span>
       </div>
       <p className="text-sm text-muted-foreground mt-1">
-        {project.client} — {project.category}
+        {project.client} · {project.category}
       </p>
     </article>
   );

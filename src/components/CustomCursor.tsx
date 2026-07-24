@@ -20,6 +20,9 @@ export function CustomCursor() {
     if (typeof window === "undefined") return;
     const fine = window.matchMedia("(pointer: fine)").matches;
     if (!fine) return;
+    // The cursor hides the native pointer and runs a rAF loop for as long as
+    // the page is open. Anyone who asked for reduced motion keeps their own.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     setMounted(true);
     document.documentElement.classList.add("has-custom-cursor");
 

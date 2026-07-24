@@ -22,8 +22,21 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Close the mobile menu on Escape, and whenever the route changes.
+  useEffect(() => setOpen(false), [pathname]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
   return (
     <nav
+      aria-label="Primary"
       className={
         "sticky top-0 z-50 transition-[background-color,backdrop-filter,border-color,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] " +
         (scrolled
@@ -40,7 +53,7 @@ export function SiteHeader() {
         <Link
           to="/"
           data-cursor="button"
-          aria-label="Unfold Media Corp — Home"
+          aria-label="Unfold Media Corp, home"
           className="flex items-center gap-3 group"
         >
           <img
@@ -68,6 +81,7 @@ export function SiteHeader() {
                 key={item.to}
                 to={item.to}
                 data-cursor="button"
+                aria-current={active ? "page" : undefined}
                 className={
                   "relative py-1 transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:right-0 after:-bottom-0.5 after:h-px after:bg-foreground after:origin-left after:scale-x-0 after:transition-transform after:duration-500 after:ease-[cubic-bezier(0.22,1,0.36,1)] hover:after:scale-x-100 " +
                   (active
@@ -87,26 +101,32 @@ export function SiteHeader() {
           data-cursor="button"
           className="md:hidden text-[11px] font-mono uppercase tracking-[0.2em]"
           onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle menu"
+          aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
+          aria-controls="mobile-menu"
         >
           {open ? "Close" : "Menu"}
         </button>
       </div>
       {open && (
-        <div className="md:hidden border-t border-border px-6 py-6 flex flex-col gap-4 text-sm uppercase tracking-[0.2em]">
-          {nav.map((item) => (
-            <Link
-              key={item.to}
-              to={item.to}
-              onClick={() => setOpen(false)}
-              className={
-                pathname === item.to ? "text-foreground font-bold" : "text-muted-foreground"
-              }
-            >
-              {item.label}
-            </Link>
-          ))}
+        <div
+          id="mobile-menu"
+          className="md:hidden border-t border-border px-6 py-6 flex flex-col gap-5 text-sm uppercase tracking-[0.2em]"
+        >
+          {nav.map((item) => {
+            const active = pathname === item.to;
+            return (
+              <Link
+                key={item.to}
+                to={item.to}
+                onClick={() => setOpen(false)}
+                aria-current={active ? "page" : undefined}
+                className={active ? "text-foreground font-bold" : "text-muted-foreground"}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </div>
       )}
     </nav>

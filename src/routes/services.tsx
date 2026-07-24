@@ -2,25 +2,26 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, PageIntro } from "@/components/PageShell";
 import { Reveal } from "@/components/Reveal";
 import { CtaLink } from "@/components/CtaButton";
+import { absoluteUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Services — Unfold Media Corp" },
+      { title: "Services | Unfold Media Corp" },
       {
         name: "description",
         content:
           "Brand films, corporate films, founder stories, documentaries, commercial campaigns, photography and social-first content.",
       },
-      { property: "og:title", content: "Services — Unfold Media Corp" },
+      { property: "og:title", content: "Services | Unfold Media Corp" },
       {
         property: "og:description",
         content:
           "A studio built for cinematic brand films, founder stories, documentaries and campaigns.",
       },
-      { property: "og:url", content: "/services" },
+      { property: "og:url", content: absoluteUrl("/services") },
     ],
-    links: [{ rel: "canonical", href: "/services" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/services") }],
   }),
   component: ServicesPage,
 });
@@ -30,7 +31,7 @@ const services = [
     n: "01",
     title: "Brand Films",
     outcome:
-      "A film that gives your brand a spine — the piece your team, investors and customers all point to when they explain who you are.",
+      "A film that gives your brand a spine: the piece your team, investors and customers all point to when they explain who you are.",
     detail:
       "Long-form cinematic storytelling designed to sit at the top of your website and hold up in a boardroom five years from now.",
   },
@@ -40,13 +41,13 @@ const services = [
     outcome:
       "Internal and external communication that respects the intelligence of the room it will play in.",
     detail:
-      "Annual reports, culture films, investor and stakeholder updates — treated as considered pieces of communication, not filler.",
+      "Annual reports, culture films, investor and stakeholder updates, treated as considered pieces of communication rather than filler.",
   },
   {
     n: "03",
     title: "Founder Stories",
     outcome:
-      "A single, honest portrait of the person behind the business — told without gloss, without cliché.",
+      "A single, honest portrait of the person behind the business, told without gloss and without cliché.",
     detail:
       "Intimate interviews, patient observation, quiet edits. The film your founder will actually be comfortable sharing.",
   },
@@ -62,13 +63,13 @@ const services = [
     title: "Commercial Campaigns",
     outcome: "Campaign work designed to move business metrics without embarrassing the brand.",
     detail:
-      "Concept, script, direction and delivery across a full campaign — hero film, cut-downs, stills and social edits from a single shoot.",
+      "Concept, script, direction and delivery across a full campaign: hero film, cut-downs, stills and social edits from a single shoot.",
   },
   {
     n: "06",
     title: "Photography",
     outcome:
-      "Editorial stills that share the language of the film — one visual identity across every touchpoint.",
+      "Editorial stills that share the language of the film. One visual identity across every touchpoint.",
     detail:
       "Portraits, product, environment and reportage photography, shot on the same day and in the same key as the film.",
   },
@@ -93,7 +94,7 @@ function ServicesPage() {
             <span className="not-italic">make.</span>
           </>
         }
-        lead="Seven disciplines, one studio. Every engagement is scoped to the outcome you need — not the deliverables list you were sold last time."
+        lead="Seven disciplines, one studio. Every engagement is scoped to the outcome you need, not the deliverables list you were sold last time."
       />
 
       <section className="max-w-[1400px] mx-auto px-6 py-16 md:py-24">
@@ -122,7 +123,7 @@ function ServicesPage() {
       <section className="py-24 md:py-32 px-6 text-center border-t border-border">
         <Reveal>
           <h2 className="font-display font-semibold text-5xl md:text-7xl mb-12 tracking-tighter">
-            Have a project <em className="font-normal">in mind?</em>
+            Have a project in mind?
           </h2>
           <CtaLink to="/contact" size="lg">
             Start a Project

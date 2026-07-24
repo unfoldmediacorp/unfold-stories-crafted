@@ -5,8 +5,13 @@ import { SiteFooter } from "./SiteFooter";
 export function PageShell({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-dvh flex flex-col bg-background text-foreground">
+      <a href="#main" className="skip-link">
+        Skip to content
+      </a>
       <SiteHeader />
-      <main className="flex-1">{children}</main>
+      <main id="main" tabIndex={-1} className="flex-1 focus:outline-none">
+        {children}
+      </main>
       <SiteFooter />
     </div>
   );
@@ -28,7 +33,10 @@ export function PageIntro({
           <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent block mb-10">
             {eyebrow}
           </span>
-          <h1 className="font-display font-semibold text-[clamp(3rem,9vw,8rem)] leading-[0.9] tracking-tighter">
+          {/* Italic first line, roman second, echoing the "Cinematic /
+              Perspectives." pairing in the home hero. Callers mark the roman
+              half with `not-italic`. */}
+          <h1 className="font-display font-semibold italic text-[clamp(3rem,9vw,8rem)] leading-[0.9] tracking-tighter">
             {title}
           </h1>
         </div>

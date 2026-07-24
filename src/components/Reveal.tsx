@@ -31,17 +31,21 @@ export function Reveal({
 }: RevealProps) {
   const ref = useRef<HTMLElement | null>(null);
   const [visible, setVisible] = useState(false);
+  // Once the transition has run, drop the compositor hint. Leaving
+  // will-change on every revealed block permanently costs a layer each.
+  const [settled, setSettled] = useState(false);
 
   useEffect(() => {
     const node = ref.current;
     if (!node) return;
 
-    // Respect reduced motion — reveal immediately, no transform.
+    // Respect reduced motion: reveal immediately, no transform.
     if (
       typeof window !== "undefined" &&
       window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
     ) {
       setVisible(true);
+      setSettled(true);
       return;
     }
 
@@ -58,6 +62,12 @@ export function Reveal({
     return () => io.disconnect();
   }, []);
 
+  useEffect(() => {
+    if (!visible || settled) return;
+    const t = window.setTimeout(() => setSettled(true), delay + duration + 50);
+    return () => window.clearTimeout(t);
+  }, [visible, settled, delay, duration]);
+
   const Component = Tag as ElementType;
   return (
     <Component
@@ -69,7 +79,7 @@ export function Reveal({
         transitionDelay: `${delay}ms`,
         opacity: visible ? 1 : 0,
         transform: visible ? "translate3d(0,0,0)" : `translate3d(0,${distance}px,0)`,
-        willChange: "opacity, transform",
+        willChange: settled ? "auto" : "opacity, transform",
       }}
       className={className}
     >

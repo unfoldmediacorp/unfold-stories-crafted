@@ -2,26 +2,27 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, PageIntro } from "@/components/PageShell";
 import { Reveal } from "@/components/Reveal";
 import { CtaLink } from "@/components/CtaButton";
+import { absoluteUrl } from "@/lib/site";
 import aboutImg from "@/assets/about.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Unfold Media Corp" },
+      { title: "About | Unfold Media Corp" },
       {
         name: "description",
         content:
           "Unfold Media Corp is a cinematic storytelling studio in Coimbatore. Our mission, vision, philosophy and studio culture.",
       },
-      { property: "og:title", content: "About — Unfold Media Corp" },
+      { property: "og:title", content: "About | Unfold Media Corp" },
       {
         property: "og:description",
         content:
           "A studio built on the belief that a well-made film can change how a business is understood.",
       },
-      { property: "og:url", content: "/about" },
+      { property: "og:url", content: absoluteUrl("/about") },
     ],
-    links: [{ rel: "canonical", href: "/about" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/about") }],
   }),
   component: AboutPage,
 });
@@ -61,7 +62,7 @@ function AboutPage() {
               Mission
             </span>
             <p className="font-display text-3xl md:text-4xl leading-[1.15] tracking-tight text-pretty">
-              To help serious businesses tell serious stories — with the craft and restraint the
+              To help serious businesses tell serious stories, with the craft and restraint the
               subject deserves.
             </p>
           </Reveal>
@@ -95,11 +96,11 @@ function AboutPage() {
             <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent block mb-8">
               A note from the founder
             </span>
-            <p className="font-display text-3xl md:text-5xl italic leading-[1.1] tracking-tighter mb-10 text-pretty">
-              "We started Unfold because we were tired of watching good businesses be represented by
-              bad films. There is a real difference between a video and a piece of cinema — and it
-              matters."
-            </p>
+            <blockquote className="font-display text-3xl md:text-5xl italic leading-[1.1] tracking-tighter mb-10 text-pretty">
+              “We started Unfold because we were tired of watching good businesses be represented by
+              bad films. There is a real difference between a video and a piece of cinema, and it
+              matters.”
+            </blockquote>
             <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-background/60">
               Founder, Unfold Media Corp
             </div>
@@ -124,15 +125,15 @@ function AboutPage() {
             <Reveal>
               <p className="text-lg leading-relaxed text-pretty">
                 We stay small on purpose. Our projects are led by the people you'll meet in the
-                first conversation — no handoffs, no account layers, no revolving door of
+                first conversation. No handoffs, no account layers, no revolving door of
                 freelancers.
               </p>
             </Reveal>
             <Reveal delay={80}>
               <p className="text-lg leading-relaxed text-muted-foreground text-pretty">
-                The studio brings in specialist collaborators — cinematographers, colourists,
-                composers, sound designers — chosen for the specific shape of each project. A
-                rotating cast of extraordinary people, held together by a consistent point of view.
+                The studio brings in specialist collaborators for the specific shape of each
+                project: cinematographers, colourists, composers, sound designers. A rotating cast
+                of extraordinary people, held together by a consistent point of view.
               </p>
             </Reveal>
           </div>
@@ -149,10 +150,10 @@ function AboutPage() {
             </span>
           </div>
           <Reveal className="border-t border-border pt-16 flex flex-col items-center justify-center min-h-[240px] text-center">
-            <p className="font-display text-2xl md:text-3xl italic text-muted-foreground/70 mb-4">
+            <p className="font-display text-2xl md:text-3xl italic text-subtle mb-4">
               Introductions coming soon.
             </p>
-            <p className="text-sm max-w-md text-muted-foreground/70 leading-relaxed">
+            <p className="text-sm max-w-md text-subtle leading-relaxed">
               We're preparing proper portraits of the people behind the studio. Until then, the work
               will speak first.
             </p>
@@ -163,7 +164,7 @@ function AboutPage() {
       <section className="py-24 md:py-32 px-6 text-center">
         <Reveal>
           <h2 className="font-display font-semibold text-5xl md:text-7xl mb-12 tracking-tighter">
-            Work with <em className="font-normal">the studio</em>.
+            Work with the studio.
           </h2>
           <CtaLink to="/contact" size="lg">
             Start a Project

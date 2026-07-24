@@ -4,11 +4,12 @@ import { Reveal } from "@/components/Reveal";
 import { CtaLink } from "@/components/CtaButton";
 import heroImg from "@/assets/hero.jpg";
 import heroVideo from "@/assets/hero.mp4.asset.json";
+import { absoluteUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Unfold Media Corp — Cinematic Storytelling Studio, Coimbatore" },
+      { title: "Unfold Media Corp | Cinematic Storytelling Studio, Coimbatore" },
       {
         name: "description",
         content:
@@ -16,16 +17,16 @@ export const Route = createFileRoute("/")({
       },
       {
         property: "og:title",
-        content: "Unfold Media Corp — Cinematic Storytelling Studio, Coimbatore",
+        content: "Unfold Media Corp | Cinematic Storytelling Studio, Coimbatore",
       },
       {
         property: "og:description",
         content:
           "A cinematic storytelling studio in Coimbatore, India. Brand films, founder stories, documentaries and campaigns for ambitious businesses.",
       },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: absoluteUrl("/") },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/") }],
   }),
   component: HomePage,
 });
@@ -40,6 +41,8 @@ const services = [
   "Social-first Content",
 ] as const;
 
+// The six canonical stages. Keep in step with src/routes/process.tsx, which
+// carries the long-form version of each one.
 const process = [
   {
     key: "i",
@@ -48,21 +51,26 @@ const process = [
   },
   {
     key: "ii",
-    title: "Strategy",
-    body: "A single-minded narrative — the throughline that every frame will serve.",
+    title: "Research",
+    body: "Category, audience and history. The ideas that survive on set were resolved long before it.",
   },
   {
     key: "iii",
+    title: "Creative Development",
+    body: "A single-minded narrative: the throughline that every frame will serve.",
+  },
+  {
+    key: "iv",
     title: "Production",
     body: "Considered direction, cinematic capture, natural light and human moments.",
   },
   {
-    key: "iv",
-    title: "Post Production",
-    body: "Editing, colour, sound. The quiet craft where a film finds its final voice.",
+    key: "v",
+    title: "Editing",
+    body: "Edit, colour, sound. The quiet craft where a film finds its final voice.",
   },
   {
-    key: "v",
+    key: "vi",
     title: "Delivery",
     body: "Master files, cut-downs, and a release plan built for the platforms that matter.",
   },
@@ -97,12 +105,15 @@ function HomePage() {
       {/* Hero */}
       <header className="relative px-6 pt-12 pb-16 md:pb-24 overflow-hidden">
         <div className="max-w-[1400px] mx-auto grid grid-cols-12 gap-4 md:gap-6 items-end">
-          <h1 className="col-span-12 lg:col-span-9 font-display font-semibold text-[clamp(3.5rem,12vw,10rem)] leading-[0.85] tracking-tighter animate-reveal">
-            <em className="font-normal">Cinematic</em>
-            <br />
-            <span>Perspectives.</span>
+          <h1 className="col-span-12 lg:col-span-9 font-display font-semibold text-[clamp(3.5rem,12vw,10rem)] leading-[0.85] tracking-tighter">
+            <span className="title-mask">
+              <em className="title-line font-normal">Cinematic</em>
+            </span>
+            <span className="title-mask">
+              <span className="title-line [animation-delay:120ms]">Perspectives.</span>
+            </span>
           </h1>
-          <div className="col-span-12 lg:col-span-4 lg:col-start-9 mt-10 lg:mt-0 animate-reveal [animation-delay:200ms]">
+          <div className="col-span-12 lg:col-span-4 lg:col-start-9 mt-10 lg:mt-0 stage-rise [animation-delay:520ms]">
             <p className="text-lg md:text-xl leading-[1.65] text-pretty mb-10 max-w-md text-muted-foreground">
               A cinematic storytelling studio in Coimbatore, building films for businesses who
               prefer craft to noise.
@@ -116,23 +127,21 @@ function HomePage() {
           </div>
         </div>
 
-        <Reveal delay={300} className="mt-16 md:mt-24">
-          <figure className="relative w-full aspect-[21/9] overflow-hidden bg-muted outline outline-1 -outline-offset-1 outline-black/5">
-            <video
-              src={heroVideo.url}
-              poster={heroImg}
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="none"
-              aria-label="Mist rolling over the Western Ghats at dawn, near Coimbatore"
-              className="w-full h-full object-cover"
-            />
-            <div className="pointer-events-none absolute inset-0 bg-black/10" />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-b from-transparent to-background" />
-          </figure>
-        </Reveal>
+        <figure className="relative w-full aspect-[21/9] mt-16 md:mt-24 overflow-hidden bg-muted outline outline-1 -outline-offset-1 outline-black/5 stage-aperture [animation-delay:340ms]">
+          <video
+            src={heroVideo.url}
+            poster={heroImg}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="none"
+            aria-label="Mist rolling over the Western Ghats at dawn, near Coimbatore"
+            className="w-full h-full object-cover"
+          />
+          <div className="pointer-events-none absolute inset-0 bg-black/10" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-b from-transparent to-background" />
+        </figure>
       </header>
 
       {/* Who We Are */}
@@ -142,8 +151,8 @@ function HomePage() {
             The Studio
           </span>
           <p className="font-display text-3xl md:text-4xl leading-snug text-pretty">
-            Unfold Media Corp is a studio built around a single conviction — that a well-made film
-            can change how a business is understood. We work with founders and companies who have
+            Unfold Media Corp is a studio built around a single conviction: a well-made film can
+            change how a business is understood. We work with founders and companies who have
             something worth saying, and we help them say it with clarity, restraint and craft.
           </p>
         </Reveal>
@@ -205,24 +214,27 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Selected Work — empty state */}
-      <section className="py-32 md:py-48 px-6">
+      {/* Selected Work: teaser for the archive, which is still in production */}
+      <section className="py-24 md:py-40 px-6">
         <div className="max-w-[1400px] mx-auto">
-          <div className="flex justify-between items-end mb-12">
+          <div className="flex flex-wrap gap-x-8 gap-y-4 justify-between items-end mb-12">
             <h2 className="font-display font-semibold text-4xl md:text-5xl tracking-tighter">
               Selected Work
             </h2>
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-              In Production
-            </span>
+            <Link
+              to="/work"
+              className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground hover:text-accent transition-colors"
+            >
+              The archive →
+            </Link>
           </div>
-          <Reveal className="border-t border-border pt-16 flex flex-col items-center justify-center min-h-[320px] text-center">
-            <p className="font-display text-3xl md:text-4xl text-muted-foreground/70 italic mb-6">
-              Silence before the symphony.
+          <Reveal className="border-t border-border pt-14 grid grid-cols-12 gap-6">
+            <p className="col-span-12 md:col-span-7 font-display text-2xl md:text-3xl leading-snug text-pretty">
+              The studio's first collection is in post-production. When it opens, it opens here.
             </p>
-            <p className="text-sm max-w-md text-muted-foreground/70 leading-relaxed">
-              Our first collection of stories is currently in production. The archive will open here
-              soon.
+            <p className="col-span-12 md:col-span-4 md:col-start-9 text-sm text-muted-foreground leading-relaxed">
+              Until then, the process page is the most honest account of how the work gets made, and
+              the fastest way to judge whether we are right for yours.
             </p>
           </Reveal>
         </div>
@@ -236,7 +248,7 @@ function HomePage() {
               Why Unfold
             </span>
             <h2 className="font-display font-semibold text-4xl md:text-5xl tracking-tighter leading-[1.05]">
-              We make <em className="font-normal">fewer films</em>, on purpose.
+              We make fewer films, on purpose.
             </h2>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
@@ -259,7 +271,7 @@ function HomePage() {
       <section className="py-32 md:py-48 px-6 text-center">
         <Reveal className="max-w-4xl mx-auto">
           <h2 className="font-display font-semibold text-6xl md:text-8xl mb-14 tracking-tighter leading-[0.95]">
-            Let's tell <em className="font-normal">your story</em>.
+            Let's tell your story.
           </h2>
           <CtaLink to="/contact" size="lg">
             Start Your Project

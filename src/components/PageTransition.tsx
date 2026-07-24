@@ -1,9 +1,13 @@
 import { useRouterState } from "@tanstack/react-router";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 
 export function PageTransition({ children }: { children: ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const reduceMotion = useReducedMotion();
+
+  if (reduceMotion) return <>{children}</>;
+
   return (
     <AnimatePresence mode="wait" initial={false}>
       <motion.div
