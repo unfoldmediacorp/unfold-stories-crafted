@@ -25,7 +25,7 @@ export const Route = createFileRoute("/api/contact")({
         if (!parseResult.success) {
           return Response.json(
             { error: "Validation failed.", issues: parseResult.error.issues },
-            { status: 400 }
+            { status: 400 },
           );
         }
 
@@ -44,7 +44,7 @@ export const Route = createFileRoute("/api/contact")({
           console.error("Failed to save enquiry:", dbError);
           return Response.json(
             { error: "Unable to save your enquiry. Please try again." },
-            { status: 500 }
+            { status: 500 },
           );
         }
 
@@ -61,7 +61,7 @@ export const Route = createFileRoute("/api/contact")({
               error:
                 "Your enquiry was received, but we could not send a notification email. The studio will still see your submission.",
             },
-            { status: 500 }
+            { status: 500 },
           );
         }
 

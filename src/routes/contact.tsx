@@ -164,10 +164,21 @@ function ContactPage() {
             <Reveal>
               <form onSubmit={onSubmit} className="space-y-10" aria-busy={loading}>
                 <Field label="Your name" name="name" required disabled={loading} />
-                <Field label="Business email" name="email" type="email" required disabled={loading} />
+                <Field
+                  label="Business email"
+                  name="email"
+                  type="email"
+                  required
+                  disabled={loading}
+                />
                 <Field label="Company" name="company" disabled={loading} />
                 <Field label="Phone (optional)" name="phone" type="tel" disabled={loading} />
-                <TextArea label="Tell us about the project" name="brief" required disabled={loading} />
+                <TextArea
+                  label="Tell us about the project"
+                  name="brief"
+                  required
+                  disabled={loading}
+                />
                 {error && (
                   <p className="text-sm text-destructive" role="alert" aria-live="polite">
                     {error}

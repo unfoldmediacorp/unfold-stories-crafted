@@ -76,7 +76,7 @@ export const template = {
 const main = {
   backgroundColor: "#e8ded6",
   color: "#110f0b",
-  fontFamily: 'Inter, ui-sans-serif, system-ui, sans-serif',
+  fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif",
   padding: "40px 20px",
 };
 
@@ -89,7 +89,7 @@ const container = {
 };
 
 const heading = {
-  fontFamily: 'Playfair Display, Georgia, serif',
+  fontFamily: "Playfair Display, Georgia, serif",
   fontSize: "28px",
   fontWeight: 600,
   margin: "0 0 16px",
@@ -113,7 +113,7 @@ const label = {
   letterSpacing: "0.15em",
   color: "#ae9e8e",
   margin: "0 0 6px",
-  fontFamily: 'JetBrains Mono, monospace',
+  fontFamily: "JetBrains Mono, monospace",
 };
 
 const value = {

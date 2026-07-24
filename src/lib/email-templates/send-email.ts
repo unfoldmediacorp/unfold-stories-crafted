@@ -15,7 +15,7 @@ interface SendTemplateEmailOptions {
 export async function sendTemplateEmail(
   templateName: TemplateName,
   to: string,
-  options: SendTemplateEmailOptions
+  options: SendTemplateEmailOptions,
 ) {
   const template = TEMPLATES[templateName];
   if (!template) {
@@ -23,10 +23,7 @@ export async function sendTemplateEmail(
   }
 
   const element = React.createElement(template.component, options.templateData);
-  const [html, text] = await Promise.all([
-    render(element),
-    render(element, { plainText: true }),
-  ]);
+  const [html, text] = await Promise.all([render(element), render(element, { plainText: true })]);
 
   try {
     const result = await sendLovableEmail(
@@ -40,7 +37,7 @@ export async function sendTemplateEmail(
         reply_to: options.replyTo,
         idempotency_key: options.idempotencyKey,
       },
-      { apiKey: process.env.LOVABLE_API_KEY! }
+      { apiKey: process.env.LOVABLE_API_KEY! },
     );
     return { sent: true as const, ...result };
   } catch (error) {
