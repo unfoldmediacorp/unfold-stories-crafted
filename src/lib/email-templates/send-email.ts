@@ -1,3 +1,4 @@
+import React from "react";
 import { render } from "@react-email/render";
 import { sendLovableEmail, EmailAPIError } from "@lovable.dev/email-js";
 import { TEMPLATES, type TemplateName } from "./registry";
@@ -21,7 +22,7 @@ export async function sendTemplateEmail(
     throw new Error(`Email template "${String(templateName)}" not found.`);
   }
 
-  const element = template.component(options.templateData);
+  const element = React.createElement(template.component, options.templateData);
   const [html, text] = await Promise.all([
     render(element),
     render(element, { plainText: true }),

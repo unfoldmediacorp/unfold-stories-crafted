@@ -1,8 +1,8 @@
 import type { ComponentType } from "react";
 
-export interface TemplateEntry<Props = Record<string, unknown>> {
-  component: ComponentType<Props>;
+export interface TemplateEntry {
+  component: ComponentType<Record<string, unknown>>;
   subject: string;
   displayName?: string;
-  previewData?: Props;
+  previewData?: Record<string, unknown>;
 }
