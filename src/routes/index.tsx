@@ -14,7 +14,10 @@ export const Route = createFileRoute("/")({
         content:
           "A cinematic storytelling studio in Coimbatore, India. Brand films, founder stories, documentaries and campaigns for ambitious businesses.",
       },
-      { property: "og:title", content: "Unfold Media Corp — Cinematic Storytelling Studio, Coimbatore" },
+      {
+        property: "og:title",
+        content: "Unfold Media Corp — Cinematic Storytelling Studio, Coimbatore",
+      },
       {
         property: "og:description",
         content:
@@ -38,18 +41,54 @@ const services = [
 ] as const;
 
 const process = [
-  { key: "i", title: "Discovery", body: "We listen. To the business, the founder, the audience, the reason this film needs to exist." },
-  { key: "ii", title: "Strategy", body: "A single-minded narrative — the throughline that every frame will serve." },
-  { key: "iii", title: "Production", body: "Considered direction, cinematic capture, natural light and human moments." },
-  { key: "iv", title: "Post Production", body: "Editing, colour, sound. The quiet craft where a film finds its final voice." },
-  { key: "v", title: "Delivery", body: "Master files, cut-downs, and a release plan built for the platforms that matter." },
+  {
+    key: "i",
+    title: "Discovery",
+    body: "We listen. To the business, the founder, the audience, the reason this film needs to exist.",
+  },
+  {
+    key: "ii",
+    title: "Strategy",
+    body: "A single-minded narrative — the throughline that every frame will serve.",
+  },
+  {
+    key: "iii",
+    title: "Production",
+    body: "Considered direction, cinematic capture, natural light and human moments.",
+  },
+  {
+    key: "iv",
+    title: "Post Production",
+    body: "Editing, colour, sound. The quiet craft where a film finds its final voice.",
+  },
+  {
+    key: "v",
+    title: "Delivery",
+    body: "Master files, cut-downs, and a release plan built for the platforms that matter.",
+  },
 ] as const;
 
 const principles = [
-  { n: "01", title: "Story before spectacle.", body: "We chase meaning, not effects. The camera is in service of the sentence." },
-  { n: "02", title: "Purpose before production.", body: "Every shoot begins with why. Everything after answers to it." },
-  { n: "03", title: "Quality over quantity.", body: "Fewer films, made properly. We would rather ship one great piece than five average ones." },
-  { n: "04", title: "Built to last.", body: "We make films designed to work in five years, not five weeks." },
+  {
+    n: "01",
+    title: "Story before spectacle.",
+    body: "We chase meaning, not effects. The camera is in service of the sentence.",
+  },
+  {
+    n: "02",
+    title: "Purpose before production.",
+    body: "Every shoot begins with why. Everything after answers to it.",
+  },
+  {
+    n: "03",
+    title: "Quality over quantity.",
+    body: "Fewer films, made properly. We would rather ship one great piece than five average ones.",
+  },
+  {
+    n: "04",
+    title: "Built to last.",
+    body: "We make films designed to work in five years, not five weeks.",
+  },
 ] as const;
 
 function HomePage() {
@@ -65,8 +104,8 @@ function HomePage() {
           </h1>
           <div className="col-span-12 lg:col-span-4 lg:col-start-9 mt-10 lg:mt-0 animate-reveal [animation-delay:200ms]">
             <p className="text-lg md:text-xl leading-[1.65] text-pretty mb-10 max-w-md text-muted-foreground">
-              A cinematic storytelling studio in Coimbatore, building films for
-              businesses who prefer craft to noise.
+              A cinematic storytelling studio in Coimbatore, building films for businesses who
+              prefer craft to noise.
             </p>
             <div className="flex flex-wrap gap-4">
               <CtaLink to="/contact">Start a Project</CtaLink>
@@ -103,10 +142,9 @@ function HomePage() {
             The Studio
           </span>
           <p className="font-display text-3xl md:text-4xl leading-snug text-pretty">
-            Unfold Media Corp is a studio built around a single conviction —
-            that a well-made film can change how a business is understood. We
-            work with founders and companies who have something worth saying,
-            and we help them say it with clarity, restraint and craft.
+            Unfold Media Corp is a studio built around a single conviction — that a well-made film
+            can change how a business is understood. We work with founders and companies who have
+            something worth saying, and we help them say it with clarity, restraint and craft.
           </p>
         </Reveal>
       </section>
@@ -153,13 +191,9 @@ function HomePage() {
             {process.map((p, i) => (
               <Reveal key={p.key} delay={i * 80}>
                 <div className="flex gap-6">
-                  <span className="font-mono text-xs text-accent pt-1 w-8 shrink-0">
-                    {p.key}.
-                  </span>
+                  <span className="font-mono text-xs text-accent pt-1 w-8 shrink-0">{p.key}.</span>
                   <div>
-                    <h4 className="font-bold text-sm uppercase tracking-tighter mb-2">
-                      {p.title}
-                    </h4>
+                    <h4 className="font-bold text-sm uppercase tracking-tighter mb-2">{p.title}</h4>
                     <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
                       {p.body}
                     </p>
@@ -187,8 +221,8 @@ function HomePage() {
               Silence before the symphony.
             </p>
             <p className="text-sm max-w-md text-muted-foreground/70 leading-relaxed">
-              Our first collection of stories is currently in production.
-              The archive will open here soon.
+              Our first collection of stories is currently in production. The archive will open here
+              soon.
             </p>
           </Reveal>
         </div>
@@ -213,9 +247,7 @@ function HomePage() {
                     {p.n}
                   </h4>
                   <p className="font-display text-lg mb-4">{p.title}</p>
-                  <p className="text-xs text-background/60 leading-relaxed">
-                    {p.body}
-                  </p>
+                  <p className="text-xs text-background/60 leading-relaxed">{p.body}</p>
                 </div>
               </Reveal>
             ))}

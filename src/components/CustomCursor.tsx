@@ -23,7 +23,10 @@ export function CustomCursor() {
     setMounted(true);
     document.documentElement.classList.add("has-custom-cursor");
 
-    let rx = 0, ry = 0, dx = 0, dy = 0;
+    let rx = 0,
+      ry = 0,
+      dx = 0,
+      dy = 0;
     let raf = 0;
 
     const tick = () => {
@@ -80,8 +83,7 @@ export function CustomCursor() {
 
   if (!mounted) return null;
 
-  const ringSize =
-    mode === "view" ? 72 : mode === "button" ? 26 : 20;
+  const ringSize = mode === "view" ? 72 : mode === "button" ? 26 : 20;
   const ringOpacity = visible ? (mode === "default" ? 0.35 : 1) : 0;
 
   return (

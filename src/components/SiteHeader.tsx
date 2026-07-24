@@ -101,9 +101,7 @@ export function SiteHeader() {
               to={item.to}
               onClick={() => setOpen(false)}
               className={
-                pathname === item.to
-                  ? "text-foreground font-bold"
-                  : "text-muted-foreground"
+                pathname === item.to ? "text-foreground font-bold" : "text-muted-foreground"
               }
             >
               {item.label}

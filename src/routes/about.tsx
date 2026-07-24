@@ -61,8 +61,8 @@ function AboutPage() {
               Mission
             </span>
             <p className="font-display text-3xl md:text-4xl leading-[1.15] tracking-tight text-pretty">
-              To help serious businesses tell serious stories — with the craft
-              and restraint the subject deserves.
+              To help serious businesses tell serious stories — with the craft and restraint the
+              subject deserves.
             </p>
           </Reveal>
 
@@ -71,9 +71,8 @@ function AboutPage() {
               Vision
             </span>
             <p className="text-lg leading-relaxed text-muted-foreground text-pretty">
-              A studio known for a small body of exceptional work rather than a
-              large body of forgettable output. Films you remember years after
-              you've seen them.
+              A studio known for a small body of exceptional work rather than a large body of
+              forgettable output. Films you remember years after you've seen them.
             </p>
           </Reveal>
 
@@ -82,9 +81,8 @@ function AboutPage() {
               Philosophy
             </span>
             <p className="text-lg leading-relaxed text-muted-foreground text-pretty">
-              We believe the best commercial films are quiet, patient and
-              specific. They earn attention rather than demand it. They age
-              well. They treat the audience like adults.
+              We believe the best commercial films are quiet, patient and specific. They earn
+              attention rather than demand it. They age well. They treat the audience like adults.
             </p>
           </Reveal>
         </div>
@@ -98,9 +96,9 @@ function AboutPage() {
               A note from the founder
             </span>
             <p className="font-display text-3xl md:text-5xl italic leading-[1.1] tracking-tighter mb-10 text-pretty">
-              "We started Unfold because we were tired of watching good
-              businesses be represented by bad films. There is a real
-              difference between a video and a piece of cinema — and it matters."
+              "We started Unfold because we were tired of watching good businesses be represented by
+              bad films. There is a real difference between a video and a piece of cinema — and it
+              matters."
             </p>
             <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-background/60">
               Founder, Unfold Media Corp
@@ -125,17 +123,16 @@ function AboutPage() {
           <div className="col-span-12 lg:col-span-7 lg:col-start-6 space-y-6">
             <Reveal>
               <p className="text-lg leading-relaxed text-pretty">
-                We stay small on purpose. Our projects are led by the people
-                you'll meet in the first conversation — no handoffs, no
-                account layers, no revolving door of freelancers.
+                We stay small on purpose. Our projects are led by the people you'll meet in the
+                first conversation — no handoffs, no account layers, no revolving door of
+                freelancers.
               </p>
             </Reveal>
             <Reveal delay={80}>
               <p className="text-lg leading-relaxed text-muted-foreground text-pretty">
-                The studio brings in specialist collaborators — cinematographers,
-                colourists, composers, sound designers — chosen for the specific
-                shape of each project. A rotating cast of extraordinary people,
-                held together by a consistent point of view.
+                The studio brings in specialist collaborators — cinematographers, colourists,
+                composers, sound designers — chosen for the specific shape of each project. A
+                rotating cast of extraordinary people, held together by a consistent point of view.
               </p>
             </Reveal>
           </div>
@@ -146,9 +143,7 @@ function AboutPage() {
       <section className="py-16 md:py-24 px-6 border-t border-border bg-muted/60">
         <div className="max-w-[1400px] mx-auto">
           <div className="flex items-baseline justify-between mb-12">
-            <h2 className="font-mono text-[10px] uppercase tracking-[0.2em]">
-              The Team
-            </h2>
+            <h2 className="font-mono text-[10px] uppercase tracking-[0.2em]">The Team</h2>
             <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
               In Progress
             </span>
@@ -158,8 +153,8 @@ function AboutPage() {
               Introductions coming soon.
             </p>
             <p className="text-sm max-w-md text-muted-foreground/70 leading-relaxed">
-              We're preparing proper portraits of the people behind the studio.
-              Until then, the work will speak first.
+              We're preparing proper portraits of the people behind the studio. Until then, the work
+              will speak first.
             </p>
           </Reveal>
         </div>
@@ -170,7 +165,9 @@ function AboutPage() {
           <h2 className="font-display font-semibold text-5xl md:text-7xl mb-12 tracking-tighter">
             Work with <em className="font-normal">the studio</em>.
           </h2>
-          <CtaLink to="/contact" size="lg">Start a Project</CtaLink>
+          <CtaLink to="/contact" size="lg">
+            Start a Project
+          </CtaLink>
         </Reveal>
       </section>
     </PageShell>

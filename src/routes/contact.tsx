@@ -16,8 +16,7 @@ export const Route = createFileRoute("/contact")({
       { property: "og:title", content: "Contact — Unfold Media Corp" },
       {
         property: "og:description",
-        content:
-          "Studio enquiries, project briefs and collaborations. Coimbatore, India.",
+        content: "Studio enquiries, project briefs and collaborations. Coimbatore, India.",
       },
       { property: "og:url", content: "/contact" },
     ],
@@ -77,10 +76,7 @@ function ContactPage() {
                 </a>
               </li>
               <li>
-                <a
-                  href="tel:+919999999999"
-                  className="hover:text-accent transition-colors"
-                >
+                <a href="tel:+919999999999" className="hover:text-accent transition-colors">
                   +91 99999 99999
                 </a>
               </li>
@@ -91,9 +87,21 @@ function ContactPage() {
               Elsewhere
             </h3>
             <ul className="flex flex-col gap-2 text-sm uppercase tracking-[0.2em]">
-              <li><a href="#" className="hover:text-accent transition-colors">Instagram</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">Vimeo</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">LinkedIn</a></li>
+              <li>
+                <a href="#" className="hover:text-accent transition-colors">
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-accent transition-colors">
+                  Vimeo
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-accent transition-colors">
+                  LinkedIn
+                </a>
+              </li>
             </ul>
           </Reveal>
         </aside>
@@ -109,8 +117,7 @@ function ContactPage() {
                 Thank you.
               </h2>
               <p className="text-lg text-muted-foreground max-w-md">
-                Your note is with us. We'll write back personally within two
-                working days.
+                Your note is with us. We'll write back personally within two working days.
               </p>
             </Reveal>
           ) : (
@@ -193,15 +200,7 @@ function Field({
   );
 }
 
-function TextArea({
-  label,
-  name,
-  required,
-}: {
-  label: string;
-  name: string;
-  required?: boolean;
-}) {
+function TextArea({ label, name, required }: { label: string; name: string; required?: boolean }) {
   return (
     <label className="block">
       <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground block mb-3">

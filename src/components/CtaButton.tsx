@@ -1,9 +1,5 @@
 import { Link, type LinkProps } from "@tanstack/react-router";
-import type {
-  AnchorHTMLAttributes,
-  ButtonHTMLAttributes,
-  ReactNode,
-} from "react";
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 
 type Variant = "solid" | "outline" | "ghost";
 type Size = "md" | "lg";
@@ -20,21 +16,13 @@ const sizes: Record<Size, string> = {
 };
 
 const variants: Record<Variant, string> = {
-  solid:
-    "bg-foreground text-background hover:bg-foreground/90",
+  solid: "bg-foreground text-background hover:bg-foreground/90",
   outline:
     "border border-foreground/50 bg-transparent text-foreground hover:border-foreground hover:bg-foreground/5",
-  ghost:
-    "text-foreground hover:opacity-70",
+  ghost: "text-foreground hover:opacity-70",
 };
 
-function Inner({
-  children,
-  withArrow,
-}: {
-  children: ReactNode;
-  withArrow: boolean;
-}) {
+function Inner({ children, withArrow }: { children: ReactNode; withArrow: boolean }) {
   return (
     <>
       <span>{children}</span>

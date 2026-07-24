@@ -16,8 +16,7 @@ export const Route = createFileRoute("/work")({
       { property: "og:title", content: "Work — Unfold Media Corp" },
       {
         property: "og:description",
-        content:
-          "Selected cinematic work — currently in production. The archive opens soon.",
+        content: "Selected cinematic work — currently in production. The archive opens soon.",
       },
       { property: "og:url", content: "/work" },
     ],
@@ -76,9 +75,7 @@ function WorkPage() {
                 key={f}
                 onClick={() => setActive(f)}
                 className={`text-[11px] uppercase tracking-[0.2em] transition-colors ${
-                  isActive
-                    ? "text-foreground font-bold"
-                    : "text-muted-foreground hover:text-accent"
+                  isActive ? "text-foreground font-bold" : "text-muted-foreground hover:text-accent"
                 }`}
               >
                 {f}
@@ -98,8 +95,8 @@ function WorkPage() {
               Silence before the symphony.
             </p>
             <p className="text-sm max-w-md text-muted-foreground/80 leading-relaxed mb-10">
-              Our first collection of stories is currently in production.
-              When the archive opens, it will live here.
+              Our first collection of stories is currently in production. When the archive opens, it
+              will live here.
             </p>
             <CtaLink to="/contact" variant="outline">
               Enquire about upcoming work

@@ -52,9 +52,7 @@ export function LoadingScreen() {
           transition: "transform 340ms cubic-bezier(0.22,1,0.36,1)",
         }}
       >
-        <div className="font-display text-5xl md:text-6xl font-bold tracking-tighter">
-          Unfold
-        </div>
+        <div className="font-display text-5xl md:text-6xl font-bold tracking-tighter">Unfold</div>
         <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-muted-foreground">
           Media Corp
         </div>

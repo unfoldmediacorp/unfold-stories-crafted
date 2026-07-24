@@ -17,8 +17,8 @@ export function SiteFooter() {
             Unfold Media Corp
           </div>
           <p className="text-sm text-muted-foreground max-w-sm leading-relaxed">
-            A cinematic storytelling studio in Coimbatore. Films for founders and
-            businesses who prefer craft to noise.
+            A cinematic storytelling studio in Coimbatore. Films for founders and businesses who
+            prefer craft to noise.
           </p>
         </div>
         <div>
@@ -26,11 +26,31 @@ export function SiteFooter() {
             Studio
           </h5>
           <ul className="space-y-3 text-sm text-muted-foreground">
-            <li><Link to="/services" data-cursor="button" className={linkCls}>Services</Link></li>
-            <li><Link to="/process" data-cursor="button" className={linkCls}>Process</Link></li>
-            <li><Link to="/about" data-cursor="button" className={linkCls}>About</Link></li>
-            <li><Link to="/work" data-cursor="button" className={linkCls}>Work</Link></li>
-            <li><Link to="/contact" data-cursor="button" className={linkCls}>Contact</Link></li>
+            <li>
+              <Link to="/services" data-cursor="button" className={linkCls}>
+                Services
+              </Link>
+            </li>
+            <li>
+              <Link to="/process" data-cursor="button" className={linkCls}>
+                Process
+              </Link>
+            </li>
+            <li>
+              <Link to="/about" data-cursor="button" className={linkCls}>
+                About
+              </Link>
+            </li>
+            <li>
+              <Link to="/work" data-cursor="button" className={linkCls}>
+                Work
+              </Link>
+            </li>
+            <li>
+              <Link to="/contact" data-cursor="button" className={linkCls}>
+                Contact
+              </Link>
+            </li>
           </ul>
         </div>
         <div>
@@ -38,9 +58,21 @@ export function SiteFooter() {
             Elsewhere
           </h5>
           <ul className="space-y-3 text-sm text-muted-foreground">
-            <li><a href="#" data-cursor="button" className={linkCls}>Instagram</a></li>
-            <li><a href="#" data-cursor="button" className={linkCls}>Vimeo</a></li>
-            <li><a href="#" data-cursor="button" className={linkCls}>LinkedIn</a></li>
+            <li>
+              <a href="#" data-cursor="button" className={linkCls}>
+                Instagram
+              </a>
+            </li>
+            <li>
+              <a href="#" data-cursor="button" className={linkCls}>
+                Vimeo
+              </a>
+            </li>
+            <li>
+              <a href="#" data-cursor="button" className={linkCls}>
+                LinkedIn
+              </a>
+            </li>
           </ul>
         </div>
       </div>

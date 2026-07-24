@@ -53,16 +53,14 @@ const services = [
   {
     n: "04",
     title: "Documentaries",
-    outcome:
-      "Long-form work that treats your subject with the seriousness of a magazine feature.",
+    outcome: "Long-form work that treats your subject with the seriousness of a magazine feature.",
     detail:
       "Sector, craft and cultural documentaries developed with real research, real access and a considered point of view.",
   },
   {
     n: "05",
     title: "Commercial Campaigns",
-    outcome:
-      "Campaign work designed to move business metrics without embarrassing the brand.",
+    outcome: "Campaign work designed to move business metrics without embarrassing the brand.",
     detail:
       "Concept, script, direction and delivery across a full campaign — hero film, cut-downs, stills and social edits from a single shoot.",
   },
@@ -77,8 +75,7 @@ const services = [
   {
     n: "07",
     title: "Social-first Content",
-    outcome:
-      "Short-form work that still looks like it came from a studio, not a template.",
+    outcome: "Short-form work that still looks like it came from a studio, not a template.",
     detail:
       "Verticals, teasers and episodic series built around the same story, cut for how people actually watch.",
   },
@@ -113,12 +110,8 @@ function ServicesPage() {
                   </h2>
                 </div>
                 <div className="col-span-12 md:col-span-6 space-y-4 max-w-xl">
-                  <p className="text-lg leading-relaxed text-pretty">
-                    {s.outcome}
-                  </p>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
-                    {s.detail}
-                  </p>
+                  <p className="text-lg leading-relaxed text-pretty">{s.outcome}</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{s.detail}</p>
                 </div>
               </article>
             </Reveal>
@@ -131,7 +124,9 @@ function ServicesPage() {
           <h2 className="font-display font-semibold text-5xl md:text-7xl mb-12 tracking-tighter">
             Have a project <em className="font-normal">in mind?</em>
           </h2>
-          <CtaLink to="/contact" size="lg">Start a Project</CtaLink>
+          <CtaLink to="/contact" size="lg">
+            Start a Project
+          </CtaLink>
         </Reveal>
       </section>
     </PageShell>

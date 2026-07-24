@@ -91,14 +91,10 @@ function ProcessPage() {
                   <h2 className="font-display font-semibold text-4xl md:text-6xl tracking-tighter leading-[0.95] mb-6">
                     {s.title}
                   </h2>
-                  <p className="font-display text-xl text-muted-foreground">
-                    {s.lead}
-                  </p>
+                  <p className="font-display text-xl text-muted-foreground">{s.lead}</p>
                 </div>
                 <div className="col-span-12 md:col-span-5">
-                  <p className="text-lg leading-relaxed text-pretty max-w-lg">
-                    {s.body}
-                  </p>
+                  <p className="text-lg leading-relaxed text-pretty max-w-lg">{s.body}</p>
                 </div>
               </li>
             </Reveal>
@@ -114,7 +110,9 @@ function ProcessPage() {
           <h2 className="font-display font-semibold text-5xl md:text-7xl mb-12 tracking-tighter">
             Start with a <em className="font-normal">conversation</em>.
           </h2>
-          <CtaLink to="/contact" size="lg">Get in touch</CtaLink>
+          <CtaLink to="/contact" size="lg">
+            Get in touch
+          </CtaLink>
         </Reveal>
       </section>
     </PageShell>

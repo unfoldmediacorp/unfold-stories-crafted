@@ -21,6 +21,7 @@ Each route gets its own `head()` metadata (title, description, og:title, og:desc
 ## Design System
 
 Defined in `src/styles.css` via `@theme` + `:root` tokens:
+
 - `--background` warm off-white (~oklch 0.97 0.008 85)
 - `--foreground` charcoal (~oklch 0.20 0.01 60)
 - `--accent` deep maroon (~oklch 0.35 0.11 22)

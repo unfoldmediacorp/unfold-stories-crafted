@@ -1,0 +1,16 @@
+# Normalize line endings to LF in the repository and in working copies.
+# Lovable edits on Linux (LF) while local editing happens on Windows (CRLF);
+# without this, every file round-trips through CRLF and Prettier flags all of it.
+* text=auto eol=lf
+
+# Binary assets must never be line-ending converted.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.mp4 binary
+*.webm binary

@@ -50,9 +50,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
         <h1 className="font-display font-semibold text-5xl tracking-tighter mb-8">
           Something interrupted <em className="font-normal">the reel</em>.
         </h1>
-        <p className="text-sm text-muted-foreground mb-12">
-          Please try again or return home.
-        </p>
+        <p className="text-sm text-muted-foreground mb-12">Please try again or return home.</p>
         <div className="flex flex-wrap justify-center gap-3">
           <CtaButton
             onClick={() => {
@@ -62,7 +60,9 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
           >
             Try again
           </CtaButton>
-          <CtaAnchor href="/" variant="outline">Go home</CtaAnchor>
+          <CtaAnchor href="/" variant="outline">
+            Go home
+          </CtaAnchor>
         </div>
       </div>
     </div>
@@ -82,7 +82,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { name: "author", content: "Unfold Media Corp" },
       { property: "og:site_name", content: "Unfold Media Corp" },
-      { property: "og:title", content: "Unfold Media Corp — Cinematic Storytelling Studio, Coimbatore" },
+      {
+        property: "og:title",
+        content: "Unfold Media Corp — Cinematic Storytelling Studio, Coimbatore",
+      },
       {
         property: "og:description",
         content:
@@ -90,10 +93,25 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Unfold Media Corp — Cinematic Storytelling Studio, Coimbatore" },
-      { name: "twitter:description", content: "A cinematic storytelling studio in Coimbatore, India. Brand films, founder stories, documentaries and campaigns for ambitious businesses." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/RziJEjVnxuOXklGmBiSJe7pfzPA3/social-images/social-1784537282788-WALL.webp" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/RziJEjVnxuOXklGmBiSJe7pfzPA3/social-images/social-1784537282788-WALL.webp" },
+      {
+        name: "twitter:title",
+        content: "Unfold Media Corp — Cinematic Storytelling Studio, Coimbatore",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "A cinematic storytelling studio in Coimbatore, India. Brand films, founder stories, documentaries and campaigns for ambitious businesses.",
+      },
+      {
+        property: "og:image",
+        content:
+          "https://storage.googleapis.com/gpt-engineer-file-uploads/RziJEjVnxuOXklGmBiSJe7pfzPA3/social-images/social-1784537282788-WALL.webp",
+      },
+      {
+        name: "twitter:image",
+        content:
+          "https://storage.googleapis.com/gpt-engineer-file-uploads/RziJEjVnxuOXklGmBiSJe7pfzPA3/social-images/social-1784537282788-WALL.webp",
+      },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
