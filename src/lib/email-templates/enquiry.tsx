@@ -1,4 +1,4 @@
-import React from "react";
+import React, { type ComponentType } from "react";
 import {
   Body,
   Container,
@@ -61,7 +61,7 @@ const EnquiryEmail = ({ name, email, company, phone, brief }: Props) => (
 );
 
 export const template = {
-  component: EnquiryEmail,
+  component: EnquiryEmail as unknown as ComponentType<Record<string, unknown>>,
   subject: "New enquiry from unfoldmediacorp.com",
   displayName: "Enquiry notification",
   previewData: {
