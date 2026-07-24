@@ -106,7 +106,7 @@ function ServicesPage() {
                     glance and sits level with the discipline it numbers. */}
                 <div className="col-span-12 md:col-span-1 index-numeral text-accent-ink">{s.n}</div>
                 <div className="col-span-12 md:col-span-5">
-                  <h2 className="font-display font-semibold text-4xl md:text-5xl tracking-tighter leading-[0.95] transition-colors duration-500 group-hover:text-accent-ink">
+                  <h2 className="font-display font-semibold text-3xl md:text-4xl tracking-tighter leading-[0.95] transition-colors duration-500 group-hover:text-accent-ink">
                     {s.title}
                   </h2>
                 </div>
@@ -122,7 +122,7 @@ function ServicesPage() {
 
       <section className="py-24 md:py-32 px-6 text-center border-t border-border">
         <Reveal>
-          <h2 className="font-display font-semibold text-5xl md:text-7xl mb-12 tracking-tighter">
+          <h2 className="font-display font-semibold text-3xl md:text-5xl mb-12 tracking-tighter">
             Have a project in mind?
           </h2>
           <CtaLink to="/contact" size="lg">

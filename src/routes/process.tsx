@@ -89,7 +89,7 @@ function ProcessPage() {
                   Step {s.n}.
                 </div>
                 <div className="col-span-12 md:col-span-5">
-                  <h2 className="font-display font-semibold text-4xl md:text-6xl tracking-tighter leading-[0.95] mb-6">
+                  <h2 className="font-display font-semibold text-3xl md:text-4xl tracking-tighter leading-[0.95] mb-6">
                     {s.title}
                   </h2>
                   <p className="font-display text-xl text-muted-foreground">{s.lead}</p>
@@ -106,7 +106,7 @@ function ProcessPage() {
       <section className="py-24 md:py-32 px-6 text-center border-t border-border bg-muted/60">
         <Reveal>
           <span className="label label-eyebrow text-accent-ink block mb-6">Ready when you are</span>
-          <h2 className="font-display font-semibold text-5xl md:text-7xl mb-12 tracking-tighter">
+          <h2 className="font-display font-semibold text-3xl md:text-5xl mb-12 tracking-tighter">
             Start with a conversation.
           </h2>
           <CtaLink to="/contact" size="lg">

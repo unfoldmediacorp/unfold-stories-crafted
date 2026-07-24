@@ -159,7 +159,7 @@ function ContactPage() {
                 className="focus:outline-none"
               >
                 <span className="label label-eyebrow text-accent-ink block mb-6">Received</span>
-                <h2 className="font-display text-4xl md:text-5xl tracking-tighter mb-6">
+                <h2 className="font-display text-3xl md:text-4xl tracking-tighter mb-6">
                   Thank you.
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-md">

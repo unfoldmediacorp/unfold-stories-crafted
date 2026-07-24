@@ -105,7 +105,7 @@ function HomePage() {
       {/* Hero */}
       <header className="relative px-6 pt-12 pb-16 md:pb-24 overflow-hidden">
         <div className="max-w-[1400px] mx-auto grid grid-cols-12 gap-4 md:gap-6 items-end">
-          <h1 className="col-span-12 lg:col-span-9 font-display font-semibold text-[clamp(3.5rem,12vw,10rem)] leading-[0.85] tracking-tighter">
+          <h1 className="col-span-12 lg:col-span-9 font-display font-semibold text-[clamp(2.75rem,7vw,5.75rem)] leading-[0.9] tracking-tight">
             <span className="title-mask">
               <em className="title-line font-normal">Cinematic</em>
             </span>
@@ -127,7 +127,7 @@ function HomePage() {
           </div>
         </div>
 
-        <figure className="relative w-full aspect-[21/9] mt-16 md:mt-24 overflow-hidden bg-muted outline outline-1 -outline-offset-1 outline-black/5 stage-aperture [animation-delay:340ms]">
+        <figure className="relative w-full aspect-[21/9] mt-12 md:mt-16 overflow-hidden bg-muted outline outline-1 -outline-offset-1 outline-black/5 stage-aperture [animation-delay:340ms]">
           <video
             src={heroVideo.url}
             poster={heroImg}
@@ -148,7 +148,7 @@ function HomePage() {
       <section className="py-24 md:py-32 px-6 border-y border-border">
         <Reveal className="max-w-3xl mx-auto text-center">
           <span className="label label-eyebrow text-accent-ink mb-8 block">The Studio</span>
-          <p className="font-display text-3xl md:text-4xl leading-snug text-pretty">
+          <p className="font-display text-2xl md:text-3xl leading-snug text-pretty">
             Unfold Media Corp is a studio built around a single conviction: a well-made film can
             change how a business is understood. We work with founders and companies who have
             something worth saying, and we help them say it with clarity, restraint and craft.
@@ -216,7 +216,7 @@ function HomePage() {
       <section className="py-24 md:py-40 px-6">
         <div className="max-w-[1400px] mx-auto">
           <div className="flex flex-wrap gap-x-8 gap-y-4 justify-between items-end mb-12">
-            <h2 className="font-display font-semibold text-4xl md:text-5xl tracking-tighter">
+            <h2 className="font-display font-semibold text-3xl md:text-4xl tracking-tighter">
               Selected Work
             </h2>
             <Link
@@ -243,7 +243,7 @@ function HomePage() {
         <div className="max-w-[1400px] mx-auto">
           <Reveal className="mb-16 md:mb-24 max-w-2xl">
             <span className="label label-eyebrow text-accent block mb-6">Why Unfold</span>
-            <h2 className="font-display font-semibold text-4xl md:text-5xl tracking-tighter leading-[1.05]">
+            <h2 className="font-display font-semibold text-3xl md:text-4xl tracking-tighter leading-[1.05]">
               We make fewer films, on purpose.
             </h2>
           </Reveal>
@@ -264,7 +264,7 @@ function HomePage() {
       {/* Final CTA */}
       <section className="py-32 md:py-48 px-6 text-center">
         <Reveal className="max-w-4xl mx-auto">
-          <h2 className="font-display font-semibold text-6xl md:text-8xl mb-14 tracking-tighter leading-[0.95]">
+          <h2 className="font-display font-semibold text-3xl md:text-5xl mb-14 tracking-tighter leading-[0.95]">
             Let's tell your story.
           </h2>
           <CtaLink to="/contact" size="lg">

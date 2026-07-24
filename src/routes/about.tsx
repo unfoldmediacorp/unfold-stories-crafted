@@ -90,7 +90,7 @@ function AboutPage() {
             <span className="label label-eyebrow text-accent block mb-8">
               A note from the founder
             </span>
-            <blockquote className="font-display text-3xl md:text-5xl italic leading-[1.1] tracking-tighter mb-10 text-pretty">
+            <blockquote className="font-display text-2xl md:text-4xl italic leading-[1.1] tracking-tighter mb-10 text-pretty">
               “We started Unfold because we were tired of watching good businesses be represented by
               bad films. There is a real difference between a video and a piece of cinema, and it
               matters.”
@@ -105,7 +105,7 @@ function AboutPage() {
         <div className="max-w-[1400px] mx-auto grid grid-cols-12 gap-6">
           <Reveal className="col-span-12 lg:col-span-4">
             <span className="label label-eyebrow text-accent-ink block mb-6">Studio Culture</span>
-            <h2 className="font-display font-semibold text-4xl md:text-5xl tracking-tighter leading-[0.95]">
+            <h2 className="font-display font-semibold text-3xl md:text-4xl tracking-tighter leading-[0.95]">
               Small crews.
               <br />
               Long attention.
@@ -151,7 +151,7 @@ function AboutPage() {
 
       <section className="py-24 md:py-32 px-6 text-center">
         <Reveal>
-          <h2 className="font-display font-semibold text-5xl md:text-7xl mb-12 tracking-tighter">
+          <h2 className="font-display font-semibold text-3xl md:text-5xl mb-12 tracking-tighter">
             Work with the studio.
           </h2>
           <CtaLink to="/contact" size="lg">

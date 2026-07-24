@@ -54,21 +54,25 @@ export function SiteHeader() {
           to="/"
           data-cursor="button"
           aria-label="Unfold Media Corp, home"
-          className="flex items-center gap-3 group"
+          className="flex items-center gap-3 md:gap-4 group"
         >
           <img
             src={logoU}
             alt=""
             className={
               "w-auto transition-[height] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] " +
-              (scrolled ? "h-11 md:h-12" : "h-14 md:h-16")
+              (scrolled ? "h-14 md:h-16" : "h-16 md:h-20")
             }
           />
           <span className="flex flex-col leading-none">
-            <span className="font-display text-2xl md:text-3xl font-semibold tracking-tight text-foreground">
+            <span className="font-display text-3xl md:text-[2.75rem] font-semibold tracking-tight text-foreground">
               Unfold
             </span>
-            <span className="label text-muted-foreground mt-1.5">Media Corp</span>
+            {/* Tracking is tuned so the sublabel sets to roughly the width of
+                the wordmark above it, keeping the lockup as one block. */}
+            <span className="font-mono text-[11px] md:text-[13px] uppercase tracking-[0.34em] md:tracking-[0.36em] text-muted-foreground mt-2">
+              Media Corp
+            </span>
           </span>
         </Link>
         <div className="hidden md:flex gap-8 text-[13px] uppercase tracking-[0.16em] font-medium">

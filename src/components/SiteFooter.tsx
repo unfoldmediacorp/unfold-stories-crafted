@@ -11,7 +11,7 @@ export function SiteFooter() {
     <footer className="border-t border-border mt-24">
       <div className="max-w-[1400px] mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-4 gap-14">
         <div className="md:col-span-2">
-          <div className="font-display text-3xl font-bold tracking-tighter mb-6">
+          <div className="font-display text-4xl md:text-5xl font-bold tracking-tight mb-6">
             Unfold Media Corp
           </div>
           <p className="text-sm text-muted-foreground max-w-sm leading-relaxed mb-8">

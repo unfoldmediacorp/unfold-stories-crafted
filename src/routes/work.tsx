@@ -94,7 +94,7 @@ function WorkPage() {
         {visible.length === 0 ? (
           <Reveal className="border border-border py-24 md:py-40 flex flex-col items-center justify-center text-center bg-muted/40">
             <span className="label label-eyebrow text-accent-ink mb-8">In Production</span>
-            <p className="font-display text-4xl md:text-6xl italic tracking-tighter text-subtle mb-6">
+            <p className="font-display text-3xl md:text-4xl italic tracking-tighter text-subtle mb-6">
               Silence before the symphony.
             </p>
             <p className="text-sm max-w-md text-muted-foreground leading-relaxed mb-10">
