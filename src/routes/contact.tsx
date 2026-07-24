@@ -27,10 +27,45 @@ export const Route = createFileRoute("/contact")({
 
 function ContactPage() {
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSent(true);
+    setLoading(true);
+    setError(null);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const payload = {
+      name: String(formData.get("name") || ""),
+      email: String(formData.get("email") || ""),
+      company: String(formData.get("company") || ""),
+      phone: String(formData.get("phone") || ""),
+      brief: String(formData.get("brief") || ""),
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = (await res.json().catch(() => ({}))) as { error?: string };
+
+      if (!res.ok) {
+        setError(data.error || "Something went wrong. Please try again.");
+        return;
+      }
+
+      setSent(true);
+      form.reset();
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -69,15 +104,15 @@ function ContactPage() {
             <ul className="space-y-2 text-lg">
               <li>
                 <a
-                  href="mailto:hello@unfoldmediacorp.com"
+                  href="mailto:Unfoldmediacorp@gmail.com"
                   className="hover:text-accent transition-colors border-b border-border pb-1"
                 >
-                  hello@unfoldmediacorp.com
+                  Unfoldmediacorp@gmail.com
                 </a>
               </li>
               <li>
-                <a href="tel:+919999999999" className="hover:text-accent transition-colors">
-                  +91 99999 99999
+                <a href="tel:+917418898911" className="hover:text-accent transition-colors">
+                  +91 74188 98911
                 </a>
               </li>
             </ul>
@@ -88,17 +123,22 @@ function ContactPage() {
             </h3>
             <ul className="flex flex-col gap-2 text-sm uppercase tracking-[0.2em]">
               <li>
-                <a href="#" className="hover:text-accent transition-colors">
+                <a
+                  href="https://www.instagram.com/unfoldmediacorp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-accent transition-colors"
+                >
                   Instagram
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-accent transition-colors">
-                  Vimeo
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-accent transition-colors">
+                <a
+                  href="https://www.linkedin.com/company/unfold-media-corp/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-accent transition-colors"
+                >
                   LinkedIn
                 </a>
               </li>
@@ -113,7 +153,7 @@ function ContactPage() {
               <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent block mb-6">
                 Received
               </span>
-              <h2 className="font-display text-4xl md:text-5xl italic tracking-tighter mb-6">
+              <h2 className="font-display text-4xl md:text-5xl tracking-tighter mb-6">
                 Thank you.
               </h2>
               <p className="text-lg text-muted-foreground max-w-md">
@@ -122,14 +162,30 @@ function ContactPage() {
             </Reveal>
           ) : (
             <Reveal>
-              <form onSubmit={onSubmit} className="space-y-10">
-                <Field label="Your name" name="name" required />
-                <Field label="Business email" name="email" type="email" required />
-                <Field label="Company" name="company" />
-                <Field label="Phone (optional)" name="phone" type="tel" />
-                <TextArea label="Tell us about the project" name="brief" required />
-                <CtaButton type="submit" size="lg" className="mt-4">
-                  Send enquiry
+              <form onSubmit={onSubmit} className="space-y-10" aria-busy={loading}>
+                <Field label="Your name" name="name" required disabled={loading} />
+                <Field
+                  label="Business email"
+                  name="email"
+                  type="email"
+                  required
+                  disabled={loading}
+                />
+                <Field label="Company" name="company" disabled={loading} />
+                <Field label="Phone (optional)" name="phone" type="tel" disabled={loading} />
+                <TextArea
+                  label="Tell us about the project"
+                  name="brief"
+                  required
+                  disabled={loading}
+                />
+                {error && (
+                  <p className="text-sm text-destructive" role="alert" aria-live="polite">
+                    {error}
+                  </p>
+                )}
+                <CtaButton type="submit" size="lg" className="mt-4" disabled={loading}>
+                  {loading ? "Sending..." : "Send enquiry"}
                 </CtaButton>
               </form>
             </Reveal>
@@ -178,11 +234,13 @@ function Field({
   name,
   type = "text",
   required,
+  disabled,
 }: {
   label: string;
   name: string;
   type?: string;
   required?: boolean;
+  disabled?: boolean;
 }) {
   return (
     <label className="block group">
@@ -194,13 +252,24 @@ function Field({
         name={name}
         type={type}
         required={required}
-        className="w-full bg-transparent border-b border-border py-3 text-lg font-display focus:outline-none focus:border-foreground transition-colors placeholder:text-muted-foreground/40"
+        disabled={disabled}
+        className="w-full bg-transparent border-b border-border py-3 text-lg font-display focus:outline-none focus:border-foreground transition-colors placeholder:text-muted-foreground/40 disabled:opacity-50 disabled:cursor-not-allowed"
       />
     </label>
   );
 }
 
-function TextArea({ label, name, required }: { label: string; name: string; required?: boolean }) {
+function TextArea({
+  label,
+  name,
+  required,
+  disabled,
+}: {
+  label: string;
+  name: string;
+  required?: boolean;
+  disabled?: boolean;
+}) {
   return (
     <label className="block">
       <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground block mb-3">
@@ -210,8 +279,9 @@ function TextArea({ label, name, required }: { label: string; name: string; requ
       <textarea
         name={name}
         required={required}
+        disabled={disabled}
         rows={5}
-        className="w-full bg-transparent border-b border-border py-3 text-lg focus:outline-none focus:border-foreground transition-colors resize-none"
+        className="w-full bg-transparent border-b border-border py-3 text-lg focus:outline-none focus:border-foreground transition-colors resize-none disabled:opacity-50 disabled:cursor-not-allowed"
       />
     </label>
   );
