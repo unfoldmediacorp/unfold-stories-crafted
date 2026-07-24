@@ -71,7 +71,7 @@ export const template = {
     phone: "+91 98765 43210",
     brief: "We are looking for a cinematic brand film for our product launch.",
   },
-} satisfies TemplateEntry<Props>;
+} satisfies TemplateEntry;
 
 const main = {
   backgroundColor: "#e8ded6",

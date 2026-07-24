@@ -153,7 +153,7 @@ function ContactPage() {
               <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent block mb-6">
                 Received
               </span>
-              <h2 className="font-display text-4xl md:text-5xl italic tracking-tighter mb-6">
+              <h2 className="font-display text-4xl md:text-5xl tracking-tighter mb-6">
                 Thank you.
               </h2>
               <p className="text-lg text-muted-foreground max-w-md">
@@ -162,14 +162,19 @@ function ContactPage() {
             </Reveal>
           ) : (
             <Reveal>
-              <form onSubmit={onSubmit} className="space-y-10">
-                <Field label="Your name" name="name" required />
-                <Field label="Business email" name="email" type="email" required />
-                <Field label="Company" name="company" />
-                <Field label="Phone (optional)" name="phone" type="tel" />
-                <TextArea label="Tell us about the project" name="brief" required />
-                <CtaButton type="submit" size="lg" className="mt-4">
-                  Send enquiry
+              <form onSubmit={onSubmit} className="space-y-10" aria-busy={loading}>
+                <Field label="Your name" name="name" required disabled={loading} />
+                <Field label="Business email" name="email" type="email" required disabled={loading} />
+                <Field label="Company" name="company" disabled={loading} />
+                <Field label="Phone (optional)" name="phone" type="tel" disabled={loading} />
+                <TextArea label="Tell us about the project" name="brief" required disabled={loading} />
+                {error && (
+                  <p className="text-sm text-destructive" role="alert" aria-live="polite">
+                    {error}
+                  </p>
+                )}
+                <CtaButton type="submit" size="lg" className="mt-4" disabled={loading}>
+                  {loading ? "Sending..." : "Send enquiry"}
                 </CtaButton>
               </form>
             </Reveal>
