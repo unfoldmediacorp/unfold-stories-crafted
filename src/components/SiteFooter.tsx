@@ -37,9 +37,7 @@ export function SiteFooter() {
           </address>
         </div>
         <div>
-          <h5 className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-6">
-            Studio
-          </h5>
+          <h5 className="label text-muted-foreground mb-6">Studio</h5>
           <ul className="space-y-3 text-sm text-muted-foreground">
             <li>
               <Link to="/services" data-cursor="button" className={linkCls}>
@@ -69,9 +67,7 @@ export function SiteFooter() {
           </ul>
         </div>
         <div>
-          <h5 className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-6">
-            Elsewhere
-          </h5>
+          <h5 className="label text-muted-foreground mb-6">Elsewhere</h5>
           <ul className="space-y-3 text-sm text-muted-foreground">
             <li>
               <a
@@ -99,7 +95,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-border">
-        <div className="max-w-[1400px] mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-[10px] font-mono uppercase text-muted-foreground tracking-[0.2em]">
+        <div className="max-w-[1400px] mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-3 label text-muted-foreground">
           <div>© {new Date().getFullYear()} Unfold Media Corp</div>
           <div className="flex items-center gap-2">
             <span className="inline-block w-1 h-1 rounded-full bg-accent" />

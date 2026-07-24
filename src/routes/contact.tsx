@@ -93,9 +93,7 @@ function ContactPage() {
         {/* Left: details */}
         <aside className="col-span-12 lg:col-span-4 space-y-12">
           <Reveal>
-            <h3 className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-4">
-              Studio
-            </h3>
+            <h3 className="label text-muted-foreground mb-4">Studio</h3>
             <p className="font-display font-semibold text-2xl leading-snug">
               Unfold Media Corp
               <br />
@@ -105,36 +103,32 @@ function ContactPage() {
             </p>
           </Reveal>
           <Reveal delay={80}>
-            <h3 className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-4">
-              Enquiries
-            </h3>
+            <h3 className="label text-muted-foreground mb-4">Enquiries</h3>
             <ul className="space-y-2 text-lg">
               <li>
                 <a
                   href="mailto:Unfoldmediacorp@gmail.com"
-                  className="hover:text-accent transition-colors border-b border-border pb-1"
+                  className="hover:text-accent-ink transition-colors border-b border-border pb-1"
                 >
                   Unfoldmediacorp@gmail.com
                 </a>
               </li>
               <li>
-                <a href="tel:+917418898911" className="hover:text-accent transition-colors">
+                <a href="tel:+917418898911" className="hover:text-accent-ink transition-colors">
                   +91 74188 98911
                 </a>
               </li>
             </ul>
           </Reveal>
           <Reveal delay={160}>
-            <h3 className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-4">
-              Elsewhere
-            </h3>
+            <h3 className="label text-muted-foreground mb-4">Elsewhere</h3>
             <ul className="flex flex-col gap-2 text-sm uppercase tracking-[0.2em]">
               <li>
                 <a
                   href="https://www.instagram.com/unfoldmediacorp"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-accent transition-colors"
+                  className="hover:text-accent-ink transition-colors"
                 >
                   Instagram
                 </a>
@@ -144,7 +138,7 @@ function ContactPage() {
                   href="https://www.linkedin.com/company/unfold-media-corp/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-accent transition-colors"
+                  className="hover:text-accent-ink transition-colors"
                 >
                   LinkedIn
                 </a>
@@ -164,9 +158,7 @@ function ContactPage() {
                 aria-live="polite"
                 className="focus:outline-none"
               >
-                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent block mb-6">
-                  Received
-                </span>
+                <span className="label label-eyebrow text-accent-ink block mb-6">Received</span>
                 <h2 className="font-display text-4xl md:text-5xl tracking-tighter mb-6">
                   Thank you.
                 </h2>
@@ -230,12 +222,8 @@ function ContactPage() {
       <section className="border-t border-border">
         <div className="max-w-[1400px] mx-auto px-6 py-16">
           <div className="flex items-baseline justify-between mb-8">
-            <h3 className="font-mono text-[10px] uppercase tracking-[0.2em]">
-              The Studio, Coimbatore
-            </h3>
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-              11.0168° N / 76.9558° E
-            </span>
+            <h3 className="label">The Studio, Coimbatore</h3>
+            <span className="label text-muted-foreground">11.0168° N / 76.9558° E</span>
           </div>
           <div className="w-full aspect-[21/9] outline outline-1 -outline-offset-1 outline-black/5 overflow-hidden">
             <iframe
@@ -274,10 +262,10 @@ function Field({
 }) {
   return (
     <label className="block group">
-      <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground block mb-3">
+      <span className="label text-muted-foreground block mb-3">
         {label}
         {required && (
-          <span className="text-accent" aria-hidden="true">
+          <span className="text-accent-ink" aria-hidden="true">
             {" *"}
           </span>
         )}
@@ -307,10 +295,10 @@ function TextArea({
 }) {
   return (
     <label className="block">
-      <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground block mb-3">
+      <span className="label text-muted-foreground block mb-3">
         {label}
         {required && (
-          <span className="text-accent" aria-hidden="true">
+          <span className="text-accent-ink" aria-hidden="true">
             {" *"}
           </span>
         )}

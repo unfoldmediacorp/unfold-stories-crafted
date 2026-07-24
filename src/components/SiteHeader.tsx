@@ -61,19 +61,17 @@ export function SiteHeader() {
             alt=""
             className={
               "w-auto transition-[height] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] " +
-              (scrolled ? "h-8" : "h-10 md:h-11")
+              (scrolled ? "h-11 md:h-12" : "h-14 md:h-16")
             }
           />
           <span className="flex flex-col leading-none">
-            <span className="font-display text-base md:text-lg font-semibold tracking-tight text-foreground">
+            <span className="font-display text-2xl md:text-3xl font-semibold tracking-tight text-foreground">
               Unfold
             </span>
-            <span className="font-mono text-[9px] md:text-[10px] uppercase tracking-[0.28em] text-muted-foreground mt-1">
-              Media Corp
-            </span>
+            <span className="label text-muted-foreground mt-1.5">Media Corp</span>
           </span>
         </Link>
-        <div className="hidden md:flex gap-8 text-[11px] uppercase tracking-[0.2em] font-medium">
+        <div className="hidden md:flex gap-8 text-[13px] uppercase tracking-[0.16em] font-medium">
           {nav.map((item) => {
             const active = pathname === item.to;
             return (
@@ -94,12 +92,10 @@ export function SiteHeader() {
             );
           })}
         </div>
-        <div className="hidden md:block text-[10px] font-mono uppercase text-muted-foreground">
-          CBE / IND
-        </div>
+        <div className="hidden md:block label text-muted-foreground">CBE / IND</div>
         <button
           data-cursor="button"
-          className="md:hidden text-[11px] font-mono uppercase tracking-[0.2em]"
+          className="md:hidden label"
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}

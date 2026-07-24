@@ -5,7 +5,7 @@ type Variant = "solid" | "outline" | "ghost";
 type Size = "md" | "lg";
 
 const base =
-  "group/cta relative inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.3em] font-medium " +
+  "group/cta relative inline-flex items-center gap-3 text-[13px] uppercase tracking-[0.22em] font-medium " +
   "transition-[transform,background-color,color,box-shadow,border-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] " +
   "will-change-transform hover:-translate-y-[1px] hover:scale-[1.02] active:scale-[0.99] " +
   "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background";

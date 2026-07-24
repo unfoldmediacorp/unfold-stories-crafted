@@ -58,9 +58,7 @@ function AboutPage() {
 
         <div className="col-span-12 lg:col-span-4 lg:col-start-9 space-y-16">
           <Reveal>
-            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent block mb-6">
-              Mission
-            </span>
+            <span className="label label-eyebrow text-accent-ink block mb-6">Mission</span>
             <p className="font-display text-3xl md:text-4xl leading-[1.15] tracking-tight text-pretty">
               To help serious businesses tell serious stories, with the craft and restraint the
               subject deserves.
@@ -68,9 +66,7 @@ function AboutPage() {
           </Reveal>
 
           <Reveal>
-            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent block mb-6">
-              Vision
-            </span>
+            <span className="label label-eyebrow text-accent-ink block mb-6">Vision</span>
             <p className="text-lg leading-relaxed text-muted-foreground text-pretty">
               A studio known for a small body of exceptional work rather than a large body of
               forgettable output. Films you remember years after you've seen them.
@@ -78,9 +74,7 @@ function AboutPage() {
           </Reveal>
 
           <Reveal>
-            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent block mb-6">
-              Philosophy
-            </span>
+            <span className="label label-eyebrow text-accent-ink block mb-6">Philosophy</span>
             <p className="text-lg leading-relaxed text-muted-foreground text-pretty">
               We believe the best commercial films are quiet, patient and specific. They earn
               attention rather than demand it. They age well. They treat the audience like adults.
@@ -93,7 +87,7 @@ function AboutPage() {
       <section className="bg-foreground text-background py-24 md:py-32 px-6">
         <div className="max-w-4xl mx-auto">
           <Reveal>
-            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent block mb-8">
+            <span className="label label-eyebrow text-accent block mb-8">
               A note from the founder
             </span>
             <blockquote className="font-display text-3xl md:text-5xl italic leading-[1.1] tracking-tighter mb-10 text-pretty">
@@ -101,9 +95,7 @@ function AboutPage() {
               bad films. There is a real difference between a video and a piece of cinema, and it
               matters.”
             </blockquote>
-            <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-background/60">
-              Founder, Unfold Media Corp
-            </div>
+            <div className="label text-background/60">Founder, Unfold Media Corp</div>
           </Reveal>
         </div>
       </section>
@@ -112,9 +104,7 @@ function AboutPage() {
       <section className="py-24 md:py-32 px-6 border-t border-border">
         <div className="max-w-[1400px] mx-auto grid grid-cols-12 gap-6">
           <Reveal className="col-span-12 lg:col-span-4">
-            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent block mb-6">
-              Studio Culture
-            </span>
+            <span className="label label-eyebrow text-accent-ink block mb-6">Studio Culture</span>
             <h2 className="font-display font-semibold text-4xl md:text-5xl tracking-tighter leading-[0.95]">
               Small crews.
               <br />
@@ -144,10 +134,8 @@ function AboutPage() {
       <section className="py-16 md:py-24 px-6 border-t border-border bg-muted/60">
         <div className="max-w-[1400px] mx-auto">
           <div className="flex items-baseline justify-between mb-12">
-            <h2 className="font-mono text-[10px] uppercase tracking-[0.2em]">The Team</h2>
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-              In Progress
-            </span>
+            <h2 className="label">The Team</h2>
+            <span className="label text-muted-foreground">In Progress</span>
           </div>
           <Reveal className="border-t border-border pt-16 flex flex-col items-center justify-center min-h-[240px] text-center">
             <p className="font-display text-2xl md:text-3xl italic text-subtle mb-4">

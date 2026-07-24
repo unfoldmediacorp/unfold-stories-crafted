@@ -68,9 +68,7 @@ function WorkPage() {
       {projects.length > 0 && (
         <section className="max-w-[1400px] mx-auto px-6 py-12 md:py-16">
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3 border-b border-border pb-6">
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mr-2">
-              Filter
-            </span>
+            <span className="label text-muted-foreground mr-2">Filter</span>
             {filters.map((f) => {
               const isActive = active === f;
               return (
@@ -78,10 +76,10 @@ function WorkPage() {
                   key={f}
                   onClick={() => setActive(f)}
                   aria-pressed={isActive}
-                  className={`text-[11px] uppercase tracking-[0.2em] transition-colors ${
+                  className={`text-[13px] uppercase tracking-[0.16em] transition-colors ${
                     isActive
                       ? "text-foreground font-bold"
-                      : "text-muted-foreground hover:text-accent"
+                      : "text-muted-foreground hover:text-accent-ink"
                   }`}
                 >
                   {f}
@@ -95,9 +93,7 @@ function WorkPage() {
       <section className="max-w-[1400px] mx-auto px-6 py-12 md:py-16 pb-24 md:pb-32">
         {visible.length === 0 ? (
           <Reveal className="border border-border py-24 md:py-40 flex flex-col items-center justify-center text-center bg-muted/40">
-            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent mb-8">
-              In Production
-            </span>
+            <span className="label label-eyebrow text-accent-ink mb-8">In Production</span>
             <p className="font-display text-4xl md:text-6xl italic tracking-tighter text-subtle mb-6">
               Silence before the symphony.
             </p>
@@ -133,18 +129,16 @@ function WorkCard({ project }: { project: Project }) {
             className="w-full h-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.03]"
           />
         ) : (
-          <div className="w-full h-full grid place-items-center text-subtle font-mono text-[10px] uppercase tracking-[0.2em]">
+          <div className="w-full h-full grid place-items-center text-subtle label">
             Frame pending
           </div>
         )}
       </figure>
       <div className="flex items-baseline justify-between gap-4">
-        <h3 className="font-display text-2xl italic tracking-tighter group-hover:text-accent transition-colors">
+        <h3 className="font-display text-2xl italic tracking-tighter group-hover:text-accent-ink transition-colors">
           {project.title}
         </h3>
-        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground shrink-0">
-          {project.year}
-        </span>
+        <span className="label text-muted-foreground shrink-0">{project.year}</span>
       </div>
       <p className="text-sm text-muted-foreground mt-1">
         {project.client} · {project.category}

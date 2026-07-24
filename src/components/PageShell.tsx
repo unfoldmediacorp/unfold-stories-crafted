@@ -30,9 +30,7 @@ export function PageIntro({
     <section className="border-b border-border">
       <div className="max-w-[1400px] mx-auto px-6 pt-20 md:pt-28 pb-20 md:pb-32 grid grid-cols-12 gap-6 items-end">
         <div className="col-span-12 lg:col-span-8">
-          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent block mb-10">
-            {eyebrow}
-          </span>
+          <span className="label label-eyebrow text-accent-ink block mb-10">{eyebrow}</span>
           {/* Italic first line, roman second, echoing the "Cinematic /
               Perspectives." pairing in the home hero. Callers mark the roman
               half with `not-italic`. */}

@@ -20,9 +20,7 @@ function NotFoundComponent() {
   return (
     <div className="flex min-h-dvh items-center justify-center bg-background px-6">
       <div className="max-w-md text-center">
-        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent block mb-8">
-          404 / Off script
-        </span>
+        <span className="label label-eyebrow text-accent-ink block mb-8">404 / Off script</span>
         <h1 className="font-display font-semibold text-6xl tracking-tighter mb-8">
           This page hasn't been filmed.
         </h1>
@@ -45,9 +43,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   return (
     <div className="flex min-h-dvh items-center justify-center bg-background px-6">
       <div className="max-w-md text-center">
-        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent block mb-8">
-          Error
-        </span>
+        <span className="label label-eyebrow text-accent-ink block mb-8">Error</span>
         <h1 className="font-display font-semibold text-5xl tracking-tighter mb-8">
           Something interrupted the reel.
         </h1>

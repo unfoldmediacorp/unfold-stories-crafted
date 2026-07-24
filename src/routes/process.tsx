@@ -85,7 +85,7 @@ function ProcessPage() {
           {steps.map((s, i) => (
             <Reveal key={s.n} delay={i * 60}>
               <li className="grid grid-cols-12 gap-6 border-t border-border py-14 md:py-20 last:border-b">
-                <div className="col-span-12 md:col-span-2 font-mono text-xs text-accent uppercase tracking-[0.2em]">
+                <div className="col-span-12 md:col-span-2 label label-eyebrow text-accent-ink">
                   Step {s.n}.
                 </div>
                 <div className="col-span-12 md:col-span-5">
@@ -105,9 +105,7 @@ function ProcessPage() {
 
       <section className="py-24 md:py-32 px-6 text-center border-t border-border bg-muted/60">
         <Reveal>
-          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent block mb-6">
-            Ready when you are
-          </span>
+          <span className="label label-eyebrow text-accent-ink block mb-6">Ready when you are</span>
           <h2 className="font-display font-semibold text-5xl md:text-7xl mb-12 tracking-tighter">
             Start with a conversation.
           </h2>

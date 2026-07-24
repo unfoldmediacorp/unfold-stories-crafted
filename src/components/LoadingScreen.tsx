@@ -53,9 +53,7 @@ export function LoadingScreen() {
         }}
       >
         <div className="font-display text-5xl md:text-6xl font-bold tracking-tighter">Unfold</div>
-        <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-muted-foreground">
-          Media Corp
-        </div>
+        <div className="label label-eyebrow text-muted-foreground">Media Corp</div>
       </div>
     </div>
   );

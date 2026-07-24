@@ -147,9 +147,7 @@ function HomePage() {
       {/* Who We Are */}
       <section className="py-24 md:py-32 px-6 border-y border-border">
         <Reveal className="max-w-3xl mx-auto text-center">
-          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent mb-8 block">
-            The Studio
-          </span>
+          <span className="label label-eyebrow text-accent-ink mb-8 block">The Studio</span>
           <p className="font-display text-3xl md:text-4xl leading-snug text-pretty">
             Unfold Media Corp is a studio built around a single conviction: a well-made film can
             change how a business is understood. We work with founders and companies who have
@@ -162,10 +160,10 @@ function HomePage() {
       <section className="grid lg:grid-cols-2 border-b border-border">
         <div className="p-6 md:p-12 lg:border-r border-border">
           <div className="flex items-baseline justify-between mb-12">
-            <h2 className="font-mono text-[10px] uppercase tracking-[0.2em]">Services</h2>
+            <h2 className="label">Services</h2>
             <Link
               to="/services"
-              className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground hover:text-accent transition-colors"
+              className="label text-muted-foreground hover:text-accent-ink transition-colors"
             >
               All →
             </Link>
@@ -174,10 +172,10 @@ function HomePage() {
             {services.map((s, i) => (
               <Reveal key={s} delay={i * 60}>
                 <li className="flex justify-between items-baseline border-b border-border py-5 group">
-                  <span className="font-display text-2xl md:text-3xl transition-all duration-500 group-hover:italic group-hover:pl-3 group-hover:text-accent">
+                  <span className="font-display text-2xl md:text-3xl transition-all duration-500 group-hover:italic group-hover:pl-3 group-hover:text-accent-ink">
                     {s}
                   </span>
-                  <span className="font-mono text-[10px] text-muted-foreground">
+                  <span className="label text-muted-foreground">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                 </li>
@@ -188,10 +186,10 @@ function HomePage() {
 
         <div className="p-6 md:p-12 bg-muted/60">
           <div className="flex items-baseline justify-between mb-12">
-            <h2 className="font-mono text-[10px] uppercase tracking-[0.2em]">The Methodology</h2>
+            <h2 className="label">The Methodology</h2>
             <Link
               to="/process"
-              className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground hover:text-accent transition-colors"
+              className="label text-muted-foreground hover:text-accent-ink transition-colors"
             >
               Full process →
             </Link>
@@ -200,7 +198,7 @@ function HomePage() {
             {process.map((p, i) => (
               <Reveal key={p.key} delay={i * 80}>
                 <div className="flex gap-6">
-                  <span className="font-mono text-xs text-accent pt-1 w-8 shrink-0">{p.key}.</span>
+                  <span className="label text-accent-ink pt-0.5 w-10 shrink-0">{p.key}.</span>
                   <div>
                     <h4 className="font-bold text-sm uppercase tracking-tighter mb-2">{p.title}</h4>
                     <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
@@ -223,7 +221,7 @@ function HomePage() {
             </h2>
             <Link
               to="/work"
-              className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground hover:text-accent transition-colors"
+              className="label text-muted-foreground hover:text-accent-ink transition-colors"
             >
               The archive →
             </Link>
@@ -244,9 +242,7 @@ function HomePage() {
       <section className="bg-foreground text-background py-24 md:py-32 px-6">
         <div className="max-w-[1400px] mx-auto">
           <Reveal className="mb-16 md:mb-24 max-w-2xl">
-            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent block mb-6">
-              Why Unfold
-            </span>
+            <span className="label label-eyebrow text-accent block mb-6">Why Unfold</span>
             <h2 className="font-display font-semibold text-4xl md:text-5xl tracking-tighter leading-[1.05]">
               We make fewer films, on purpose.
             </h2>
@@ -255,11 +251,9 @@ function HomePage() {
             {principles.map((p, i) => (
               <Reveal key={p.n} delay={i * 80}>
                 <div className="border-t border-background/20 pt-8">
-                  <h4 className="font-mono text-[10px] uppercase tracking-[0.2em] mb-6 text-accent">
-                    {p.n}
-                  </h4>
+                  <h4 className="index-numeral mb-6 text-accent">{p.n}</h4>
                   <p className="font-display text-lg mb-4">{p.title}</p>
-                  <p className="text-xs text-background/60 leading-relaxed">{p.body}</p>
+                  <p className="text-sm text-background/75 leading-relaxed">{p.body}</p>
                 </div>
               </Reveal>
             ))}

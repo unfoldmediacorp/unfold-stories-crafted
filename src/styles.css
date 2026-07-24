@@ -23,6 +23,7 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-accent-ink: var(--accent-ink);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
@@ -64,8 +65,13 @@
   --secondary: #f6f4f1;
   --secondary-foreground: #110f0b;
 
+  /* Sandstone. Bright enough to read on the dark band, and correct for rules,
+     dots and hover states, but only 2.3:1 on the white canvas. */
   --accent: #ae9e8e;
   --accent-foreground: #110f0b;
+  /* Sandstone ink: the same hue carried down to 5.2:1 so accent-coloured
+     labels are legible on the canvas. Use for accent TEXT on light. */
+  --accent-ink: #7a6a58;
 
   --destructive: #110f0b;
   --destructive-foreground: #ffffff;
@@ -122,6 +128,55 @@
 }
 
 @layer components {
+  /* Mono label scale.
+     These carry every eyebrow, section marker and meta line on the site. They
+     were all hard-set to 10px, which is below a comfortable reading size for
+     uppercase mono at wide tracking, especially on a phone. Two tiers now,
+     both stepping up on larger screens. Tracking eases off as the size grows,
+     since wide letterspacing costs more legibility the bigger the type gets.
+
+     Colour is deliberately not set here, so `text-accent-ink`,
+     `text-muted-foreground` and friends still apply at the call site. */
+  .label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1.45;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+  }
+
+  /* Section openers: the tier that announces "Services", "Mission", "Process". */
+  .label-eyebrow {
+    font-size: 0.8125rem;
+    letter-spacing: 0.26em;
+  }
+
+  @media (min-width: 768px) {
+    .label {
+      font-size: 0.8125rem;
+    }
+
+    .label-eyebrow {
+      font-size: 0.9375rem;
+    }
+  }
+
+  /* Editorial index numerals. The services list is a catalogue, so its
+     numbers are set as display figures rather than mono ticks. */
+  .index-numeral {
+    font-family: var(--font-display);
+    font-size: 1.875rem;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+
+  @media (min-width: 768px) {
+    .index-numeral {
+      font-size: 3rem;
+    }
+  }
+
   /* Skip link: off-screen until focused, then pinned to the top-left. */
   .skip-link {
     position: fixed;
@@ -133,9 +188,9 @@
     color: var(--color-background);
     padding: 0.75rem 1.25rem;
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: 0.8125rem;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.18em;
     transition: transform 300ms var(--ease-studio);
   }
 

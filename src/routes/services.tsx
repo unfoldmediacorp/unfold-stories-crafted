@@ -101,12 +101,12 @@ function ServicesPage() {
         <div className="divide-y divide-border border-y border-border">
           {services.map((s, i) => (
             <Reveal key={s.n} delay={i * 40}>
-              <article className="grid grid-cols-12 gap-6 py-12 md:py-16 group">
-                <div className="col-span-12 md:col-span-1 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground pt-3">
-                  {s.n}
-                </div>
+              <article className="grid grid-cols-12 gap-x-6 gap-y-3 md:gap-6 py-12 md:py-16 group">
+                {/* Catalogue index, set as a display figure so it reads at a
+                    glance and sits level with the discipline it numbers. */}
+                <div className="col-span-12 md:col-span-1 index-numeral text-accent-ink">{s.n}</div>
                 <div className="col-span-12 md:col-span-5">
-                  <h2 className="font-display font-semibold text-4xl md:text-5xl tracking-tighter leading-[0.95] transition-colors duration-500 group-hover:text-accent">
+                  <h2 className="font-display font-semibold text-4xl md:text-5xl tracking-tighter leading-[0.95] transition-colors duration-500 group-hover:text-accent-ink">
                     {s.title}
                   </h2>
                 </div>
