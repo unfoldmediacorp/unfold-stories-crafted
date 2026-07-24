@@ -56,13 +56,6 @@ export const Route = createFileRoute("/api/contact")({
           });
         } catch (error) {
           console.error("Failed to send enquiry email:", error);
-          return Response.json(
-            {
-              error:
-                "Your enquiry was received, but we could not send a notification email. The studio will still see your submission.",
-            },
-            { status: 500 },
-          );
         }
 
         return Response.json({ success: true });
