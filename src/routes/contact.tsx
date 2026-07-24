@@ -92,9 +92,9 @@ function ContactPage() {
             <p className="font-display font-semibold text-2xl leading-snug">
               Unfold Media Corp
               <br />
-              Coimbatore, Tamil Nadu
+              Nagappa Complex, Mettupalayam Rd
               <br />
-              India
+              R.S. Puram, Coimbatore 641002
             </p>
           </Reveal>
           <Reveal delay={80}>
