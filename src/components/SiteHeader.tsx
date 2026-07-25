@@ -70,11 +70,18 @@ export function SiteHeader() {
             <span className="font-display text-3xl md:text-[2.75rem] font-semibold tracking-tight text-foreground">
               Unfold
             </span>
-            {/* Tracking is tuned so the sublabel sets to roughly the width of
-                the wordmark above it, keeping the lockup as one block. */}
-            <span className="font-mono text-[11px] md:text-[13px] uppercase tracking-[0.34em] md:tracking-[0.36em] text-muted-foreground mt-2">
-              Media Corp
+            {/* MEDIACORP is set as a flex row of letters so M aligns with the
+                U above and P aligns with the d — the lockup reads as one
+                stacked block regardless of viewport width. */}
+            <span
+              aria-hidden="true"
+              className="flex justify-between w-full font-mono font-bold text-[13px] md:text-[15px] uppercase text-foreground mt-2"
+            >
+              {"MEDIACORP".split("").map((c, i) => (
+                <span key={i}>{c}</span>
+              ))}
             </span>
+            <span className="sr-only">Media Corp</span>
           </span>
         </Link>
         <div className="hidden md:flex gap-8 text-[13px] uppercase tracking-[0.16em] font-medium">
@@ -98,7 +105,28 @@ export function SiteHeader() {
             );
           })}
         </div>
-        <div className="hidden md:block label text-muted-foreground">CBE / IND</div>
+        <div className="hidden md:flex items-center gap-4 text-muted-foreground">
+          <a
+            href={STUDIO.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cursor="button"
+            aria-label="Instagram"
+            className="transition-colors duration-300 hover:text-foreground"
+          >
+            <Instagram size={20} strokeWidth={1.5} />
+          </a>
+          <a
+            href={STUDIO.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cursor="button"
+            aria-label="LinkedIn"
+            className="transition-colors duration-300 hover:text-foreground"
+          >
+            <Linkedin size={20} strokeWidth={1.5} />
+          </a>
+        </div>
         <button
           data-cursor="button"
           className="md:hidden label"
