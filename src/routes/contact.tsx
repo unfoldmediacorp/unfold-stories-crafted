@@ -97,9 +97,9 @@ function ContactPage() {
             <p className="font-display font-semibold text-2xl leading-snug">
               Unfold Media Corp
               <br />
-              Nagappa Complex, Mettupalayam Rd
+              1079, Level 3, R.S. Puram
               <br />
-              R.S. Puram, Coimbatore 641002
+              Coimbatore 641002
             </p>
           </Reveal>
           <Reveal delay={80}>
@@ -107,10 +107,10 @@ function ContactPage() {
             <ul className="space-y-2 text-lg">
               <li>
                 <a
-                  href="mailto:Unfoldmediacorp@gmail.com"
+                  href="mailto:unfoldmediacorp@gmail.com"
                   className="hover:text-accent-ink transition-colors border-b border-border pb-1"
                 >
-                  Unfoldmediacorp@gmail.com
+                  unfoldmediacorp@gmail.com
                 </a>
               </li>
               <li>
@@ -203,7 +203,7 @@ function ContactPage() {
           <div className="w-full aspect-[21/9] outline outline-1 -outline-offset-1 outline-black/5 overflow-hidden">
             <iframe
               title="Map of Unfold Media Corp studio, Coimbatore"
-              src="https://www.google.com/maps?q=Nagappa%20Complex%2C%201076%2C%20Mettupalayam%20Rd%2C%20Vadakovai%2C%20R.S.%20Puram%2C%20Coimbatore%2C%20Tamil%20Nadu%20641002&output=embed"
+              src="https://www.google.com/maps?q=1079%2C%20Level%203%2C%20R.S.%20Puram%2C%20Coimbatore%2C%20Tamil%20Nadu%20641002&output=embed"
               className="w-full h-full border-0"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

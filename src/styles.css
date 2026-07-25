@@ -149,6 +149,14 @@
   .label-eyebrow {
     font-size: 0.8125rem;
     letter-spacing: 0.26em;
+    font-weight: 700;
+  }
+
+  /* Any accent-ink or accent-coloured label is a titular marker on the page —
+     always set it in bold so it reads as a heading, not caption. */
+  .label.text-accent-ink,
+  .label.text-accent {
+    font-weight: 700;
   }
 
   @media (min-width: 768px) {
