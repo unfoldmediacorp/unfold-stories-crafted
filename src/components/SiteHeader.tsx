@@ -1,6 +1,8 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import { Instagram, Linkedin } from "lucide-react";
 import logoU from "@/assets/logo-u.png";
+import { STUDIO } from "@/lib/site";
 
 const nav = [
   { to: "/services", label: "Services" },
