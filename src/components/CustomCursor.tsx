@@ -86,11 +86,13 @@ export function CustomCursor() {
 
   if (!mounted) return null;
 
-  const ringSize = mode === "view" ? 72 : mode === "button" ? 26 : 20;
-  const ringOpacity = visible ? (mode === "default" ? 0.35 : 1) : 0;
+  const ringSize = mode === "view" ? 80 : mode === "button" ? 44 : 34;
+  const ringOpacity = visible ? 1 : 0;
 
   return (
     <>
+      {/* Solid centre dot — sits above the ring, uses the sandstone accent so
+          it stays visible against both ivory backgrounds and dark bands. */}
       <div
         ref={dotRef}
         aria-hidden="true"
@@ -98,15 +100,15 @@ export function CustomCursor() {
           position: "fixed",
           top: 0,
           left: 0,
-          width: 6,
-          height: 6,
+          width: 10,
+          height: 10,
           borderRadius: "9999px",
           background: "var(--foreground)",
+          boxShadow: "0 0 0 2px var(--background), 0 2px 12px rgba(0,0,0,0.25)",
           pointerEvents: "none",
           zIndex: 9999,
           opacity: visible && mode !== "view" ? 1 : 0,
           transition: "opacity 200ms ease-out",
-          mixBlendMode: "difference",
         }}
       />
       <div
@@ -120,15 +122,20 @@ export function CustomCursor() {
           width: ringSize,
           height: ringSize,
           borderRadius: "9999px",
-          border: "1px solid var(--foreground)",
+          border: mode === "view" ? "1px solid var(--foreground)" : "1.5px solid var(--foreground)",
           background: mode === "view" ? "var(--foreground)" : "transparent",
-          color: "var(--background)",
+          color: mode === "view" ? "var(--background)" : "var(--foreground)",
+          boxShadow:
+            mode === "view"
+              ? "0 6px 24px rgba(0,0,0,0.25)"
+              : "0 0 0 1px var(--background), 0 2px 10px rgba(0,0,0,0.15)",
           pointerEvents: "none",
           zIndex: 9998,
           display: "grid",
           placeItems: "center",
           fontFamily: "var(--font-mono)",
           fontSize: 10,
+          fontWeight: 700,
           textTransform: "uppercase",
           letterSpacing: "0.2em",
           opacity: ringOpacity,
