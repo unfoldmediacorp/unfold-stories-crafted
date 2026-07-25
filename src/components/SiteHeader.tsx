@@ -75,7 +75,7 @@ export function SiteHeader() {
                 stacked block regardless of viewport width. */}
             <span
               aria-hidden="true"
-              className="flex justify-between w-full font-mono font-bold text-[13px] md:text-[15px] uppercase text-foreground mt-2"
+              className="flex justify-between w-full font-mono font-normal text-[13px] md:text-[15px] uppercase text-foreground mt-2"
             >
               {"MEDIACORP".split("").map((c, i) => (
                 <span key={i}>{c}</span>
