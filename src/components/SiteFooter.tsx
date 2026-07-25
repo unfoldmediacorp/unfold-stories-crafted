@@ -1,10 +1,19 @@
 import { Link } from "@tanstack/react-router";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { STUDIO } from "@/lib/site";
 
 const linkCls =
   "relative inline-block py-0.5 transition-colors duration-300 hover:text-foreground " +
   "after:content-[''] after:absolute after:left-0 after:right-0 after:-bottom-0.5 after:h-px after:bg-current " +
   "after:origin-left after:scale-x-0 after:transition-transform after:duration-500 after:ease-[cubic-bezier(0.22,1,0.36,1)] hover:after:scale-x-100";
+
+// For rows that pair an icon with a link: the icon sits outside the
+// underline, so hovering only underlines the text, not the glyph.
+const iconLinkCls =
+  "group inline-flex items-center gap-2.5 py-0.5 transition-colors duration-300 hover:text-foreground";
+const iconLinkTextCls =
+  "relative after:content-[''] after:absolute after:left-0 after:right-0 after:-bottom-0.5 after:h-px after:bg-current " +
+  "after:origin-left after:scale-x-0 after:transition-transform after:duration-500 after:ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:after:scale-x-100";
 
 export function SiteFooter() {
   return (
@@ -19,19 +28,26 @@ export function SiteFooter() {
             prefer craft to noise.
           </p>
           <address className="not-italic text-sm text-muted-foreground leading-relaxed">
-            {STUDIO.streetAddress}
-            <br />
-            {STUDIO.addressLocality} {STUDIO.postalCode}, {STUDIO.addressRegion}
-            <div className="mt-4 flex flex-col items-start gap-1">
-              <a href={`mailto:${STUDIO.email}`} data-cursor="button" className={linkCls}>
-                {STUDIO.email}
+            <div className="flex items-start gap-2.5">
+              <MapPin size={15} strokeWidth={1.5} className="shrink-0 mt-0.5 text-accent-ink" />
+              <span>
+                {STUDIO.streetAddress}
+                <br />
+                {STUDIO.addressLocality} {STUDIO.postalCode}, {STUDIO.addressRegion}
+              </span>
+            </div>
+            <div className="mt-4 flex flex-col items-start gap-2">
+              <a href={`mailto:${STUDIO.email}`} data-cursor="button" className={iconLinkCls}>
+                <Mail size={15} strokeWidth={1.5} className="shrink-0 text-accent-ink" />
+                <span className={iconLinkTextCls}>{STUDIO.email}</span>
               </a>
               <a
                 href={`tel:${STUDIO.telephone.replace(/\s/g, "")}`}
                 data-cursor="button"
-                className={linkCls}
+                className={iconLinkCls}
               >
-                {STUDIO.telephone}
+                <Phone size={15} strokeWidth={1.5} className="shrink-0 text-accent-ink" />
+                <span className={iconLinkTextCls}>{STUDIO.telephone}</span>
               </a>
             </div>
           </address>

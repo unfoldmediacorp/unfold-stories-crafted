@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type FormEvent } from "react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { PageShell, PageIntro } from "@/components/PageShell";
 import { Reveal } from "@/components/Reveal";
 import { CtaButton } from "@/components/CtaButton";
@@ -94,27 +95,42 @@ function ContactPage() {
         <aside className="col-span-12 lg:col-span-4 space-y-12">
           <Reveal>
             <h3 className="label text-muted-foreground mb-4">Studio</h3>
-            <p className="font-display font-semibold text-2xl leading-snug">
-              Unfold Media Corp
-              <br />
-              1079, Level 3, R.S. Puram
-              <br />
-              Coimbatore 641002
-            </p>
+            <div className="flex items-start gap-3">
+              <MapPin
+                size={18}
+                strokeWidth={1.5}
+                className="shrink-0 mt-1.5 text-accent-ink"
+                aria-hidden="true"
+              />
+              <p className="font-display font-semibold text-2xl leading-snug">
+                Unfold Media Corp
+                <br />
+                1079, Level 3, R.S. Puram
+                <br />
+                Coimbatore 641002
+              </p>
+            </div>
           </Reveal>
           <Reveal delay={80}>
             <h3 className="label text-muted-foreground mb-4">Enquiries</h3>
-            <ul className="space-y-2 text-lg">
+            <ul className="space-y-3 text-lg">
               <li>
                 <a
                   href="mailto:unfoldmediacorp@gmail.com"
-                  className="hover:text-accent-ink transition-colors border-b border-border pb-1"
+                  className="group inline-flex items-center gap-3 hover:text-accent-ink transition-colors"
                 >
-                  unfoldmediacorp@gmail.com
+                  <Mail size={18} strokeWidth={1.5} className="shrink-0 text-accent-ink" />
+                  <span className="border-b border-border pb-1 group-hover:border-accent-ink transition-colors">
+                    unfoldmediacorp@gmail.com
+                  </span>
                 </a>
               </li>
               <li>
-                <a href="tel:+917418898911" className="hover:text-accent-ink transition-colors">
+                <a
+                  href="tel:+917418898911"
+                  className="inline-flex items-center gap-3 hover:text-accent-ink transition-colors"
+                >
+                  <Phone size={18} strokeWidth={1.5} className="shrink-0 text-accent-ink" />
                   +91 74188 98911
                 </a>
               </li>
