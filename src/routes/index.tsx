@@ -107,10 +107,10 @@ function HomePage() {
         <div className="max-w-[1400px] mx-auto grid grid-cols-12 gap-4 md:gap-6 items-end">
           <h1 className="col-span-12 lg:col-span-9 font-display font-semibold text-[clamp(2.75rem,7vw,5.75rem)] leading-[0.9] tracking-tight">
             <span className="title-mask">
-              <span className="title-line block">Cinematic</span>
+              <em className="title-line font-normal">Cinematic</em>
             </span>
             <span className="title-mask">
-              <span className="title-line block [animation-delay:120ms]">Perspectives.</span>
+              <span className="title-line [animation-delay:120ms]">Perspectives.</span>
             </span>
           </h1>
           <div className="col-span-12 lg:col-span-4 lg:col-start-9 mt-10 lg:mt-0 stage-rise [animation-delay:520ms]">

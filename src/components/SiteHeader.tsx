@@ -1,8 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Instagram, Linkedin } from "lucide-react";
 import logoU from "@/assets/logo-u.png";
-import { STUDIO } from "@/lib/site";
 
 const nav = [
   { to: "/services", label: "Services" },
@@ -70,12 +68,9 @@ export function SiteHeader() {
             <span className="font-display text-3xl md:text-[2.75rem] font-semibold tracking-tight text-foreground">
               Unfold
             </span>
-            {/* Justify Media Corp to the exact width of "Unfold" above it,
-                so the M aligns with the U and the P with the D. */}
-            <span
-              className="font-mono text-[10px] md:text-[12px] uppercase font-medium text-muted-foreground mt-2 block w-full"
-              style={{ textAlign: "justify", textAlignLast: "justify" }}
-            >
+            {/* Tracking is tuned so the sublabel sets to roughly the width of
+                the wordmark above it, keeping the lockup as one block. */}
+            <span className="font-mono text-[11px] md:text-[13px] uppercase tracking-[0.34em] md:tracking-[0.36em] text-muted-foreground mt-2">
               Media Corp
             </span>
           </span>
@@ -101,28 +96,7 @@ export function SiteHeader() {
             );
           })}
         </div>
-        <div className="hidden md:flex items-center gap-4 text-muted-foreground">
-          <a
-            href={STUDIO.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-            data-cursor="button"
-            className="transition-colors hover:text-foreground"
-          >
-            <Instagram size={18} strokeWidth={1.6} />
-          </a>
-          <a
-            href={STUDIO.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            data-cursor="button"
-            className="transition-colors hover:text-foreground"
-          >
-            <Linkedin size={18} strokeWidth={1.6} />
-          </a>
-        </div>
+        <div className="hidden md:block label text-muted-foreground">CBE / IND</div>
         <button
           data-cursor="button"
           className="md:hidden label"

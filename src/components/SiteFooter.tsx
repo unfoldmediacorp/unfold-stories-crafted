@@ -9,7 +9,7 @@ const linkCls =
 export function SiteFooter() {
   return (
     <footer className="border-t border-border mt-24">
-      <div className="max-w-[1400px] mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-3 gap-14">
+      <div className="max-w-[1400px] mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-4 gap-14">
         <div className="md:col-span-2">
           <div className="font-display text-4xl md:text-5xl font-bold tracking-tight mb-6">
             Unfold Media Corp
@@ -63,6 +63,33 @@ export function SiteFooter() {
               <Link to="/contact" data-cursor="button" className={linkCls}>
                 Contact
               </Link>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h5 className="label text-muted-foreground mb-6">Elsewhere</h5>
+          <ul className="space-y-3 text-sm text-muted-foreground">
+            <li>
+              <a
+                href="https://www.instagram.com/unfoldmediacorp"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cursor="button"
+                className={linkCls}
+              >
+                Instagram
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/company/unfold-media-corp/"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cursor="button"
+                className={linkCls}
+              >
+                LinkedIn
+              </a>
             </li>
           </ul>
         </div>

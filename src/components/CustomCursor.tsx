@@ -86,8 +86,8 @@ export function CustomCursor() {
 
   if (!mounted) return null;
 
-  const ringSize = mode === "view" ? 84 : mode === "button" ? 44 : 34;
-  const ringOpacity = visible ? 1 : 0;
+  const ringSize = mode === "view" ? 72 : mode === "button" ? 26 : 20;
+  const ringOpacity = visible ? (mode === "default" ? 0.35 : 1) : 0;
 
   return (
     <>
@@ -98,15 +98,15 @@ export function CustomCursor() {
           position: "fixed",
           top: 0,
           left: 0,
-          width: 8,
-          height: 8,
+          width: 6,
+          height: 6,
           borderRadius: "9999px",
-          background: "var(--accent-ink)",
-          boxShadow: "0 0 0 2px var(--background), 0 2px 8px rgba(0,0,0,0.25)",
+          background: "var(--foreground)",
           pointerEvents: "none",
           zIndex: 9999,
           opacity: visible && mode !== "view" ? 1 : 0,
           transition: "opacity 200ms ease-out",
+          mixBlendMode: "difference",
         }}
       />
       <div
@@ -120,22 +120,20 @@ export function CustomCursor() {
           width: ringSize,
           height: ringSize,
           borderRadius: "9999px",
-          border: mode === "view" ? "1px solid var(--foreground)" : "1.5px solid var(--accent-ink)",
+          border: "1px solid var(--foreground)",
           background: mode === "view" ? "var(--foreground)" : "transparent",
-          color: mode === "view" ? "var(--background)" : "var(--foreground)",
+          color: "var(--background)",
           pointerEvents: "none",
           zIndex: 9998,
           display: "grid",
           placeItems: "center",
           fontFamily: "var(--font-mono)",
-          fontSize: 11,
-          fontWeight: 600,
+          fontSize: 10,
           textTransform: "uppercase",
-          letterSpacing: "0.22em",
+          letterSpacing: "0.2em",
           opacity: ringOpacity,
-          boxShadow: mode === "default" ? "0 4px 14px rgba(0,0,0,0.08)" : "none",
           transition:
-            "width 320ms cubic-bezier(0.22,1,0.36,1), height 320ms cubic-bezier(0.22,1,0.36,1), background-color 320ms ease-out, border-color 320ms ease-out, opacity 240ms ease-out",
+            "width 320ms cubic-bezier(0.22,1,0.36,1), height 320ms cubic-bezier(0.22,1,0.36,1), background-color 320ms ease-out, opacity 240ms ease-out",
         }}
       >
         {mode === "view" ? "View" : ""}

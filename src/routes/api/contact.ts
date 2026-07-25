@@ -49,7 +49,7 @@ export const Route = createFileRoute("/api/contact")({
         }
 
         try {
-          await sendTemplateEmail("enquiry", "unfoldmediacorp@gmail.com", {
+          await sendTemplateEmail("enquiry", "Unfoldmediacorp@gmail.com", {
             templateData: { name, email, company, phone, brief },
             replyTo: email,
             idempotencyKey: `enquiry-${Date.now()}-${email}`,
