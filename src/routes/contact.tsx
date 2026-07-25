@@ -120,31 +120,6 @@ function ContactPage() {
               </li>
             </ul>
           </Reveal>
-          <Reveal delay={160}>
-            <h3 className="label text-muted-foreground mb-4">Elsewhere</h3>
-            <ul className="flex flex-col gap-2 text-sm uppercase tracking-[0.2em]">
-              <li>
-                <a
-                  href="https://www.instagram.com/unfoldmediacorp"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-accent-ink transition-colors"
-                >
-                  Instagram
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.linkedin.com/company/unfold-media-corp/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-accent-ink transition-colors"
-                >
-                  LinkedIn
-                </a>
-              </li>
-            </ul>
-          </Reveal>
         </aside>
 
         {/* Right: form */}
