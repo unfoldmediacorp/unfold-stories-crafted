@@ -203,7 +203,7 @@ function ContactPage() {
           <div className="w-full aspect-[21/9] outline outline-1 -outline-offset-1 outline-black/5 overflow-hidden">
             <iframe
               title="Map of Unfold Media Corp studio, Coimbatore"
-              src="https://www.google.com/maps?q=Nagappa%20Complex%2C%201076%2C%20Mettupalayam%20Rd%2C%20Vadakovai%2C%20R.S.%20Puram%2C%20Coimbatore%2C%20Tamil%20Nadu%20641002&output=embed"
+              src="https://www.google.com/maps?q=1079%2C%20R.S.%20Puram%2C%20Coimbatore%2C%20Tamil%20Nadu%20641002&output=embed"
               className="w-full h-full border-0"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
