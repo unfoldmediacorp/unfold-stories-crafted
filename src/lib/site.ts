@@ -20,9 +20,9 @@ export const SITE_DESCRIPTION =
   "A cinematic storytelling studio in Coimbatore, India. Brand films, founder stories, documentaries and campaigns for ambitious businesses.";
 
 export const STUDIO = {
-  email: "Unfoldmediacorp@gmail.com",
+  email: "unfoldmediacorp@gmail.com",
   telephone: "+91 74188 98911",
-  streetAddress: "Nagappa Complex, 1076, Mettupalayam Rd, Vadakovai, R.S. Puram",
+  streetAddress: "1079, Level 3, R.S. Puram",
   addressLocality: "Coimbatore",
   addressRegion: "Tamil Nadu",
   postalCode: "641002",

@@ -105,7 +105,7 @@ function HomePage() {
       {/* Hero */}
       <header className="relative px-6 pt-12 pb-16 md:pb-24 overflow-hidden">
         <div className="max-w-[1400px] mx-auto grid grid-cols-12 gap-4 md:gap-6 items-end">
-          <h1 className="col-span-12 lg:col-span-9 font-display font-semibold text-[clamp(2.75rem,7vw,5.75rem)] leading-[0.9] tracking-tight">
+          <h1 className="col-span-12 lg:col-span-8 font-display font-semibold text-[clamp(2.75rem,7vw,5.75rem)] leading-[0.9] tracking-tight">
             <span className="title-mask">
               <em className="title-line font-normal">Cinematic</em>
             </span>
