@@ -149,6 +149,7 @@
   .label-eyebrow {
     font-size: 0.8125rem;
     letter-spacing: 0.26em;
+    font-weight: 700;
   }
 
   @media (min-width: 768px) {
@@ -169,6 +170,7 @@
     line-height: 1;
     letter-spacing: -0.02em;
     font-variant-numeric: lining-nums tabular-nums;
+    font-weight: 700;
   }
 
   /* Sized to match the heading it indexes, so the pair reads as one unit
@@ -177,6 +179,14 @@
     .index-numeral {
       font-size: 2.25rem;
     }
+  }
+
+  /* Any accent-coloured mono label (bronze/gold titles) reads as a heading,
+     so it earns weight — keeps eyebrows, list indices and section markers
+     consistent across the site. */
+  .label.text-accent,
+  .label.text-accent-ink {
+    font-weight: 700;
   }
 
   /* Skip link: off-screen until focused, then pinned to the top-left. */
