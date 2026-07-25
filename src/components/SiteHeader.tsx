@@ -70,16 +70,11 @@ export function SiteHeader() {
             <span className="font-display text-3xl md:text-[2.75rem] font-semibold tracking-tight text-foreground">
               Unfold
             </span>
-            {/* MEDIACORP is set as a flex row of letters so M aligns with the
-                U above and P aligns with the d — the lockup reads as one
-                stacked block regardless of viewport width. */}
             <span
               aria-hidden="true"
-              className="flex justify-between w-full translate-x-1 font-mono font-normal text-[13px] md:text-[15px] uppercase text-foreground mt-2"
+              className="w-full text-center font-mono font-normal text-[11px] md:text-[13px] tracking-[0.2em] uppercase text-foreground mt-2"
             >
-              {"MEDIACORP".split("").map((c, i) => (
-                <span key={i}>{c}</span>
-              ))}
+              Media Corp
             </span>
             <span className="sr-only">Media Corp</span>
           </span>
