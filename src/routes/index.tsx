@@ -106,10 +106,10 @@ function HomePage() {
         <div className="max-w-[1400px] mx-auto grid grid-cols-12 gap-4 md:gap-6 items-end">
           <h1 className="col-span-12 lg:col-span-8 font-display font-semibold text-[clamp(2.75rem,7vw,5.75rem)] leading-[0.9] tracking-tight">
             <span className="title-mask">
-              <em className="title-line font-normal">Cinematic</em>
+              <em className="title-line font-normal">Unfolding</em>
             </span>
             <span className="title-mask">
-              <span className="title-line [animation-delay:120ms]">Perspectives.</span>
+              <span className="title-line [animation-delay:120ms]">Your Vision.</span>
             </span>
           </h1>
           <div className="col-span-12 lg:col-span-4 lg:col-start-9 mt-10 lg:mt-0 stage-rise [animation-delay:520ms]">
@@ -225,9 +225,6 @@ function HomePage() {
             </Link>
           </div>
           <Reveal className="border-t border-border pt-14 grid grid-cols-12 gap-6">
-            <p className="col-span-12 md:col-span-7 font-display text-2xl md:text-3xl leading-snug text-pretty">
-              The best ideas begin with understanding.
-            </p>
             <p className="col-span-12 md:col-span-4 md:col-start-9 text-sm text-muted-foreground leading-relaxed">
               Until then, the process page is the most honest account of how the work gets made, and
               the fastest way to judge whether we are right for yours.
@@ -244,6 +241,9 @@ function HomePage() {
             <h2 className="font-display font-semibold text-3xl md:text-4xl tracking-tighter leading-[1.05]">
               We make fewer films, on purpose.
             </h2>
+            <p className="mt-6 font-display text-2xl md:text-3xl leading-snug text-pretty text-background/90">
+              The best ideas begin with understanding.
+            </p>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
             {principles.map((p, i) => (
