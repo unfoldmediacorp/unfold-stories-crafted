@@ -32,13 +32,12 @@ export const Route = createFileRoute("/")({
 });
 
 const services = [
-  "Brand Films",
-  "Corporate Films",
+  "Advertisements",
+  "Brand Story Films",
+  "Social Media Marketing",
   "Founder Stories",
-  "Documentaries",
-  "Commercial Campaigns",
-  "Photography",
-  "Social-first Content",
+  "Brand Strategy",
+  "Creative Direction",
 ] as const;
 
 // The six canonical stages. Keep in step with src/routes/process.tsx, which
@@ -115,8 +114,8 @@ function HomePage() {
           </h1>
           <div className="col-span-12 lg:col-span-4 lg:col-start-9 mt-10 lg:mt-0 stage-rise [animation-delay:520ms]">
             <p className="text-lg md:text-xl leading-[1.65] text-pretty mb-10 max-w-md text-muted-foreground">
-              A cinematic storytelling studio in Coimbatore, building films for businesses who
-              prefer craft to noise.
+              We are an advertising and creative studio built for the clarity and craft of your
+              business.
             </p>
             <div className="flex flex-wrap gap-4">
               <CtaLink to="/contact">Start a Project</CtaLink>
