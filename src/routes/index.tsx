@@ -148,9 +148,8 @@ function HomePage() {
         <Reveal className="max-w-3xl mx-auto text-center">
           <span className="label label-eyebrow text-accent-ink mb-8 block">The Studio</span>
           <p className="font-display text-2xl md:text-3xl leading-snug text-pretty">
-            Unfold Media Corp is a studio built around a single conviction: a well-made film can
-            change how a business is understood. We work with founders and companies who have
-            something worth saying, and we help them say it with clarity, restraint and craft.
+            Unfold Media Corp is built under one single conviction: that every brand has a vision, a
+            purpose and a story to tell. We help them say it with purpose and craft.
           </p>
         </Reveal>
       </section>
@@ -227,7 +226,7 @@ function HomePage() {
           </div>
           <Reveal className="border-t border-border pt-14 grid grid-cols-12 gap-6">
             <p className="col-span-12 md:col-span-7 font-display text-2xl md:text-3xl leading-snug text-pretty">
-              The studio's first collection is in post-production. When it opens, it opens here.
+              The best ideas begin with understanding.
             </p>
             <p className="col-span-12 md:col-span-4 md:col-start-9 text-sm text-muted-foreground leading-relaxed">
               Until then, the process page is the most honest account of how the work gets made, and
