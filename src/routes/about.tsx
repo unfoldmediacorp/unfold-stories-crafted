@@ -27,6 +27,12 @@ export const Route = createFileRoute("/about")({
   component: AboutPage,
 });
 
+const people = [
+  { name: "V. Keerthivhasan", role: "Managing Director" },
+  { name: "Tarun Ramesh", role: "Technical Director" },
+  { name: "Saktisri Venkat", role: "Creative Director" },
+] as const;
+
 function AboutPage() {
   return (
     <PageShell>
@@ -60,8 +66,8 @@ function AboutPage() {
           <Reveal>
             <span className="label label-eyebrow text-accent-ink block mb-6">Mission</span>
             <p className="font-display text-3xl md:text-4xl leading-[1.15] tracking-tight text-pretty">
-              To help serious businesses tell serious stories, with the craft and restraint the
-              subject deserves.
+              To help businesses tell their stories, with the craft and restraint the subject
+              deserves.
             </p>
           </Reveal>
 
@@ -91,9 +97,9 @@ function AboutPage() {
               A note from the founder
             </span>
             <blockquote className="font-display text-2xl md:text-4xl italic leading-[1.1] tracking-tighter mb-10 text-pretty">
-              “We started Unfold because we were tired of watching good businesses be represented by
-              bad films. There is a real difference between a video and a piece of cinema, and it
-              matters.”
+              “Every brand deserves to be expressed, not just advertised. Express it with creativity
+              and purpose, and the right people will find it. The right audience always leads to the
+              right opportunities.”
             </blockquote>
             <div className="label text-background/60">Founder, Unfold Media Corp</div>
           </Reveal>
@@ -114,13 +120,6 @@ function AboutPage() {
           <div className="col-span-12 lg:col-span-7 lg:col-start-6 space-y-6">
             <Reveal>
               <p className="text-lg leading-relaxed text-pretty">
-                We stay small on purpose. Our projects are led by the people you'll meet in the
-                first conversation. No handoffs, no account layers, no revolving door of
-                freelancers.
-              </p>
-            </Reveal>
-            <Reveal delay={80}>
-              <p className="text-lg leading-relaxed text-muted-foreground text-pretty">
                 The studio brings in specialist collaborators for the specific shape of each
                 project: cinematographers, colourists, composers, sound designers. A rotating cast
                 of extraordinary people, held together by a consistent point of view.
@@ -130,29 +129,35 @@ function AboutPage() {
         </div>
       </section>
 
-      {/* Team placeholder */}
+      {/* People Behind Unfold */}
       <section className="py-16 md:py-24 px-6 border-t border-border bg-muted/60">
         <div className="max-w-[1400px] mx-auto">
           <div className="flex items-baseline justify-between mb-12">
-            <h2 className="label">The Team</h2>
-            <span className="label text-muted-foreground">In Progress</span>
+            <h2 className="label">People Behind Unfold</h2>
+            <span className="label text-muted-foreground">Portraits Coming Soon</span>
           </div>
-          <Reveal className="border-t border-border pt-16 flex flex-col items-center justify-center min-h-[240px] text-center">
-            <p className="font-display text-2xl md:text-3xl italic text-subtle mb-4">
-              Introductions coming soon.
-            </p>
-            <p className="text-sm max-w-md text-subtle leading-relaxed">
-              We're preparing proper portraits of the people behind the studio. Until then, the work
-              will speak first.
-            </p>
-          </Reveal>
+          <div className="border-t border-border pt-14 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6">
+            {people.map((person, i) => (
+              <Reveal key={person.name} delay={i * 80}>
+                <figure>
+                  <div className="w-full aspect-[4/5] bg-background outline outline-1 -outline-offset-1 outline-black/5 flex items-center justify-center">
+                    <span className="label text-subtle">Portrait</span>
+                  </div>
+                  <figcaption className="pt-5">
+                    <h3 className="font-display text-2xl tracking-tight">{person.name}</h3>
+                    <p className="label text-muted-foreground mt-2">{person.role}</p>
+                  </figcaption>
+                </figure>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
       <section className="py-24 md:py-32 px-6 text-center">
         <Reveal>
           <h2 className="font-display font-semibold text-3xl md:text-5xl mb-12 tracking-tighter">
-            Work with the studio.
+            Work with us.
           </h2>
           <CtaLink to="/contact" size="lg">
             Start a Project
