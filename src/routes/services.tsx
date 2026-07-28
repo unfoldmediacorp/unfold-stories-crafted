@@ -11,13 +11,13 @@ export const Route = createFileRoute("/services")({
       {
         name: "description",
         content:
-          "Brand films, corporate films, founder stories, documentaries, commercial campaigns, photography and social-first content.",
+          "Advertisements, brand story films, social media marketing, founder stories, brand strategy and creative direction.",
       },
       { property: "og:title", content: "Services | Unfold Media Corp" },
       {
         property: "og:description",
         content:
-          "A studio built for cinematic brand films, founder stories, documentaries and campaigns.",
+          "An advertising and creative studio: campaigns, brand story films, social media, brand strategy and creative direction.",
       },
       { property: "og:url", content: absoluteUrl("/services") },
     ],
@@ -83,7 +83,7 @@ function ServicesPage() {
             <span className="not-italic">make.</span>
           </>
         }
-        lead="Seven disciplines, one studio. Every engagement is scoped to the outcome you need, not the deliverables list you were sold last time."
+        lead="Six disciplines, one studio. Every engagement is scoped to the outcome you need, not the deliverables list you were sold last time."
       />
 
       <section className="max-w-[1400px] mx-auto px-6 py-16 md:py-24">
