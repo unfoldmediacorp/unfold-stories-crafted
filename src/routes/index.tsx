@@ -75,28 +75,6 @@ const process = [
   },
 ] as const;
 
-const principles = [
-  {
-    n: "01",
-    title: "Story before spectacle.",
-    body: "We chase meaning, not effects. The camera is in service of the sentence.",
-  },
-  {
-    n: "02",
-    title: "Purpose before production.",
-    body: "Every shoot begins with why. Everything after answers to it.",
-  },
-  {
-    n: "03",
-    title: "Quality over quantity.",
-    body: "Fewer films, made properly. We would rather ship one great piece than five average ones.",
-  },
-  {
-    n: "04",
-    title: "Built to last.",
-    body: "We make films designed to work in five years, not five weeks.",
-  },
-] as const;
 
 function HomePage() {
   return (
@@ -230,32 +208,6 @@ function HomePage() {
               the fastest way to judge whether we are right for yours.
             </p>
           </Reveal>
-        </div>
-      </section>
-
-      {/* Philosophy */}
-      <section className="bg-foreground text-background py-24 md:py-32 px-6">
-        <div className="max-w-[1400px] mx-auto">
-          <Reveal className="mb-16 md:mb-24 max-w-2xl">
-            <span className="label label-eyebrow text-accent block mb-6">Why Unfold</span>
-            <h2 className="font-display font-semibold text-3xl md:text-4xl tracking-tighter leading-[1.05]">
-              We make fewer films, on purpose.
-            </h2>
-            <p className="mt-6 font-display text-2xl md:text-3xl leading-snug text-pretty text-background/90">
-              The best ideas begin with understanding.
-            </p>
-          </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
-            {principles.map((p, i) => (
-              <Reveal key={p.n} delay={i * 80}>
-                <div className="border-t border-background/20 pt-8">
-                  <h4 className="index-numeral mb-6 text-accent">{p.n}</h4>
-                  <p className="font-display text-lg mb-4">{p.title}</p>
-                  <p className="text-sm text-background/75 leading-relaxed">{p.body}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
         </div>
       </section>
 
