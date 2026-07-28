@@ -225,9 +225,6 @@ function HomePage() {
             </Link>
           </div>
           <Reveal className="border-t border-border pt-14 grid grid-cols-12 gap-6">
-            <p className="col-span-12 md:col-span-7 font-display text-2xl md:text-3xl leading-snug text-pretty">
-              The best ideas begin with understanding.
-            </p>
             <p className="col-span-12 md:col-span-4 md:col-start-9 text-sm text-muted-foreground leading-relaxed">
               Until then, the process page is the most honest account of how the work gets made, and
               the fastest way to judge whether we are right for yours.
@@ -244,6 +241,9 @@ function HomePage() {
             <h2 className="font-display font-semibold text-3xl md:text-4xl tracking-tighter leading-[1.05]">
               We make fewer films, on purpose.
             </h2>
+            <p className="mt-6 font-display text-2xl md:text-3xl leading-snug text-pretty text-background/90">
+              The best ideas begin with understanding.
+            </p>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
             {principles.map((p, i) => (
