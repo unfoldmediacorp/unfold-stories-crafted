@@ -27,6 +27,12 @@ export const Route = createFileRoute("/about")({
   component: AboutPage,
 });
 
+const people = [
+  { name: "V. Keerthivhasan", role: "Managing Director" },
+  { name: "Tarun Ramesh", role: "Technical Director" },
+  { name: "Saktisri Venkat", role: "Creative Director" },
+] as const;
+
 function AboutPage() {
   return (
     <PageShell>
