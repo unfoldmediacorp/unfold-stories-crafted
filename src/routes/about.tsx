@@ -64,26 +64,39 @@ function AboutPage() {
 
         <div className="col-span-12 lg:col-span-4 lg:col-start-9 space-y-16">
           <Reveal>
-            <span className="label label-eyebrow text-accent-ink block mb-6">Mission</span>
+            <span className="label label-eyebrow text-accent-ink block mb-6">Vision</span>
             <p className="font-display text-3xl md:text-4xl leading-[1.15] tracking-tight text-pretty">
-              To help businesses tell their stories, with the craft and restraint the subject
-              deserves.
+              To shape a world where every business is understood before it is noticed.
+            </p>
+            <p className="mt-6 text-lg leading-relaxed text-muted-foreground text-pretty">
+              We believe the strongest brands are built when people understand who they are, what
+              they stand for, and why they matter. Our vision is to help businesses earn trust
+              before they seek attention through branding, storytelling, and advertising that
+              reflects who they truly are.
             </p>
           </Reveal>
 
           <Reveal>
-            <span className="label label-eyebrow text-accent-ink block mb-6">Vision</span>
-            <p className="text-lg leading-relaxed text-muted-foreground text-pretty">
-              A studio known for a small body of exceptional work rather than a large body of
-              forgettable output. Films you remember years after you've seen them.
+            <span className="label label-eyebrow text-accent-ink block mb-6">Mission</span>
+            <p className="font-display text-3xl md:text-4xl leading-[1.15] tracking-tight text-pretty">
+              To help businesses communicate clearly, build trust, and grow with confidence.
+            </p>
+            <p className="mt-6 text-lg leading-relaxed text-muted-foreground text-pretty">
+              Every business has a story worth telling. Our mission is to uncover what makes each
+              business different and turn it into branding, films, and advertising that people
+              understand, remember, and trust.
             </p>
           </Reveal>
 
           <Reveal>
             <span className="label label-eyebrow text-accent-ink block mb-6">Philosophy</span>
-            <p className="text-lg leading-relaxed text-muted-foreground text-pretty">
-              We believe the best commercial films are quiet, patient and specific. They earn
-              attention rather than demand it. They age well. They treat the audience like adults.
+            <p className="font-display text-3xl md:text-4xl leading-[1.15] tracking-tight text-pretty">
+              Unfold believes every brand should have a distinct voice. Every voice should find its
+              right audience.
+            </p>
+            <p className="mt-6 text-lg leading-relaxed text-muted-foreground text-pretty">
+              Advertising should do more than create awareness. It should create meaning, shape
+              perception, and leave a brand stronger than before.
             </p>
           </Reveal>
         </div>
