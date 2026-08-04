@@ -61,6 +61,10 @@ export function SiteHeader() {
           <img
             src={logoU}
             alt=""
+            width={256}
+            height={256}
+            fetchPriority="high"
+            decoding="async"
             className={
               "w-auto transition-[height] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] " +
               (scrolled ? "h-14 md:h-16" : "h-16 md:h-20")

@@ -10,7 +10,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { SITE_DESCRIPTION, SITE_NAME, SITE_URL, studioJsonLd } from "../lib/site";
+import { OG_IMAGE, SITE_DESCRIPTION, SITE_NAME, SITE_URL, studioJsonLd } from "../lib/site";
 import { CtaAnchor, CtaButton, CtaLink } from "../components/CtaButton";
 import { CustomCursor } from "../components/CustomCursor";
 import { LoadingScreen } from "../components/LoadingScreen";
@@ -89,23 +89,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content: `${SITE_NAME} | Cinematic Storytelling Studio, Coimbatore`,
       },
       { name: "twitter:description", content: SITE_DESCRIPTION },
-      {
-        property: "og:image",
-        content:
-          "https://storage.googleapis.com/gpt-engineer-file-uploads/RziJEjVnxuOXklGmBiSJe7pfzPA3/social-images/social-1784537282788-WALL.webp",
-      },
-      {
-        name: "twitter:image",
-        content:
-          "https://storage.googleapis.com/gpt-engineer-file-uploads/RziJEjVnxuOXklGmBiSJe7pfzPA3/social-images/social-1784537282788-WALL.webp",
-      },
+      { property: "og:url", content: SITE_URL },
+      { property: "og:image", content: OG_IMAGE },
+      { property: "og:image:alt", content: `${SITE_NAME} — cinematic storytelling studio` },
+      { name: "twitter:image", content: OG_IMAGE },
+      { name: "twitter:image:alt", content: `${SITE_NAME} — cinematic storytelling studio` },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap",
+        // Inter 300 was requested but nothing uses `font-light`; dropping it
+        // saves a font file on first paint. Keep the rest in step with the
+        // weights actually used in styles.css and the routes.
+        href: "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap",
       },
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },

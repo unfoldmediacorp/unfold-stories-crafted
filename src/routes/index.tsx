@@ -26,7 +26,12 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:url", content: absoluteUrl("/") },
     ],
-    links: [{ rel: "canonical", href: absoluteUrl("/") }],
+    links: [
+      { rel: "canonical", href: absoluteUrl("/") },
+      // The hero poster is the LCP element; preloading it lets the browser
+      // fetch it in parallel with the JS bundle instead of after hydration.
+      { rel: "preload", as: "image", href: heroImg, fetchPriority: "high" },
+    ],
   }),
   component: HomePage,
 });

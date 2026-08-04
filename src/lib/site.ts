@@ -16,6 +16,14 @@ export function absoluteUrl(path: string): string {
 
 export const SITE_NAME = "Unfold Media Corp";
 
+/**
+ * Social share card. Hosted on Lovable's upload bucket rather than in this
+ * repo, so it survives independently of a deploy. Keep absolute: social
+ * scrapers do not resolve relative URLs.
+ */
+export const OG_IMAGE =
+  "https://storage.googleapis.com/gpt-engineer-file-uploads/RziJEjVnxuOXklGmBiSJe7pfzPA3/social-images/social-1784537282788-WALL.webp";
+
 export const SITE_DESCRIPTION =
   "A cinematic storytelling studio in Coimbatore, India. Brand films, founder stories, documentaries and campaigns for ambitious businesses.";
 
