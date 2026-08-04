@@ -80,7 +80,6 @@ const process = [
   },
 ] as const;
 
-
 function HomePage() {
   return (
     <PageShell>
