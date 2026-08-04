@@ -30,25 +30,34 @@ never a broken player or a stream of 404s. The site is fully functional without 
 
 ## Bucket layout
 
+Two buckets. Public access on R2 is **bucket-wide**, so masters cannot live in
+the same bucket as delivery files without becoming publicly downloadable.
+
 ```
-unfold-media-corp/
-  masters/
-    hero-source.mp4     2176×928   H.264   21.9 MB   ← archive only, never served
+unfold-media-corp/            ← PUBLIC (r2.dev enabled)
   hero/
     hero-desktop.mp4     1920×818   H.264   ~3.2 MB
     hero-desktop.webm    1920×818   VP9     ~2.6 MB
     hero-mobile.mp4       960×410   H.264   ~610 KB
+
+unfold-media-corp-masters/    ← PRIVATE (no public access, ever)
+  hero/
+    hero-source.mp4     2176×928   H.264   21.9 MB   ← archive only, never served
 ```
 
-`masters/` holds the original high-quality source for every asset. Nothing in
-`masters/` is ever referenced by the site — it exists so a video can be
+The masters bucket holds the original high-quality source for every asset.
+Nothing in it is ever referenced by the site — it exists so a video can be
 re-encoded later (different size, better codec, new crop) without hunting for
-the original. Masters are **not** committed to this repository: they are large
-binaries, and git history here cannot be rewritten to remove them.
+the original. Extra buckets are free; R2 bills storage volume, not bucket count.
+
+Masters are **not** committed to this repository: they are large binaries, and
+git history here cannot be rewritten to remove them.
 
 The hero master was recovered from Lovable's preview asset URL before that
-preview expires; it is staged locally at `media/hero/hero-source.mp4`
-(gitignored). Upload it to `masters/` so it survives independently of Lovable.
+preview expires (2176×928, 24 fps, 10.04 s, md5
+`a6f34dfb1ecc93f9475180d1b1e439e3`). It is staged locally at
+`media/hero/hero-source.mp4` (gitignored) and archived in the private bucket, so
+it now survives independently of Lovable.
 
 There is deliberately **no mobile WebM**: at 960px VP9 encoded *larger* than
 H.264 for this footage, so it would cost mobile users bytes for nothing. Desktop
@@ -60,10 +69,21 @@ narrower queries must be listed first.
 
 ## One-time R2 setup
 
-1. The bucket is **`unfold-media-corp`** in the Cloudflare dashboard.
-2. Enable public access — either **R2.dev subdomain** (fine to start) or a
-   **custom domain** such as `media.unfoldmediacorp.com` (preferred: stable URL,
-   your own cache rules).
+Already done; recorded here so it can be reproduced or audited.
+
+1. Buckets **`unfold-media-corp`** (public) and **`unfold-media-corp-masters`**
+   (private) exist in the Cloudflare dashboard.
+2. Public access is enabled on the delivery bucket only:
+   ```bash
+   wrangler r2 bucket dev-url enable unfold-media-corp
+   ```
+   The r2.dev subdomain is **temporary**. It is rate-limited and not intended
+   for production traffic. Once `unfoldmediacorp.com` is on Cloudflare, attach a
+   custom domain and swap `VITE_MEDIA_BASE_URL` to it — no code change:
+   ```bash
+   wrangler r2 bucket domain add unfold-media-corp --domain media.unfoldmediacorp.com
+   ```
+   Never enable public access on `unfold-media-corp-masters`.
 3. Set a long cache lifetime. Object keys are versioned by hand (see
    *Replacing a video*), so objects can be treated as immutable:
    ```
@@ -74,26 +94,34 @@ narrower queries must be listed first.
 
 ## Uploading
 
-With Wrangler (`bun add -g wrangler`, then `wrangler login`):
+With Wrangler (`npx wrangler`, then `wrangler login`):
+
+> **`--remote` is mandatory on every `r2 object` command.** Wrangler v4 defaults
+> to a *local simulator* — without the flag it writes to `.wrangler/state/` on
+> your machine, prints a cheerful `Upload complete.`, and touches nothing in
+> Cloudflare. The only hint is a quiet `Resource location: local` line. This has
+> already bitten once. Applies to `get` and `delete` too: a `get` without
+> `--remote` reads the simulator and can appear to "verify" an upload that never
+> happened.
 
 ```bash
-# Master — archive only, never served. No cache header needed.
-wrangler r2 object put unfold-media-corp/masters/hero-source.mp4 \
+# Master → PRIVATE bucket. Archive only, never served, so no cache header.
+wrangler r2 object put unfold-media-corp-masters/hero/hero-source.mp4 --remote \
   --file media/hero/hero-source.mp4 \
   --content-type video/mp4
 
-# Delivery renditions — what the site actually loads.
-wrangler r2 object put unfold-media-corp/hero/hero-desktop.mp4 \
+# Delivery renditions → PUBLIC bucket. What the site actually loads.
+wrangler r2 object put unfold-media-corp/hero/hero-desktop.mp4 --remote \
   --file media/hero/hero-desktop.mp4 \
   --content-type video/mp4 \
   --cache-control "public, max-age=31536000, immutable"
 
-wrangler r2 object put unfold-media-corp/hero/hero-desktop.webm \
+wrangler r2 object put unfold-media-corp/hero/hero-desktop.webm --remote \
   --file media/hero/hero-desktop.webm \
   --content-type video/webm \
   --cache-control "public, max-age=31536000, immutable"
 
-wrangler r2 object put unfold-media-corp/hero/hero-mobile.mp4 \
+wrangler r2 object put unfold-media-corp/hero/hero-mobile.mp4 --remote \
   --file media/hero/hero-mobile.mp4 \
   --content-type video/mp4 \
   --cache-control "public, max-age=31536000, immutable"
@@ -102,12 +130,46 @@ wrangler r2 object put unfold-media-corp/hero/hero-mobile.mp4 \
 Setting `--content-type` matters: served as `application/octet-stream`, the
 `<source type>` hint stops matching and playback fails.
 
-Then set in the Vercel project (Settings → Environment Variables), for all
+### Verifying an upload
+
+There is no `wrangler r2 object info`. Verify over HTTP against the public base
+URL — this checks existence, headers and integrity in one step, and (unlike a
+`wrangler get`) cannot be fooled by the local simulator:
+
+```bash
+BASE=https://pub-9de675d6e8c7442b96ddaeeb50d43e49.r2.dev
+curl -sI "$BASE/hero/hero-desktop.mp4" |
+  grep -Ei '^(HTTP|content-type|content-length|cache-control|etag)'
+```
+
+For a single-part upload R2's `ETag` is the object's MD5, so it can be compared
+straight against the local file (`md5sum media/hero/hero-desktop.mp4`).
+
+Freshly enabled r2.dev subdomains return **401 for a few minutes** while access
+propagates, and objects flip to 200 individually rather than all at once. A 401
+right after enabling is propagation, not a misconfiguration — re-check before
+changing anything.
+
+Private-bucket objects have no public URL, so verify those by round-tripping:
+
+```bash
+wrangler r2 object get unfold-media-corp-masters/hero/hero-source.mp4 --remote \
+  --file /tmp/check.mp4
+md5sum /tmp/check.mp4 media/hero/hero-source.mp4   # must match
+```
+
+## Pointing the site at the bucket
+
+Set in the Vercel project (Settings → Environment Variables), for all
 environments, and redeploy:
 
 ```
-VITE_MEDIA_BASE_URL = https://media.unfoldmediacorp.com
+VITE_MEDIA_BASE_URL = https://pub-9de675d6e8c7442b96ddaeeb50d43e49.r2.dev
 ```
+
+That is the temporary r2.dev origin. Replace it with
+`https://media.unfoldmediacorp.com` once the custom domain is attached; that is
+a one-variable change with no code edit and no redeploy of anything else.
 
 `VITE_*` variables are inlined at **build time**, so a redeploy is required —
 changing the value alone does nothing until the next build.
@@ -115,8 +177,9 @@ changing the value alone does nothing until the next build.
 ## Encoding a new video
 
 The `media/` directory is gitignored; it is a staging area for renditions before
-upload. Always keep the master and upload it to `masters/` — re-encoding from an
-already-compressed delivery file compounds artefacts. Working from that master:
+upload. Always keep the master and upload it to the private masters bucket —
+re-encoding from an already-compressed delivery file compounds artefacts.
+Working from that master:
 
 ```bash
 # Desktop H.264
@@ -220,3 +283,5 @@ poster's `alt` carries the description for assistive tech.
 | Plays on desktop, not mobile | Mobile rendition missing, or `media` query order wrong in the registry |
 | Slow to start | MP4 missing `-movflags +faststart` |
 | Old video still served after replacing | A key was overwritten in place; publish under a new key instead |
+| `Upload complete.` but the object is not in R2 | `--remote` was omitted; it went to the local simulator (`Resource location: local`) |
+| 401 on every object just after enabling r2.dev | Public access still propagating; wait a few minutes and re-check |
