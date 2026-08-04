@@ -37,13 +37,12 @@ export const Route = createFileRoute("/")({
 });
 
 const services = [
-  "Brand Films",
-  "Corporate Films",
+  "Advertisements",
+  "Brand Story Films",
+  "Social Media Marketing",
   "Founder Stories",
-  "Documentaries",
-  "Commercial Campaigns",
-  "Photography",
-  "Social-first Content",
+  "Brand Strategy",
+  "Creative Direction",
 ] as const;
 
 // The six canonical stages. Keep in step with src/routes/process.tsx, which
@@ -81,28 +80,6 @@ const process = [
   },
 ] as const;
 
-const principles = [
-  {
-    n: "01",
-    title: "Story before spectacle.",
-    body: "We chase meaning, not effects. The camera is in service of the sentence.",
-  },
-  {
-    n: "02",
-    title: "Purpose before production.",
-    body: "Every shoot begins with why. Everything after answers to it.",
-  },
-  {
-    n: "03",
-    title: "Quality over quantity.",
-    body: "Fewer films, made properly. We would rather ship one great piece than five average ones.",
-  },
-  {
-    n: "04",
-    title: "Built to last.",
-    body: "We make films designed to work in five years, not five weeks.",
-  },
-] as const;
 
 function HomePage() {
   return (
@@ -112,16 +89,16 @@ function HomePage() {
         <div className="max-w-[1400px] mx-auto grid grid-cols-12 gap-4 md:gap-6 items-end">
           <h1 className="col-span-12 lg:col-span-8 font-display font-semibold text-[clamp(2.75rem,7vw,5.75rem)] leading-[0.9] tracking-tight">
             <span className="title-mask">
-              <em className="title-line font-normal">Cinematic</em>
+              <em className="title-line font-normal">Unfolding</em>
             </span>
             <span className="title-mask">
-              <span className="title-line [animation-delay:120ms]">Perspectives.</span>
+              <span className="title-line [animation-delay:120ms]">Your Vision.</span>
             </span>
           </h1>
           <div className="col-span-12 lg:col-span-4 lg:col-start-9 mt-10 lg:mt-0 stage-rise [animation-delay:520ms]">
             <p className="text-lg md:text-xl leading-[1.65] text-pretty mb-10 max-w-md text-muted-foreground">
-              A cinematic storytelling studio in Coimbatore, building films for businesses who
-              prefer craft to noise.
+              We are an advertising and creative studio built for the clarity and craft of your
+              business.
             </p>
             <div className="flex flex-wrap gap-4">
               <CtaLink to="/contact">Start a Project</CtaLink>
@@ -154,9 +131,8 @@ function HomePage() {
         <Reveal className="max-w-3xl mx-auto text-center">
           <span className="label label-eyebrow text-accent-ink mb-8 block">The Studio</span>
           <p className="font-display text-2xl md:text-3xl leading-snug text-pretty">
-            Unfold Media Corp is a studio built around a single conviction: a well-made film can
-            change how a business is understood. We work with founders and companies who have
-            something worth saying, and we help them say it with clarity, restraint and craft.
+            Unfold Media Corp is built under one single conviction: that every brand has a vision, a
+            purpose and a story to tell. We help them say it with purpose and craft.
           </p>
         </Reveal>
       </section>
@@ -232,37 +208,11 @@ function HomePage() {
             </Link>
           </div>
           <Reveal className="border-t border-border pt-14 grid grid-cols-12 gap-6">
-            <p className="col-span-12 md:col-span-7 font-display text-2xl md:text-3xl leading-snug text-pretty">
-              The studio's first collection is in post-production. When it opens, it opens here.
-            </p>
             <p className="col-span-12 md:col-span-4 md:col-start-9 text-sm text-muted-foreground leading-relaxed">
               Until then, the process page is the most honest account of how the work gets made, and
               the fastest way to judge whether we are right for yours.
             </p>
           </Reveal>
-        </div>
-      </section>
-
-      {/* Philosophy */}
-      <section className="bg-foreground text-background py-24 md:py-32 px-6">
-        <div className="max-w-[1400px] mx-auto">
-          <Reveal className="mb-16 md:mb-24 max-w-2xl">
-            <span className="label label-eyebrow text-accent block mb-6">Why Unfold</span>
-            <h2 className="font-display font-semibold text-3xl md:text-4xl tracking-tighter leading-[1.05]">
-              We make fewer films, on purpose.
-            </h2>
-          </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
-            {principles.map((p, i) => (
-              <Reveal key={p.n} delay={i * 80}>
-                <div className="border-t border-background/20 pt-8">
-                  <h4 className="index-numeral mb-6 text-accent">{p.n}</h4>
-                  <p className="font-display text-lg mb-4">{p.title}</p>
-                  <p className="text-sm text-background/75 leading-relaxed">{p.body}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
         </div>
       </section>
 

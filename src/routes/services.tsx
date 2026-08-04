@@ -11,13 +11,13 @@ export const Route = createFileRoute("/services")({
       {
         name: "description",
         content:
-          "Brand films, corporate films, founder stories, documentaries, commercial campaigns, photography and social-first content.",
+          "Advertisements, brand story films, social media marketing, founder stories, brand strategy and creative direction.",
       },
       { property: "og:title", content: "Services | Unfold Media Corp" },
       {
         property: "og:description",
         content:
-          "A studio built for cinematic brand films, founder stories, documentaries and campaigns.",
+          "An advertising and creative studio: campaigns, brand story films, social media, brand strategy and creative direction.",
       },
       { property: "og:url", content: absoluteUrl("/services") },
     ],
@@ -29,56 +29,45 @@ export const Route = createFileRoute("/services")({
 const services = [
   {
     n: "01",
-    title: "Brand Films",
-    outcome:
-      "A film that gives your brand a spine: the piece your team, investors and customers all point to when they explain who you are.",
+    title: "Advertisements",
+    outcome: "Advertising is about creating relevance, not just visibility.",
     detail:
-      "Long-form cinematic storytelling designed to sit at the top of your website and hold up in a boardroom five years from now.",
+      "We craft campaigns rooted in insights, helping brands connect with their audience in ways that are memorable and effective.",
   },
   {
     n: "02",
-    title: "Corporate Films",
-    outcome:
-      "Internal and external communication that respects the intelligence of the room it will play in.",
+    title: "Brand Story Films",
+    outcome: "Every brand has a story, a meaning.",
     detail:
-      "Annual reports, culture films, investor and stakeholder updates, treated as considered pieces of communication rather than filler.",
+      "We tell the narrative, the purpose, the tensions, the authenticity it stands for. We shape them into stories which people believe.",
   },
   {
     n: "03",
-    title: "Founder Stories",
-    outcome:
-      "A single, honest portrait of the person behind the business, told without gloss and without cliché.",
+    title: "Social Media Marketing",
+    outcome: "Social media is where brands build relationships.",
     detail:
-      "Intimate interviews, patient observation, quiet edits. The film your founder will actually be comfortable sharing.",
+      "We create thoughtful content and conversations that strengthen the presence, foster engagement and help grow communities over time.",
   },
   {
     n: "04",
-    title: "Documentaries",
-    outcome: "Long-form work that treats your subject with the seriousness of a magazine feature.",
+    title: "Founder Stories",
+    outcome: "People connect with people before they connect with companies.",
     detail:
-      "Sector, craft and cultural documentaries developed with real research, real access and a considered point of view.",
+      "We help founders articulate their vision, values and journey, building trust through authentic and compelling narratives.",
   },
   {
     n: "05",
-    title: "Commercial Campaigns",
-    outcome: "Campaign work designed to move business metrics without embarrassing the brand.",
+    title: "Brand Strategy",
+    outcome: "Strong brands are built on clarity, not assumptions.",
     detail:
-      "Concept, script, direction and delivery across a full campaign: hero film, cut-downs, stills and social edits from a single shoot.",
+      "Through research, cultural understanding and strategic thinking, we define the direction that guides every decision your brand makes.",
   },
   {
     n: "06",
-    title: "Photography",
-    outcome:
-      "Editorial stills that share the language of the film. One visual identity across every touchpoint.",
+    title: "Creative Direction",
+    outcome: "Creativity is most powerful when guided by purpose.",
     detail:
-      "Portraits, product, environment and reportage photography, shot on the same day and in the same key as the film.",
-  },
-  {
-    n: "07",
-    title: "Social-first Content",
-    outcome: "Short-form work that still looks like it came from a studio, not a template.",
-    detail:
-      "Verticals, teasers and episodic series built around the same story, cut for how people actually watch.",
+      "We shape visual identities, campaigns and experiences with a clear strategic vision, ensuring every expression feels intentional and consistent.",
   },
 ] as const;
 
@@ -94,7 +83,7 @@ function ServicesPage() {
             <span className="not-italic">make.</span>
           </>
         }
-        lead="Seven disciplines, one studio. Every engagement is scoped to the outcome you need, not the deliverables list you were sold last time."
+        lead="Six disciplines, one studio. Every engagement is scoped to the outcome you need, not the deliverables list you were sold last time."
       />
 
       <section className="max-w-[1400px] mx-auto px-6 py-16 md:py-24">
