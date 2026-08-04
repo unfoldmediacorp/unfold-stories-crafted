@@ -160,16 +160,55 @@ md5sum /tmp/check.mp4 media/hero/hero-source.mp4   # must match
 
 ## Pointing the site at the bucket
 
-Set in the Vercel project (Settings → Environment Variables), for all
-environments, and redeploy:
+**Set it in the committed `.env` at the repo root. No dashboard configuration is
+needed.**
 
 ```
-VITE_MEDIA_BASE_URL = https://pub-9de675d6e8c7442b96ddaeeb50d43e49.r2.dev
+VITE_MEDIA_BASE_URL="https://pub-9de675d6e8c7442b96ddaeeb50d43e49.r2.dev"
 ```
 
 That is the temporary r2.dev origin. Replace it with
-`https://media.unfoldmediacorp.com` once the custom domain is attached; that is
-a one-variable change with no code edit and no redeploy of anything else.
+`https://media.unfoldmediacorp.com` once the custom domain is attached — one
+line, no code edit.
+
+### Why `.env` and not the Vercel dashboard
+
+`.env` is **tracked in git here** and deliberately not gitignored: Lovable
+commits it (it is where the `VITE_SUPABASE_*` values live). Since Vercel builds
+from the repository, the file is present on the builder and Vite reads it there
+exactly as it does locally.
+
+`@lovable.dev/vite-tanstack-config` resolves the value at build time with:
+
+```js
+const loadedEnv = loadEnv(mode, process.cwd(), "VITE_");
+for (const [k, v] of Object.entries(loadedEnv))
+  envDefine[`import.meta.env.${k}`] = JSON.stringify(v);
+```
+
+So every `import.meta.env.VITE_*` is replaced by a **string literal** in the
+bundle. Two consequences:
+
+- The name must be written out literally in source. A dynamic lookup such as
+  ``import.meta.env[`VITE_MEDIA_${name}`]`` is never substituted and resolves to
+  `undefined`. This is why `src/lib/media.ts` spells out each override.
+- The value is frozen at build time. Changing it requires a rebuild, never just
+  a restart.
+
+Precedence, from Vite's `loadEnv`: `.env` files are read first, then any
+`VITE_`-prefixed variable in `process.env` **overrides** them. A Vercel
+dashboard variable would therefore still win if one were ever set — the
+committed `.env` is a default, not a lock.
+
+Only reach for the dashboard for a value that must **differ per environment** or
+must not be committed. Neither applies here: this is a public bucket URL that
+ships in the client bundle regardless, so committing it leaks nothing.
+
+Worth knowing: this project is Lovable-managed, and the Vercel deployment is
+wired up through that integration rather than created by hand. If you open the
+Vercel project and the Environment Variables screen is not where you expect, use
+`.env` — it is the supported path for this setup and the one Lovable itself
+uses.
 
 `VITE_*` variables are inlined at **build time**, so a redeploy is required —
 changing the value alone does nothing until the next build.
@@ -277,7 +316,7 @@ poster's `alt` carries the description for assistive tech.
 
 | Symptom | Likely cause |
 | --- | --- |
-| Poster shows, video never starts | `VITE_MEDIA_BASE_URL` unset, or unset at *build* time — redeploy |
+| Poster shows, video never starts | `VITE_MEDIA_BASE_URL` empty in `.env`, or changed without rebuilding — values are inlined at build time |
 | 404 on the video URL | Object key mismatch between bucket and registry; check exact prefix |
 | Downloads instead of playing | Missing/incorrect `--content-type` on upload |
 | Plays on desktop, not mobile | Mobile rendition missing, or `media` query order wrong in the registry |
