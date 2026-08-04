@@ -31,12 +31,24 @@ never a broken player or a stream of 404s. The site is fully functional without 
 ## Bucket layout
 
 ```
-<bucket>/
+unfold-media-corp/
+  masters/
+    hero-source.mp4     2176×928   H.264   21.9 MB   ← archive only, never served
   hero/
     hero-desktop.mp4     1920×818   H.264   ~3.2 MB
     hero-desktop.webm    1920×818   VP9     ~2.6 MB
     hero-mobile.mp4       960×410   H.264   ~610 KB
 ```
+
+`masters/` holds the original high-quality source for every asset. Nothing in
+`masters/` is ever referenced by the site — it exists so a video can be
+re-encoded later (different size, better codec, new crop) without hunting for
+the original. Masters are **not** committed to this repository: they are large
+binaries, and git history here cannot be rewritten to remove them.
+
+The hero master was recovered from Lovable's preview asset URL before that
+preview expires; it is staged locally at `media/hero/hero-source.mp4`
+(gitignored). Upload it to `masters/` so it survives independently of Lovable.
 
 There is deliberately **no mobile WebM**: at 960px VP9 encoded *larger* than
 H.264 for this footage, so it would cost mobile users bytes for nothing. Desktop
@@ -48,7 +60,7 @@ narrower queries must be listed first.
 
 ## One-time R2 setup
 
-1. Create a bucket (e.g. `unfold-media`) in the Cloudflare dashboard.
+1. The bucket is **`unfold-media-corp`** in the Cloudflare dashboard.
 2. Enable public access — either **R2.dev subdomain** (fine to start) or a
    **custom domain** such as `media.unfoldmediacorp.com` (preferred: stable URL,
    your own cache rules).
@@ -65,17 +77,23 @@ narrower queries must be listed first.
 With Wrangler (`bun add -g wrangler`, then `wrangler login`):
 
 ```bash
-wrangler r2 object put unfold-media/hero/hero-desktop.mp4 \
+# Master — archive only, never served. No cache header needed.
+wrangler r2 object put unfold-media-corp/masters/hero-source.mp4 \
+  --file media/hero/hero-source.mp4 \
+  --content-type video/mp4
+
+# Delivery renditions — what the site actually loads.
+wrangler r2 object put unfold-media-corp/hero/hero-desktop.mp4 \
   --file media/hero/hero-desktop.mp4 \
   --content-type video/mp4 \
   --cache-control "public, max-age=31536000, immutable"
 
-wrangler r2 object put unfold-media/hero/hero-desktop.webm \
+wrangler r2 object put unfold-media-corp/hero/hero-desktop.webm \
   --file media/hero/hero-desktop.webm \
   --content-type video/webm \
   --cache-control "public, max-age=31536000, immutable"
 
-wrangler r2 object put unfold-media/hero/hero-mobile.mp4 \
+wrangler r2 object put unfold-media-corp/hero/hero-mobile.mp4 \
   --file media/hero/hero-mobile.mp4 \
   --content-type video/mp4 \
   --cache-control "public, max-age=31536000, immutable"
@@ -97,7 +115,8 @@ changing the value alone does nothing until the next build.
 ## Encoding a new video
 
 The `media/` directory is gitignored; it is a staging area for renditions before
-upload. Working from a high-quality master:
+upload. Always keep the master and upload it to `masters/` — re-encoding from an
+already-compressed delivery file compounds artefacts. Working from that master:
 
 ```bash
 # Desktop H.264
