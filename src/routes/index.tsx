@@ -3,7 +3,7 @@ import { PageShell } from "@/components/PageShell";
 import { Reveal } from "@/components/Reveal";
 import { CtaLink } from "@/components/CtaButton";
 import heroImg from "@/assets/hero.jpg";
-import heroVideo from "@/assets/hero.mp4.asset.json";
+import { BackgroundVideo } from "@/components/BackgroundVideo";
 import { absoluteUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/")({
@@ -109,16 +109,12 @@ function HomePage() {
         </div>
 
         <figure className="relative w-full aspect-[21/9] mt-12 md:mt-16 overflow-hidden bg-muted outline outline-1 -outline-offset-1 outline-black/5 stage-aperture [animation-delay:340ms]">
-          <video
-            src={heroVideo.url}
+          <BackgroundVideo
+            asset="hero"
             poster={heroImg}
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="none"
-            aria-label="Mist rolling over the Western Ghats at dawn, near Coimbatore"
-            className="w-full h-full object-cover"
+            alt="Mist rolling over the Western Ghats at dawn, near Coimbatore"
+            priority
+            className="h-full w-full"
           />
           <div className="pointer-events-none absolute inset-0 bg-black/10" />
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-b from-transparent to-background" />

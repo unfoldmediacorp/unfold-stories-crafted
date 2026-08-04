@@ -33,3 +33,6 @@ dist-ssr
 
 # Vercel build output
 .vercel
+
+# Media renditions staged for upload to R2 (never committed)
+/media
