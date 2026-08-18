@@ -14,6 +14,34 @@ type LovableConfig = NonNullable<Parameters<typeof defineConfig>[0]>;
 // Nitro config and is verified to reach both the Vercel and Cloudflare presets;
 // this cast only works around the too-narrow declared type. Drop it if Lovable
 // widens the type upstream.
+// Content-Security-Policy, scoped to what the site actually loads:
+// - Google Fonts stylesheet + font files (see src/routes/__root.tsx)
+// - the Google Maps embed iframe on /contact
+// - the Supabase REST API (anon key, browser-side inserts from the contact form)
+// - the R2 media origin(s) for video/image assets (r2.dev today, the
+//   unfoldmediacorp.com subdomain once the custom domain cutover lands)
+// 'unsafe-inline' on script-src covers the inline JSON-LD tag and TanStack
+// Start's hydration bootstrap script, which aren't nonce'd; 'unsafe-inline'
+// on style-src covers Tailwind's inline styles. Both are scoped to 'self'
+// otherwise, so this still blocks loading script/style from a third-party
+// origin, which is the primary XSS/exfiltration vector CSP defends against
+// here.
+const CSP = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline'",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "font-src 'self' https://fonts.gstatic.com",
+  "img-src 'self' data: https:",
+  "media-src 'self' https://*.r2.dev https://*.unfoldmediacorp.com",
+  "connect-src 'self' https://iixpuvgvonftfugvqvxo.supabase.co https://*.r2.dev https://*.unfoldmediacorp.com",
+  "frame-src https://www.google.com",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'self'",
+  "upgrade-insecure-requests",
+].join("; ");
+
 const nitro = {
   routeRules: {
     "/**": {
@@ -24,6 +52,7 @@ const nitro = {
         "X-Frame-Options": "SAMEORIGIN",
         "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
         "Cross-Origin-Opener-Policy": "same-origin",
+        "Content-Security-Policy": CSP,
       },
     },
     // Nitro already emits an immutable rule for hashed /assets/*; these are

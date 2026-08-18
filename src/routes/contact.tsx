@@ -51,6 +51,7 @@ function ContactPage() {
       company: String(formData.get("company") || ""),
       phone: String(formData.get("phone") || ""),
       brief: String(formData.get("brief") || ""),
+      website: String(formData.get("website") || ""),
     };
 
     try {
@@ -161,6 +162,16 @@ function ContactPage() {
           ) : (
             <Reveal>
               <form onSubmit={onSubmit} className="space-y-10" aria-busy={loading}>
+                {/* Honeypot: hidden from real visitors, only bots that autofill every input trip it. */}
+                <div
+                  aria-hidden="true"
+                  className="absolute -left-[9999px] top-auto w-px h-px overflow-hidden"
+                >
+                  <label>
+                    Website
+                    <input type="text" name="website" tabIndex={-1} autoComplete="off" />
+                  </label>
+                </div>
                 <Field
                   label="Your name"
                   name="name"
