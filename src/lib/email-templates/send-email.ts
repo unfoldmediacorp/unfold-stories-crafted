@@ -1,15 +1,27 @@
 import React from "react";
 import { render } from "@react-email/render";
-import { sendLovableEmail, EmailAPIError } from "@lovable.dev/email-js";
+import { Resend } from "resend";
 import { TEMPLATES, type TemplateName } from "./registry";
 
-const SENDER_DOMAIN = process.env.LOVABLE_EMAIL_SENDER_DOMAIN ?? "unfoldmediacorp.com";
-const FROM_ADDRESS = `Unfold Media Corp <hello@${SENDER_DOMAIN}>`;
+const FROM_ADDRESS = "Unfold Media Corp <hello@unfoldmediacorp.com>";
 
 interface SendTemplateEmailOptions {
   templateData: Record<string, unknown>;
   replyTo?: string;
   idempotencyKey?: string;
+}
+
+let _resend: Resend | undefined;
+
+function getResendClient(): Resend {
+  if (!_resend) {
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      throw new Error("Missing RESEND_API_KEY environment variable.");
+    }
+    _resend = new Resend(apiKey);
+  }
+  return _resend;
 }
 
 export async function sendTemplateEmail(
@@ -25,25 +37,22 @@ export async function sendTemplateEmail(
   const element = React.createElement(template.component, options.templateData);
   const [html, text] = await Promise.all([render(element), render(element, { plainText: true })]);
 
-  try {
-    const result = await sendLovableEmail(
-      {
-        to,
-        from: FROM_ADDRESS,
-        sender_domain: SENDER_DOMAIN,
-        subject: template.subject,
-        html,
-        text,
-        reply_to: options.replyTo,
-        idempotency_key: options.idempotencyKey,
-      },
-      { apiKey: process.env.LOVABLE_API_KEY! },
-    );
-    return { sent: true as const, ...result };
-  } catch (error) {
-    if (error instanceof EmailAPIError && error.code === "recipient_suppressed") {
-      return { sent: false as const, reason: "recipient_suppressed" as const };
-    }
-    throw error;
+  const { data, error } = await getResendClient().emails.send(
+    {
+      from: FROM_ADDRESS,
+      to,
+      subject: template.subject,
+      html,
+      text,
+      replyTo: options.replyTo,
+    },
+    options.idempotencyKey ? { idempotencyKey: options.idempotencyKey } : undefined,
+  );
+
+  if (error) {
+    console.error("[Resend] Email send failed:", error.name, error.message);
+    throw new Error(`Resend email send failed: ${error.message}`);
   }
+
+  return { sent: true as const, id: data.id };
 }
