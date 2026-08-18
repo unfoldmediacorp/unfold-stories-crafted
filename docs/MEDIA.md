@@ -36,13 +36,13 @@ the same bucket as delivery files without becoming publicly downloadable.
 ```
 unfold-media-corp/            ← PUBLIC (r2.dev enabled)
   hero/
-    hero-desktop.mp4     1920×818   H.264   ~3.2 MB
-    hero-desktop.webm    1920×818   VP9     ~2.6 MB
-    hero-mobile.mp4       960×410   H.264   ~610 KB
+    hero-desktop-v2.mp4     1920×1080   H.264   ~1.9 MB
+    hero-desktop-v2.webm    1920×1080   VP9     ~0.9 MB
+    hero-mobile-v2.mp4       960×540    H.264   ~0.4 MB
 
 unfold-media-corp-masters/    ← PRIVATE (no public access, ever)
   hero/
-    hero-source.mp4     2176×928   H.264   21.9 MB   ← archive only, never served
+    hero-source.mp4     1920×1080   H.264   ~3.0 MB   ← archive only, never served
 ```
 
 The masters bucket holds the original high-quality source for every asset.
@@ -53,11 +53,14 @@ the original. Extra buckets are free; R2 bills storage volume, not bucket count.
 Masters are **not** committed to this repository: they are large binaries, and
 git history here cannot be rewritten to remove them.
 
-The hero master was recovered from Lovable's preview asset URL before that
-preview expires (2176×928, 24 fps, 10.04 s, md5
-`a6f34dfb1ecc93f9475180d1b1e439e3`). It is staged locally at
-`media/hero/hero-source.mp4` (gitignored) and archived in the private bucket, so
-it now survives independently of Lovable.
+The hero master (1920×1080, 30 fps, 6.53 s, md5
+`8707bec26d36ee0baf26e1c02e115652`) is staged locally at
+`media/hero/hero-source.mp4` (gitignored) and archived in the private bucket.
+The delivery renditions were published under a `-v2` suffix, per *Replacing a
+video* below, since the previous `hero/hero-desktop.mp4` etc. keys are cached
+immutably. The old `hero/*.mp4`/`.webm` (non-`-v2`) objects are left in the
+public bucket, now unreferenced by the registry; delete them once confident no
+client is still relying on a stale bundle.
 
 There is deliberately **no mobile WebM**: at 960px VP9 encoded *larger* than
 H.264 for this footage, so it would cost mobile users bytes for nothing. Desktop

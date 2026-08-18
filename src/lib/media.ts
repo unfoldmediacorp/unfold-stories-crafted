@@ -90,9 +90,9 @@ export const VIDEO = {
       // No mobile WebM: at 960px VP9 encoded larger than H.264 for this
       // footage, so it would cost mobile users bytes for nothing. Desktop
       // WebM is kept because it is ~19% smaller than the desktop MP4.
-      { key: HERO_MOBILE_MP4 || "hero/hero-mobile.mp4", type: "video/mp4", media: MOBILE_QUERY },
-      { key: HERO_DESKTOP_WEBM || "hero/hero-desktop.webm", type: "video/webm" },
-      { key: HERO_DESKTOP_MP4 || "hero/hero-desktop.mp4", type: "video/mp4" },
+      { key: HERO_MOBILE_MP4 || "hero/hero-mobile-v2.mp4", type: "video/mp4", media: MOBILE_QUERY },
+      { key: HERO_DESKTOP_WEBM || "hero/hero-desktop-v2.webm", type: "video/webm" },
+      { key: HERO_DESKTOP_MP4 || "hero/hero-desktop-v2.mp4", type: "video/mp4" },
     ],
   },
 } satisfies Record<string, VideoAsset>;
