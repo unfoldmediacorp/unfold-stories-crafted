@@ -59,12 +59,11 @@ function AboutPage() {
               className="h-full w-full"
             />
             <div className="pointer-events-none absolute inset-0 bg-black/10" />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/6 bg-gradient-to-b from-transparent to-background" />
           </figure>
         </Reveal>
 
         <div className="mt-16 md:mt-24 space-y-20 md:space-y-28">
-          <Reveal className="max-w-3xl">
+          <Reveal className="max-w-3xl mx-auto text-center">
             <span className="label label-eyebrow text-accent-ink block mb-6">Vision</span>
             <p className="font-display text-3xl md:text-4xl leading-[1.15] tracking-tight text-pretty">
               To shape a world where every business is understood before it is noticed.
@@ -77,7 +76,7 @@ function AboutPage() {
             </p>
           </Reveal>
 
-          <Reveal className="max-w-3xl">
+          <Reveal className="max-w-3xl mx-auto text-center">
             <span className="label label-eyebrow text-accent-ink block mb-6">Mission</span>
             <p className="font-display text-3xl md:text-4xl leading-[1.15] tracking-tight text-pretty">
               To help businesses communicate clearly, build trust, and grow with confidence.
@@ -89,7 +88,7 @@ function AboutPage() {
             </p>
           </Reveal>
 
-          <Reveal className="max-w-3xl">
+          <Reveal className="max-w-3xl mx-auto text-center">
             <span className="label label-eyebrow text-accent-ink block mb-6">Philosophy</span>
             <p className="font-display text-3xl md:text-4xl leading-[1.15] tracking-tight text-pretty">
               Unfold believes every brand should have a distinct voice. Every voice should find its
