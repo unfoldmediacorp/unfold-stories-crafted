@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, PageIntro } from "@/components/PageShell";
 import { Reveal } from "@/components/Reveal";
 import { CtaLink } from "@/components/CtaButton";
+import { BackgroundVideo } from "@/components/BackgroundVideo";
 import { absoluteUrl } from "@/lib/site";
 import aboutImg from "@/assets/about.jpg";
 
@@ -51,13 +52,11 @@ function AboutPage() {
       <section className="max-w-[1400px] mx-auto px-6 py-16 md:py-24 grid grid-cols-12 gap-6">
         <Reveal className="col-span-12 lg:col-span-7">
           <figure className="w-full aspect-[4/5] overflow-hidden bg-muted outline outline-1 -outline-offset-1 outline-black/5">
-            <img
-              src={aboutImg}
+            <BackgroundVideo
+              asset="about"
+              poster={aboutImg}
               alt="A cinema camera held up to the light"
-              width={1400}
-              height={1800}
-              loading="lazy"
-              className="w-full h-full object-cover object-[68%_38%] transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.02]"
+              className="h-full w-full"
             />
           </figure>
         </Reveal>

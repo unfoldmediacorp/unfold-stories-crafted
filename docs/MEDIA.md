@@ -39,10 +39,17 @@ unfold-media-corp/            ← PUBLIC (r2.dev enabled)
     hero-desktop-v2.mp4     1920×1080   H.264   ~1.9 MB
     hero-desktop-v2.webm    1920×1080   VP9     ~0.9 MB
     hero-mobile-v2.mp4       960×540    H.264   ~0.4 MB
+  about/
+    about-desktop.mp4       1920×1080   H.264   ~4.9 MB
+    about-desktop.webm      1920×1080   VP9     ~1.5 MB
+    about-mobile.mp4         960×540    H.264   ~0.6 MB
+    about-mobile.webm        960×540    VP9     ~0.4 MB
 
 unfold-media-corp-masters/    ← PRIVATE (no public access, ever)
   hero/
     hero-source.mp4     1920×1080   H.264   ~3.0 MB   ← archive only, never served
+  about/
+    about-source.mp4    1920×1080   H.264   ~9.5 MB   ← archive only, never served
 ```
 
 The masters bucket holds the original high-quality source for every asset.
@@ -62,9 +69,18 @@ immutably. The old `hero/*.mp4`/`.webm` (non-`-v2`) objects are left in the
 public bucket, now unreferenced by the registry; delete them once confident no
 client is still relying on a stale bundle.
 
-There is deliberately **no mobile WebM**: at 960px VP9 encoded *larger* than
-H.264 for this footage, so it would cost mobile users bytes for nothing. Desktop
-WebM is kept because it is ~19% smaller than the desktop MP4.
+There is deliberately **no mobile WebM for the hero**: at 960px VP9 encoded
+*larger* than H.264 for this footage, so it would cost mobile users bytes for
+nothing. Desktop WebM is kept because it is ~19% smaller than the desktop MP4.
+
+The about master (1920×1080, 25 fps, 17.2 s, md5
+`c3f876911d16b1f2eb2d074ca8ee90e7`) is staged locally at
+`media/about/about-source.mp4` (gitignored) and archived in the private
+bucket. This was a first-time upload under the `about/` prefix — no existing
+key to collide with, so the delivery renditions use plain (unversioned) names.
+Unlike the hero, mobile WebM beats mobile H.264 for this footage (~27%
+smaller), so About ships four renditions instead of three — WebM is offered
+first at both breakpoints, H.264 as the fallback.
 
 Source selection is ordered in `src/lib/media.ts`. The browser takes the first
 `<source>` whose `media` query matches and whose `type` it can decode, so
@@ -275,22 +291,26 @@ the `aspect-[21/9]` class on the hero `<figure>` in `src/routes/index.tsx`.
 
 ## Adding a new video elsewhere
 
-1. Encode and upload renditions under a new prefix, e.g. `about/`.
+The `about` asset (see *Bucket layout* above) is a worked example of this — a
+second entry added after the hero, including the extra mobile WebM source
+since it happened to pay off for that footage.
+
+1. Encode and upload renditions under a new prefix, e.g. `gallery/`.
 2. Add an entry to `VIDEO` in `src/lib/media.ts`:
    ```ts
-   about: {
+   gallery: {
      width: 1920,
      height: 1080,
      sources: [
-       { key: "about/about-mobile.mp4", type: "video/mp4", media: "(max-width: 767px)" },
-       { key: "about/about-desktop.webm", type: "video/webm" },
-       { key: "about/about-desktop.mp4", type: "video/mp4" },
+       { key: "gallery/gallery-mobile.mp4", type: "video/mp4", media: "(max-width: 767px)" },
+       { key: "gallery/gallery-desktop.webm", type: "video/webm" },
+       { key: "gallery/gallery-desktop.mp4", type: "video/mp4" },
      ],
    },
    ```
 3. Use it, with an imported poster:
    ```tsx
-   <BackgroundVideo asset="about" poster={aboutImg} alt="…" className="h-full w-full" />
+   <BackgroundVideo asset="gallery" poster={galleryImg} alt="…" className="h-full w-full" />
    ```
    Add `priority` **only** for above-the-fold video. Everything else lazy-loads
    when it comes within 200px of the viewport.

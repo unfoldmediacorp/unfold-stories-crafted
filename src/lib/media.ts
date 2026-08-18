@@ -95,6 +95,18 @@ export const VIDEO = {
       { key: HERO_DESKTOP_MP4 || "hero/hero-desktop-v2.mp4", type: "video/mp4" },
     ],
   },
+  about: {
+    width: 1920,
+    height: 1080,
+    sources: [
+      // Unlike the hero, mobile WebM beats mobile H.264 for this footage
+      // (~27% smaller), so it is offered first at the mobile breakpoint.
+      { key: "about/about-mobile.webm", type: "video/webm", media: MOBILE_QUERY },
+      { key: "about/about-mobile.mp4", type: "video/mp4", media: MOBILE_QUERY },
+      { key: "about/about-desktop.webm", type: "video/webm" },
+      { key: "about/about-desktop.mp4", type: "video/mp4" },
+    ],
+  },
 } satisfies Record<string, VideoAsset>;
 
 export type VideoAssetName = keyof typeof VIDEO;
