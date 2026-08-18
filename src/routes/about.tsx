@@ -51,7 +51,7 @@ function AboutPage() {
 
       <section className="max-w-[1400px] mx-auto px-6 py-16 md:py-24 grid grid-cols-12 gap-6">
         <Reveal className="col-span-12 lg:col-span-7">
-          <figure className="w-full aspect-[4/5] overflow-hidden bg-muted outline outline-1 -outline-offset-1 outline-black/5">
+          <figure className="w-full aspect-video overflow-hidden bg-muted outline outline-1 -outline-offset-1 outline-black/5">
             <BackgroundVideo
               asset="about"
               poster={aboutImg}
