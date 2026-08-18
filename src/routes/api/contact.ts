@@ -31,8 +31,8 @@ export const Route = createFileRoute("/api/contact")({
 
         const { name, email, company, phone, brief } = parseResult.data;
 
-        const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-        const { error: dbError } = await supabaseAdmin.from("enquiries").insert({
+        const { supabase } = await import("@/integrations/supabase/client");
+        const { error: dbError } = await supabase.from("enquiries").insert({
           name,
           email,
           company: company || null,
