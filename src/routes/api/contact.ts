@@ -31,6 +31,15 @@ function getClientIp(request: Request): string {
 export const Route = createFileRoute("/api/contact")({
   server: {
     handlers: {
+      // Falls back for every method other than POST (see start-server-core's
+      // handlers[method] ?? handlers["ANY"] dispatch). Without this, an
+      // unhandled GET/PUT/etc. here fell through to the SSR app shell with a
+      // 200, which is harmless but incorrect REST semantics for an API route.
+      ANY: () =>
+        Response.json(
+          { error: "Method not allowed." },
+          { status: 405, headers: { Allow: "POST" } },
+        ),
       POST: async ({ request }) => {
         const contentLength = Number(request.headers.get("content-length") ?? "0");
         if (contentLength > MAX_BODY_BYTES) {
