@@ -56,6 +56,7 @@ function AboutPage() {
               asset="about"
               poster={aboutImg}
               alt="A cinema camera held up to the light"
+              priority
               className="h-full w-full"
             />
             <div className="pointer-events-none absolute inset-0 bg-black/10" />
