@@ -1,0 +1,13 @@
+-- Follow-up to 20260819061500_add_enquiries_insert_throttle.sql: that
+-- migration enabled RLS with zero policies on public._enquiries_insert_throttle
+-- (deny-by-default for every role except the table owner, matching the
+-- comment "No grants to anon/authenticated"), but never explicitly revoked
+-- the broad table-level grants anon/authenticated receive by default on any
+-- new table in this project. RLS already blocks all row access for both
+-- roles, so this is not independently exploitable -- it closes the same
+-- class of unnecessary-privilege gap that
+-- 20260819070000_revoke_enquiries_residual_grants.sql closed on
+-- public.enquiries, for defense-in-depth completeness. The only intended
+-- access path to this table remains the SECURITY DEFINER trigger function,
+-- which is unaffected since it runs as the table owner.
+REVOKE ALL ON public._enquiries_insert_throttle FROM anon, authenticated;

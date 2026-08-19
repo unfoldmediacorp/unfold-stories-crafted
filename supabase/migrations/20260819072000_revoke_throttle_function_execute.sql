@@ -1,0 +1,16 @@
+-- Follow-up to 20260819061500_add_enquiries_insert_throttle.sql: that
+-- migration's "REVOKE ALL ON FUNCTION ... FROM PUBLIC" assumed PUBLIC was
+-- the only source of anon/authenticated's EXECUTE privilege, but Supabase
+-- grants EXECUTE on every public-schema function directly to anon,
+-- authenticated, and service_role by default (via ALTER DEFAULT
+-- PRIVILEGES), independent of PUBLIC. That REVOKE therefore left anon and
+-- authenticated with an explicit EXECUTE grant on
+-- enforce_enquiries_insert_throttle(), unrevoked.
+--
+-- Not independently exploitable: the function is declared RETURNS trigger,
+-- and PostgreSQL unconditionally refuses to invoke a trigger function
+-- outside trigger context ("trigger functions can only be called as
+-- triggers"), regardless of EXECUTE grants. This closes the grant anyway to
+-- match the migration's already-documented intent and this project's
+-- established pattern of removing unnecessary default privileges.
+REVOKE EXECUTE ON FUNCTION public.enforce_enquiries_insert_throttle() FROM anon, authenticated;
